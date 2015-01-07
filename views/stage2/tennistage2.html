@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="stylesheet" href="stage2.css">
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <meta charset="utf-8">
+  <title>TennisScore</title>
+</head>
+  <body>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="stage2.js"></script>
+    <script>
+    </script>
+    <h1>Tennisスコアラー</h1>
+    <hr class="hhr">
+    <form>
+      <p>
+        <input type="radio" name="gametype" value="1" checked id="single">シングルス
+        <input type="radio" name="gametype" value="2" id="double">ダブルス
+      </p>
+      <p>セット数</p>
+      <p>
+        <input type="radio" name="set" value="1" checked id="set1">1
+        <input type="radio" name="set" value="3" id="set3">3
+        <input type="radio" name="set" value="5" id="set5">5
+      </p>
+      <div id="vhr" style=" width:5px"></div>
+      <div id="player">
+        <input type="text" name="usn1" value="Player1" id="usn1">
+        <input type="text" name="usn3" value="Player2" id="usn3">
+        <br>
+        <input type="text" name="usn2" value="Player2" id="usn2">
+        <input type="text" name="usn4" value="Player4" id="usn4">
+        <br>
+        <br>
+        <hr class="hhr">
+      </div>
+      <h2 align="center" id="setst1" class="pl1">SET COUNT</h2>
+      <h2 align="center" id="setst2" class="pl2">SET COUNT</h2>
+      <br>
+      <h2 align="center" id="gamest1" class="pl1">GAME COUNT</h2>
+      <h2 align="center" id="gamest2" class="pl2">GAME COUNT</h2>
+      <br> 
+      <h2 align="center" id="score1" class="pl1">SCORE</h2>
+      <h2 align="center" id="score2" class="pl2">SCORE</h2>
+      <br><br><br><br>
+      <input type="button" name="change1" id="change1">
+      <input type="button"name="change2" id="change2">
+      <input type="button" name="changecort" id="chanco" value="CHANGE CORT">
+      <input type="button" name="serverchange" id="schange" value="Server CHANGE"> 
+      <div id="score">
+        <input type="button" name="service" value="Service In" class="leftbt" id="service">
+        <input type="button" name="return in" value="Return In" class="rightbt" id="returnin">
+        <br>
+        <input type="button" name="Serviceace" value="Servie ACE" class="leftbt" id="serviceace">
+        <input type="button" name="Returnace" value="Return ACE" class="rightbt" id="returnace">
+        <br>
+        <input type="button" name="fault" value="Fault" class="leftbt" id="fault">
+        <input type="button" name="return miss" value="Return Miss" class="rightbt" id="rm">
+        <br>
+        <input type="button" name="winning1" value="Winning Shot" class="leftbt" id="win1">
+        <input type="button" name="winning2" value="Winning Shot" class="rightbt" id="win2" >
+        <br>
+        <input type="button" name="side out1" value="Side Out" class="leftbt" id="side1">
+        <input type="button" name="side out2" value="Side Out" class="rightbt" id="side2">
+        <br>
+        <input type="button" name="back out1" value="Back Out" class="leftbt" id="back1">
+        <input type="button" name="back out2" value="Back Out" class="rightbt" id="back2">
+        <br>
+        <input type="button" name="net1" value="NET" class="leftbt"id="net1">
+        <input type="button" name="net2" value="NET" class="rightbt"id="net2">
+        <br>
+        
+      </div>
+    </form>
+  <script src="tennis2-point.js"></script>
+  <script src="pointcount.js"></script>
+  </body>
+</html>

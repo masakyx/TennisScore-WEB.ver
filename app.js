@@ -2,7 +2,6 @@
     app = express(),
     logger = require('morgan'),
     json = require('body-parser'),
-    post = require('./routes/post'),
     methodoverride = require('method-override');
 
 
