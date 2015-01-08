@@ -1,7 +1,8 @@
  var express = require('express'),
     app = express(),
     logger = require('morgan'),
-    json = require('body-parser'),
+    json = require('body-parser'), 
+    post = require('./routes/post');
     methodoverride = require('method-override');
 
 
@@ -15,7 +16,7 @@ app.use(logger('dev'));
 
 //routing
 
-
+app.get('/',post.stage1);
 
 
 
