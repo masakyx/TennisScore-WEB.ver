@@ -231,20 +231,20 @@ function StrBolay(){
   $("#change1").click(function (){
     i++;                                                                    
     if(i%2 == 1){
-      $(this).css("background-image","url(bolay.jpg)");
+      $(this).css("background-image","url(../images/bolay.jpg)");
       strbo1 = 1;
     }else{
-      $(this).css("background-image","url(stroke.jpg)");
+      $(this).css("background-image","url(../images/stroke.jpg)");
       strbo1 = 0;
     }
   });
   $("#change2").click(function (){
     k++;
     if(k%2 == 1){
-      $(this).css("background-image","url(bolay.jpg)");
+      $(this).css("background-image","url(../images/bolay.jpg)");
       strbo2 = 1;
     }else{
-      $(this).css("background-image","url(stroke.jpg)");
+      $(this).css("background-image","url(../images/stroke.jpg)");
       strbo2 = 0;
     }
   });

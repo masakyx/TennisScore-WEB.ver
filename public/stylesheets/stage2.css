@@ -58,7 +58,7 @@ input[name="change1"]{
   width:17%;
   height:150px;
   border:1px solid black;
-  background-image:url("stroke.jpg");
+  background-image:url("../images/stroke.jpg");
   background-size:100% 150px;
 }  
 input[name="change2"]{
@@ -67,7 +67,7 @@ input[name="change2"]{
   width:17%;
   height:150px;
   border:1px solid black;
-  background-image:url("stroke.jpg");
+  background-image:url("../images/stroke.jpg");
   background-size:100% 150px;
 }
 #score1,#gamest1,#setst1{
@@ -97,7 +97,7 @@ input[name="changecort"]{
   width:36%;
   left:32%;
   height:50px;
-  background-image:url("tenniscort.jpg");
+  background-image:url("../images/tenniscort.jpg");
   background-size:100% 50px;
   font-size:1.5em;
 }
