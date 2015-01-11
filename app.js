@@ -33,6 +33,35 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+//connect tennis_data of localhost
+var mongoose = require('mongoose');
+var db = mongoose.connect('mongodb://localhost/Tennis_Data');
+
+//make Tennis_Data Schema
+var TennisSchema = new mongoose.Schema({
+    player:{
+      player1:String,
+      player2:String,
+      player3:String,
+      player4:String
+    },
+    point:{
+      for(var i=0;i<16;i++){
+        point[i]:Number
+      }
+    }
+    pointext:{
+      for(var i=0;i<6;i++){
+        pointext[i]:String
+      }
+    }
+});
+
+//generate model from schema
+var data = db.model('data',TennisSchema);
+
+
+
 // error handlers
 
 // development error handler
@@ -56,7 +85,8 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
+//make model from Schema
+var Player = db.model('player',PlayerSchema);
 
 module.exports = app;
 app.listen(3000);
