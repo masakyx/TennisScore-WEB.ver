@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var http = require('http');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -26,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/stage2', post.stage2);
 
+var server = http.createServer(app);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -46,20 +49,58 @@ var TennisSchema = new mongoose.Schema({
       player4:String
     },
     point:{
-      for(var i=0;i<16;i++){
-        point[i]:Number
-      }
-    }
+      point1:Number,
+      point2:Number,
+      point3:Number,
+      point4:Number,
+      point5:Number,
+      point6:Number,
+      point7:Number,
+      point8:Number,
+      point9:Number,
+      point10:Number,
+      point11:Number,
+      point12:Number,
+      point13:Number,
+      point14:Number,
+      point15:Number,
+      point16:Number
+    },
     pointext:{
-      for(var i=0;i<6;i++){
-        pointext[i]:String
-      }
+      pointtext1:Number,
+      pointtext2:Number,
+      pointtext3:Number,
+      pointtext4:Number,
+      pointtext5:Number,
+      pointtext6:Number
     }
 });
 
-//generate model from schema
-var data = db.model('data',TennisSchema);
+//generate model from schema)
+var Data = db.model('data',TennisSchema);
 
+//use soket.io
+var io = require('socket.io').listen(server);
+io.sockets.on('connection',function(socket){
+    Data.find(function(err,items){
+        if(err){cosole.log(err);}
+        //接続したユーザーにテニスのデータをおくる
+        socket.emit('create',items);
+    })
+});
+
+//createイベントを受信した時、データベースにMemoを追加する。
+//tennisDataは上で書いた型
+socket.on('create',function(tennisData){
+    //create instance from model
+    var data = new Data(tennisData);
+    //save to database
+    data.save(function(err){
+        if(err){return;}
+        socket.broadcast.json.emit('create',[data]);
+        socket.emit('create',[data]);
+    });
+});
 
 
 // error handlers
@@ -90,4 +131,4 @@ var Player = db.model('player',PlayerSchema);
 
 module.exports = app;
 app.listen(3000);
-console.log('tennis server start');
+console.log('tennis server start from listening on port ' + app.get('port'));
