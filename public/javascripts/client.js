@@ -18,7 +18,7 @@ jQuery(function($){
       $('#'+data._id).find('.player').val(data.player);
     });
     //when User pushed create button ,Server send creat event
-    $('#create-button').click(function(){
+    $('#serviceace).click(function(){
         var tennisData ={
            player:{
               player1:p1f.playername,
