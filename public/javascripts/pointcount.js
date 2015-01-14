@@ -1,9 +1,10 @@
 //Player Object--------------------------------------------------------------------------
 function Player(){
   this.point=0,this.win=0,this.side=0,this.back=0,this.net=0,this.serviceace=0,this.fault=0,this.doublefault=0,this.returnace=0,this.returnmiss=0,this.spoint=0,this.bpoint=0,this.swin=0,this.bwin=0,this.sback=0,this.bback=0,this.sside=0,this.bside=0,this.snet=0,this.bnet=0,this.fserve=0,this.sserve=0,this.fservein=0,this.sservein=0,this.returnin=0,this.allreturn=0;
+  this.playername="";
 }
 //add method
-Player.prototype.move = function(a){
+Player.prototype.move = function(a){                                        
   var m = a;
   m++;
   console.log(m);
@@ -23,6 +24,13 @@ var p3 = new Player();
 var p4f = new Player();  //右下
 var p4b = new Player();
 var p4 = new Player();
+
+//----------playername----------------------------------------------------
+p1f.playername=$("#usn1").val();
+p2f.playername=$("#usn2").val();
+p3f.playername=$("#usn3").val();
+p4f.playername=$("#usn4").val();
+
 //--------------------------------------------------------------------------
 jQuery(function($){
 //-----POINT----------------------------------------------------------------
