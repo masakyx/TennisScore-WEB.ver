@@ -65,7 +65,7 @@ var TennisSchema = new mongoose.Schema({
       point13:Number,
       point14:Number,
       point15:Number,
-      point16:Number
+      point16:Number,
       point17:Number,
       point18:Number,
       point19:Number,
@@ -92,7 +92,7 @@ var TennisSchema = new mongoose.Schema({
       spoint13:Number,
       spoint14:Number,
       spoint15:Number,
-      spoint16:Number
+      spoint16:Number,
       spoint17:Number,
       spoint18:Number,
       spoint19:Number,
@@ -119,7 +119,7 @@ var TennisSchema = new mongoose.Schema({
       tpoint13:Number,
       tpoint14:Number,
       tpoint15:Number,
-      tpoint16:Number
+      tpoint16:Number,
       tpoint17:Number,
       tpoint18:Number,
       tpoint19:Number,
@@ -146,7 +146,7 @@ var TennisSchema = new mongoose.Schema({
       apoint13:Number,
       apoint14:Number,
       apoint15:Number,
-      apoint16:Number
+      apoint16:Number,
       apoint17:Number,
       apoint18:Number,
       apoint19:Number,
