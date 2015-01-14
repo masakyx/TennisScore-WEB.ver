@@ -13,6 +13,7 @@ var post = require("./routes/post");
 var app = express();
 
 // view engine setup
+app.set('port',process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -65,6 +66,98 @@ var TennisSchema = new mongoose.Schema({
       point14:Number,
       point15:Number,
       point16:Number
+      point17:Number,
+      point18:Number,
+      point19:Number,
+      point20:Number,
+      point21:Number,
+      point22:Number,
+      point23:Number,
+      point24:Number,
+      point25:Number,
+      point26:Number,
+      point27:Number,
+      spoint1:Number,
+      spoint2:Number,
+      spoint3:Number,
+      spoint4:Number,
+      spoint5:Number,
+      spoint6:Number,
+      spoint7:Number,
+      spoint8:Number,
+      spoint9:Number,
+      spoint10:Number,
+      spoint11:Number,
+      spoint12:Number,
+      spoint13:Number,
+      spoint14:Number,
+      spoint15:Number,
+      spoint16:Number
+      spoint17:Number,
+      spoint18:Number,
+      spoint19:Number,
+      spoint20:Number,
+      spoint21:Number,
+      spoint22:Number,
+      spoint23:Number,
+      spoint24:Number,
+      spoint25:Number,
+      spoint26:Number,
+      spoint27:Number,
+      tpoint1:Number,
+      tpoint2:Number,
+      tpoint3:Number,
+      tpoint4:Number,
+      tpoint5:Number,
+      tpoint6:Number,
+      tpoint7:Number,
+      tpoint8:Number,
+      tpoint9:Number,
+      tpoint10:Number,
+      tpoint11:Number,
+      tpoint12:Number,
+      tpoint13:Number,
+      tpoint14:Number,
+      tpoint15:Number,
+      tpoint16:Number
+      tpoint17:Number,
+      tpoint18:Number,
+      tpoint19:Number,
+      tpoint20:Number,
+      tpoint21:Number,
+      tpoint22:Number,
+      tpoint23:Number,
+      tpoint24:Number,
+      tpoint25:Number,
+      tpoint26:Number,
+      tpoint27:Number,
+      apoint1:Number,
+      apoint2:Number,
+      apoint3:Number,
+      apoint4:Number,
+      apoint5:Number,
+      apoint6:Number,
+      apoint7:Number,
+      apoint8:Number,
+      apoint9:Number,
+      apoint10:Number,
+      apoint11:Number,
+      apoint12:Number,
+      apoint13:Number,
+      apoint14:Number,
+      apoint15:Number,
+      apoint16:Number
+      apoint17:Number,
+      apoint18:Number,
+      apoint19:Number,
+      apoint20:Number,
+      apoint21:Number,
+      apoint22:Number,
+      apoint23:Number,
+      apoint24:Number,
+      apoint25:Number,
+      apoint26:Number,
+      apoint27:Number,
     },
     pointext:{
       pointtext1:Number,
@@ -77,29 +170,50 @@ var TennisSchema = new mongoose.Schema({
 });
 
 //generate model from schema)
-var Data = db.model('data',TennisSchema);
+var Tennis = db.model('data',TennisSchema);
 
 //use soket.io
 var io = require('socket.io').listen(server);
 io.sockets.on('connection',function(socket){
-    Data.find(function(err,items){
+    Tennis.find(function(err,items){
         if(err){cosole.log(err);}
         //接続したユーザーにテニスのデータをおくる
         socket.emit('create',items);
-    })
-});
-
-//createイベントを受信した時、データベースにMemoを追加する。
-//tennisDataは上で書いた型
-socket.on('create',function(tennisData){
-    //create instance from model
-    var data = new Data(tennisData);
-    //save to database
-    data.save(function(err){
-        if(err){return;}
-        socket.broadcast.json.emit('create',[data]);
-        socket.emit('create',[data]);
     });
+
+  //createイベントを受信した時、データベースにTennisを追加する。
+  //tennisDataは上で書いた型
+  socket.on('create',function(tennisData){
+      //create instance from model
+      var tennis = new Tennis(tennisData);
+      //save to database
+      tennis.save(function(err){
+          if(err){return;}
+          socket.broadcast.json.emit('create',[tennis]);
+          socket.emit('create',[tennis]);
+      });
+  });
+  //テニスのスコアボタンが押された時にpointをアップデートする。
+  socket.on('point-update',function(data){
+      //データベースからidが一致するものを探す。
+      Tennis.findOne({_id:data._id},function(err,tennis){
+          if(err || data === null){return;}
+          tennis.point = data.point;
+          tennis.pointext = data.pointext;
+          tennis.save();
+          //他のクライアントにイベントを伝えるためにbroadcastで送信する。
+          socket.broadcast.json.emit('point-update',data);
+      });
+  });
+  //PlayerNameが変更された時に更新する。
+  socket.on('player-update',function(data){
+      Tennis.findOne({_id:data._id},function(err,tennis){
+          if(err || tennis === null){return;}
+          tennis.player = data.player;
+          tennis.save();
+          socket.broadcast.json.emit('player-update',data);
+      });
+  });   
 });
 
 
@@ -126,8 +240,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-//make model from Schema
-var Player = db.model('player',PlayerSchema);
 
 module.exports = app;
 app.listen(3000);
