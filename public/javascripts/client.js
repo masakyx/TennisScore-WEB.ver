@@ -1,7 +1,6 @@
 jQuery(function($){
     "use strict";
-    var socket = io.connect('http://' + location.host + '/');
-
+    var socket = socket.io.connect('http://' + location.host + '/');
     //creat NewScore add html
     socket.on('create',function(tennisData){
         tennisData.forEach(function(data){
@@ -18,7 +17,7 @@ jQuery(function($){
       $('#'+data._id).find('.player').val(data.player);
     });
     //when User pushed create button ,Server send creat event
-    $('#serviceace).click(function(){
+    $('#serviceace').click(function(){
         var tennisData ={
            player:{
               player1:p1f.playername,
@@ -53,7 +52,7 @@ jQuery(function($){
               point24:p1f.fservein,
               point25:p1f.sservein,
               point26:p1f.returnin,
-              point27:p1f.allreturn
+              point27:p1f.allreturn,
               spoint1:p1b.point,
               spoint2:p1b.win,
               spoint3:p1b.side,
@@ -80,7 +79,7 @@ jQuery(function($){
               spoint24:p1b.fservein,
               spoint25:p1b.sservein,
               spoint26:p1b.returnin,
-              spoint27:p1b.allreturn
+              spoint27:p1b.allreturn,
               tpoint1:p2f.point,
               tpoint2:p2f.win,
               tpoint3:p2f.side,
@@ -107,7 +106,7 @@ jQuery(function($){
               tpoint24:p2f.fservein,
               tpoint25:p2f.sservein,
               tpoint26:p2f.returnin,
-              tpoint27:p2f.allreturn
+              tpoint27:p2f.allreturn,
               apoint1:p2b.point,
               apoint2:p2b.win,
               apoint3:p2b.side,
@@ -140,7 +139,7 @@ jQuery(function($){
               pointtext1:point1,
               pointtext2:point2,
               pointtext3:gamepoint1,
-              pointtext4:gamepoint2,
+              pointtext4:jjgamepoint2,
               pointtext5:setpoint1,
               pointtext6:setoint2
             }                 
@@ -186,7 +185,7 @@ jQuery(function($){
               point24:p1f.fservein,
               point25:p1f.sservein,
               point26:p1f.returnin,
-              point27:p1f.allreturn
+              point27:p1f.allreturn,
               spoint1:p1b.point,
               spoint2:p1b.win,
               spoint3:p1b.side,
@@ -213,7 +212,7 @@ jQuery(function($){
               spoint24:p1b.fservein,
               spoint25:p1b.sservein,
               spoint26:p1b.returnin,
-              spoint27:p1b.allreturn
+              spoint27:p1b.allreturn,
               tpoint1:p2f.point,
               tpoint2:p2f.win,
               tpoint3:p2f.side,
@@ -240,7 +239,7 @@ jQuery(function($){
               tpoint24:p2f.fservein,
               tpoint25:p2f.sservein,
               tpoint26:p2f.returnin,
-              tpoint27:p2f.allreturn
+              tpoint27:p2f.allreturn,
               apoint1:p2b.point,
               apoint2:p2b.win,
               apoint3:p2b.side,

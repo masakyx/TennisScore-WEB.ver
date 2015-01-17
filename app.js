@@ -1,3 +1,4 @@
+"use strict"
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -170,7 +171,7 @@ var TennisSchema = new mongoose.Schema({
 });
 
 //generate model from schema)
-var Tennis = db.model('data',TennisSchema);
+var Tennis = db.model('tennis',TennisSchema);
 
 //use soket.io
 var io = require('socket.io').listen(server);
