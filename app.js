@@ -24,6 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -161,12 +162,12 @@ var TennisSchema = new mongoose.Schema({
       apoint27:Number,
     },
     pointext:{
-      pointtext1:Number,
-      pointtext2:Number,
-      pointtext3:Number,
-      pointtext4:Number,
-      pointtext5:Number,
-      pointtext6:Number
+      pointtext1:String,
+      pointtext2:String,
+      pointtext3:String,
+      pointtext4:String,
+      pointtext5:String,
+      pointtext6:String
     }
 });
 
@@ -243,5 +244,8 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-app.listen(3000);
-console.log('tennis server start from listening on port ' + app.get('port'));
+/*app.listen(3000);
+ console.log('tennis server start from listening on port ' + app.get('port'))*/
+server.listen(app.get('port'), function(){
+  console.log("Express server listening on port " + app.get('port'));
+}); 

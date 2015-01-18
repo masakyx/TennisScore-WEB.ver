@@ -8,6 +8,7 @@
   <body>
 
     <script src="/socket.io/socket.io.js"></script> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="/javascripts/stage1.js"></script>
     <script src="/javascripts/client.js"></script>
     <script>
@@ -15,7 +16,7 @@
     <h1>TennisScore</h1> 
     <hr>
   <form>
-    <input type="button" value="Tennisスコアラー" name="bt1" onClick="location.href='/stage2'">
+    <input type="button" value="Tennisスコアラー新規作成" id="create" name="bt1" onClick="location.href='/stage2'">
     <br><br>
     <input type="button" value="試合状況" name="bt2">
     <br><br>
