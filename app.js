@@ -202,7 +202,6 @@ io.sockets.on('connection',function(socket){
       Tennis.findOne({_id:data._id},function(err,tennis){
           if(err || data === null){return;}
           tennis.point = data.point;
-          tennis.pointext = data.pointext;
           tennis.save();
           //他のクライアントにイベントを伝えるためにbroadcastで送信する。
           socket.broadcast.json.emit('point-update',data);
@@ -216,7 +215,16 @@ io.sockets.on('connection',function(socket){
           tennis.save();
           socket.broadcast.json.emit('player-update',data);
       });
-  });   
+  });                    
+  //changed pointtext
+  socket.on('pointext-update',function(data){
+      Tennis.findOne({id:data._id},function(err,tennis){
+          if(err || tennis == null){return};
+          tennis.pointext = data.pointext;
+          tennis.save();
+          socket.broadcast.json.emit('pointext-update');
+      }); 
+  });
 });
 
 

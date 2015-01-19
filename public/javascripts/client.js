@@ -1,11 +1,9 @@
 jQuery(function($){
     "use strict";
-    var socket = io.connect('http://' + location.host + '/');
+    var socket = io.connect('http://' + location.host + '/stage2');
     //creat NewScore add html
     socket.on('create',function(tennisData){
-        tennisData.forEach(function(data){
-            createTennis(data);
-        });
+        
     });
 //---------------------stage2-javascriptj-----------------------------------
     //update-point
@@ -148,14 +146,10 @@ jQuery(function($){
           socket.emit('create',tennisData);
       });
       //make html from tennisData
+      //update point
       var createTennis = function(tennisData){
-        var id = tennisData._id;
-        var old = $('#'+id);
-        if(old.length !== 0){
-                  return;
-                }
-        //update point
-        $(".leftbt,.rightbt").click(function(){
+          var id = tennisData._id;
+        $(".leftbt,.rightbt").click(function(){ 
             console.log("update");
             var uppoint = {
 
@@ -274,16 +268,29 @@ jQuery(function($){
            pointext:{
              pointtext1:$("#score1").text(),
              pointtext2:$("#score2").text(),
-             pointtext3:$("#gamest1").text(),
+             pointtext3:$("#gamest1").text(),   
              pointtext4:$("#gamest2").text(),
              pointtext5:$("#setst1").text(),
              pointtext6:$("#setst2").text()
             }                 
-          }
+          };
           socket.emit('point-update',{_id:id,point:uppoint});
           socket.emit('pointext-update',{_id:id,pointext:uptext});
-        });
-         
-      }
+      });
+      var $player = $(".player");
+      $player.keyup(function(){
+          console.log("jfieajfa");
+          var id = tennisData._id;
+          var upplayer = {
+            player:{
+              player1:$("#usn1").val(),
+              player2:$("#usn2").val(),
+              player3:$("#usn3").val(),
+              player4:$("#usn4").val()
+            }
+          };
+          socket.emit('player-update',{_id:id,player:upplayer});
+      });
+    });
 //-----viewer-javascript----------------------------------------------------- 
 });
