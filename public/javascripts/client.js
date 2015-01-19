@@ -7,9 +7,10 @@ jQuery(function($){
             createTennis(data);
         });
     });
+//---------------------stage2-javascriptj-----------------------------------
     //update-point
     socket.on('point-update',function(data){
-      $('#'+data._id).find('.point').val(data.point);
+      $("#text1").text(data.pointext.pointtext);
       $('#'+data._id).find('.pointext').val(data.pointext);
     });
     //update-playername
@@ -20,10 +21,10 @@ jQuery(function($){
     $('#create').click(function(){
         var tennisData ={
            player:{
-              player1:"",
-              player2:"",
-              player3:"",
-              player4:""
+              player1:"player1",
+              player2:"player2",
+              player3:"player3",
+              player4:"player4"
             },
            point:{
               point1:0,
@@ -136,12 +137,12 @@ jQuery(function($){
               apoint27:0
             },
               pointext:{
-             pointtext1:"",
-             pointtext2:"",
-             pointtext3:"",
-             pointtext4:"",
-             pointtext5:"",
-             pointtext6:""
+                pointtext1:"score1",
+                pointtext2:"score2",
+                pointtext3:"gamest1",
+                pointtext4:"gamest2",
+                pointtext5:"setst1",
+                pointtext6:"setst2"
             }                 
           };
           socket.emit('create',tennisData);
@@ -151,11 +152,11 @@ jQuery(function($){
         var id = tennisData._id;
         var old = $('#'+id);
         if(old.length !== 0){
-          return;
-        }
-        var element = $(".leftbt,.rightbt");
-        //point-update
-        element.click(function(){
+                  return;
+                }
+        //update point
+        $(".leftbt,.rightbt").click(function(){
+            console.log("update");
             var uppoint = {
 
            point:{
@@ -256,7 +257,7 @@ jQuery(function($){
               apoint14:p2b.swin,
               apoint15:p2b.bwin,
               apoint16:p2b.sback,
-              apoint17:p2b.bback,
+              apoint17:p2b.bback,       
               apoint18:p2b.sside,
               apoint19:p2b.bside,
               apoint20:p2b.snet,
@@ -271,17 +272,18 @@ jQuery(function($){
           };
           var uptext = {
            pointext:{
-              pointtext1:point1,
-              pointtext2:point2,
-              pointtext3:gamepoint1,
-              pointtext4:gamepoint2,
-              pointtext5:setpoint1,
-              pointtext6:setpoint2
+             pointtext1:$("#score1").text(),
+             pointtext2:$("#score2").text(),
+             pointtext3:$("#gamest1").text(),
+             pointtext4:$("#gamest2").text(),
+             pointtext5:$("#setst1").text(),
+             pointtext6:$("#setst2").text()
             }                 
           }
           socket.emit('point-update',{_id:id,point:uppoint});
           socket.emit('pointext-update',{_id:id,pointext:uptext});
-        })
+        });
          
       }
+//-----viewer-javascript----------------------------------------------------- 
 });
