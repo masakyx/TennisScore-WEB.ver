@@ -1,13 +1,14 @@
 jQuery(function($){
     "use strict";
     var socket = io.connect('http://' + location.host + '/stage2');
-    var socket = io.connect('http://' + location.host + '/');
-    var socket = io.connect('http://' + location.host + '/viewer');
+  //  var socket = io.connect('http://' + location.host + '/');
+  //  var socket = io.connect('http://' + location.host + '/viewer');
     var id;
     //creat NewScore add html
     socket.on('create',function(tennisData){
         tennisData.forEach(function(data){
             createTennis(data);
+            id = data._id;
         });
         
     });
@@ -150,8 +151,6 @@ jQuery(function($){
             }                 
           };
           socket.emit('create',tennisData);
-          id = tennis.Data._id;
-          console.log(id);
       });
       //make html from tennisData
       //var button = $(".leftbt,.rightbt");
@@ -160,7 +159,7 @@ jQuery(function($){
        //  var id = tennisData._id;
         
         $(".leftbt,.rightbt").click(function(){ 
-            console.log(id);
+           console.log(id);
             var uppoint = {
 
            point:{
