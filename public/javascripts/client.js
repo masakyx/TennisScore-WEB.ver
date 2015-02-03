@@ -275,17 +275,14 @@ jQuery(function($){
             };
           socket.emit('point-update',{_id:id,point:uppoint});
           socket.emit('pointext-update',{_id:id,pointext:uptext});
-          console.log($("#score1").text());
       });
       var $player = $(".player");
       $player.keyup(function(){
           var upplayer = {
-            player:{
               player1:$("#usn1").val(),
               player2:$("#usn2").val(),
               player3:$("#usn3").val(),
               player4:$("#usn4").val()
-            }
           };
           socket.emit('player-update',{_id:id,player:upplayer});
       });

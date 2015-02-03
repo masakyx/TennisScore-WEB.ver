@@ -218,8 +218,8 @@ io.sockets.on('connection',function(socket){
   });                    
   //changed pointtext
   socket.on('pointext-update',function(data){
-      Tennis.findOne({id:data._id},function(err,tennis){
-          if(err || tennis == null){return};
+      Tennis.findOne({_id:data._id},function(err,tennis){
+          if(err || tennis == null){ return};
           tennis.pointext = data.pointext;
           tennis.save();
           socket.broadcast.json.emit('pointext-update');
