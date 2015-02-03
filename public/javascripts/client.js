@@ -1,14 +1,13 @@
 jQuery(function($){
     "use strict";
     var socket = io.connect('http://' + location.host + '/stage2');
-  //  var socket = io.connect('http://' + location.host + '/');
-  //  var socket = io.connect('http://' + location.host + '/viewer');
     var id;
     //creat NewScore add html
     socket.on('create',function(tennisData){
+        id = tennisData._id;
+        console.log(id);
         tennisData.forEach(function(data){
-            createTennis(data);
-            id = data._id;
+           // createTennis(data);
         });
         
     });
@@ -23,7 +22,11 @@ jQuery(function($){
       $('#'+data._id).find('.player').val(data.player);
     });
     //when User pushed create button ,Server send creat event
-    $('#create').click(function(){         
+      //make html from tennisData
+       //  var id = tennisData._id;
+        
+    $(document).ready(function(){ 
+        console.log("create tennisData");
         var tennisData ={
            player:{
               player1:"player1",
@@ -152,14 +155,7 @@ jQuery(function($){
           };
           socket.emit('create',tennisData);
       });
-      //make html from tennisData
-      //var button = $(".leftbt,.rightbt");
-      //update point
-    // var createTennis = function(tennisData){
-       //  var id = tennisData._id;
-        
         $(".leftbt,.rightbt").click(function(){ 
-           console.log(id);
             var uppoint = {
 
            point:{
