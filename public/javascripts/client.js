@@ -1,15 +1,14 @@
 jQuery(function($){
     "use strict";
-    var socket = io.connect('http://' + location.host + '/stage2');
+    var socket = io.connect('http://' + location.host + '/');
     var id;
     //creat NewScore add html
     socket.on('create',function(tennisData){
-        id = tennisData._id;
-        console.log(id);
         tennisData.forEach(function(data){
-           // createTennis(data);
+            console.log("create!!!");
+            id = data._id;
+            console.log(id);
         });
-        
     });
 //---------------------stage2-javascriptj-----------------------------------
     //update-point
@@ -157,8 +156,6 @@ jQuery(function($){
       });
         $(".leftbt,.rightbt").click(function(){ 
             var uppoint = {
-
-           point:{
               point1:p1f.point,
               point2:p1f.win,
               point3:p1f.side,
@@ -267,20 +264,18 @@ jQuery(function($){
               apoint25:p2b.sservein,
               apoint26:p2b.returnin,
               apoint27:p2b.allreturn
-            }
           };
           var uptext = {
-           pointext:{
              pointtext1:$("#score1").text(),
              pointtext2:$("#score2").text(),
              pointtext3:$("#gamest1").text(),   
              pointtext4:$("#gamest2").text(),
              pointtext5:$("#setst1").text(),
              pointtext6:$("#setst2").text()
-            }                 
-          };
+            };
           socket.emit('point-update',{_id:id,point:uppoint});
           socket.emit('pointext-update',{_id:id,pointext:uptext});
+          console.log($("#score1").text());
       });
       var $player = $(".player");
       $player.keyup(function(){
