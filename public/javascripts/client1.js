@@ -9,7 +9,6 @@ jQuery(function($){
   });
 	//update-textイベントを受信した時、メモのテキストを更新する。
   socket.on('pointext-update',function(data){
-      console.log("eeeee");
 		$('#'+data._id).find('.score1').text(data.pointext.pointtext1);
 		$('#'+data._id).find('.score2').text(data.pointext.pointtext2);
 		$('#'+data._id).find('.game1').text(data.pointext.pointtext3);
@@ -37,7 +36,7 @@ jQuery(function($){
     console.log("viewr" + id);
 
     var element =
-      $('<div class = "tennis"/>')
+    /* $('<div class = "tennis"/>')
       .attr('id',id)
       .append($('<h4 align="center" class="player1">' + tennisData.player.player1 + '/' + tennisData.player.player2 + '</h4>'))
       .append($('<h4 align="center" class="player2">' + tennisData.player.player3 + '/' + tennisData.player.player4 + '</h4>'))
@@ -46,7 +45,10 @@ jQuery(function($){
       .append($('<h4 align="center" class="game1">' + tennisData.pointext.pointtext3 + '</h4>'))
       .append($('<h4 align="center" class="game2">' + tennisData.pointext.pointtext4 + '</h4>'))
       .append($('<h4 align="center" class="set1">' + tennisData.pointext.pointtext5 + '</h4>'))
-      .append($('<h4 align="center" class="set2">' + tennisData.pointext.pointtext6 + '</h4>'))
+      .append($('<h4 align="center" class="set2">' + tennisData.pointext.pointtext6 + '</h4>'))*/
+     $('<div class = "tennis"/>')
+     .attr('id',id)
+     .append($('<table border=2><tr><th></th><th align="center" class="player1">' + tennisData.player.player1 + '/' + tennisData.player.player2 + '</th><th align="center" class="player2">' + tennisData.player.player3 + '/' + tennisData.player.player4 +  '</th></tr><tr><td align="center">SET COUNT </td><td align="center" class="set1">' + tennisData.pointext.pointtext5 + '</td><td align="center" class="set2">' + tennisData.pointext.pointtext6 + '</td></tr><tr><td align="center">GAME COUNT</td><td align="center" class="game1">' + tennisData.pointext.pointtext3 + '</td><td align="center" class="game2">' + tennisData.pointext.pointtext4 + '</td></tr><tr><td align="center">SCORE</td><td align="center" class="score1">' + tennisData.pointext.pointtext1 + '</td><td align="center" class="score2">' + tennisData.pointext.pointtext2 + '</td></tr></table>'))
     element.hide().fadeIn();
     $('#field').append(element);
   
