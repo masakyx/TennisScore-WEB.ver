@@ -222,7 +222,7 @@ io.sockets.on('connection',function(socket){
           if(err || tennis == null){ return};
           tennis.pointext = data.pointext;
           tennis.save();
-          socket.broadcast.json.emit('pointext-update');
+          socket.broadcast.json.emit('pointext-update',data);
       }); 
   });
 });

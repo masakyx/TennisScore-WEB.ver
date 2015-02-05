@@ -11,15 +11,6 @@ jQuery(function($){
         });
     });
 //---------------------stage2-javascriptj-----------------------------------
-    //update-point
-    socket.on('point-update',function(data){
-      $("#text1").text(data.pointext.pointtext);
-      $('#'+data._id).find('.pointext').val(data.pointext);
-    });
-    //update-playername
-    socket.on('player-update',function(data){
-      $('#'+data._id).find('.player').val(data.player);
-    });
     //when User pushed create button ,Server send creat event
       //make html from tennisData
        //  var id = tennisData._id;
