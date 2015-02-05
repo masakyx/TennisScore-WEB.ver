@@ -14,12 +14,13 @@
     </script>
     <h1>TennisScore</h1> 
     <hr>
-  <form>
-    <input type="button" value="Tennisスコアラー新規作成" id="create" name="bt1" onClick="location.href='/stage2'">
-    <br><br>
-    <input type="button" value="試合状況" name="bt2" onClick="location.href='/viewer'">
-    <br><br>
-    <input type="button" value="試合データだよ" name="bt3">
-  </form>
+    <form method="post" action"/stage2">
+      <input type="text" value="作成者の名前を入力してください" id="cname" size=30 name="creatername">
+      <input type="button" value="Tennisスコアラー新規作成" id="create" name="bt1">
+    </form>
+      <br><br>
+      <input type="button" value="試合状況" name="bt2" onClick="location.href='/viewer'">
+      <br><br>
+      <input type="button" value="試合データだよ" name="bt3">
 </body>
 </html>
