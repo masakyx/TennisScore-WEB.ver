@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var debug = require('debug')('TennisScore-WEB.ver');
+var debug = require('debug')('tennis-score');
 var app = require('../app');
 
 app.set('port', process.env.PORT || 3000);
