@@ -1,4 +1,5 @@
 "use strict"
+var debug = require('debug')('tennis-score');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -215,7 +216,7 @@ io.sockets.on('connection',function(socket){
           tennis.save();
           socket.broadcast.json.emit('player-update',data);
       });
-  });                    
+  });
   //changed pointtext
   socket.on('pointext-update',function(data){
       Tennis.findOne({_id:data._id},function(err,tennis){
@@ -223,7 +224,7 @@ io.sockets.on('connection',function(socket){
           tennis.pointext = data.pointext;
           tennis.save();
           socket.broadcast.json.emit('pointext-update',data);
-      }); 
+      });
   });
 });
 
@@ -252,4 +253,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
+if(process.argv[1] == __filename){
+  server.listen(app.get('port'), function(){
+    console.log("Express server listening on port " + app.get('port'));
+  });
+}
 module.exports = app;
