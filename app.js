@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/viewer',post.viewer);
-app.use('/stage2', post.stage2);
+app.use('/stage2',post.stage2);
 
 var server = http.createServer(app);
 
