@@ -7,6 +7,8 @@
 jQuery(function ($){
 //初期設定 
   $(document).ready(function(){
+    $('input[name="usn2"]').val("");
+    $('input[name="usn4"]').val("");
     $('input[name="usn2"],input[name="usn4"]').fadeOut();
     strclosebutton();   
     $(".leftbt").css("background-color","#b3b3b3");
@@ -20,11 +22,13 @@ jQuery(function ($){
 
 
     if(gametypecheck){
+      $('input[name="usn2"]').val("");
+      $('input[name="usn4"]').val("");
       $('input[name="usn2"],input[name="usn4"]').fadeOut();
-      $('input[name="usn3"]').val("player2");
     }else{
+      $('input[name="usn2"]').val("player2");
+      $('input[name="usn4"]').val("player4");
       $('input[name="usn2"],input[name="usn4"]').fadeIn();
-      $('input[name="usn3"]').val("player3");
     }
   });
 

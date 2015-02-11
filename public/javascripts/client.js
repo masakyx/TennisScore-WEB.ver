@@ -1,13 +1,14 @@
 jQuery(function($){
     "use strict";
     var socket = io.connect('http://' + location.host + '/');
-    var id;
+//    var id;
     //creat NewScore add html
     socket.on('create',function(tennisData){
         tennisData.forEach(function(data){
-            console.log("create!!!");
-            id = data._id;
-            console.log(id);
+            console.log("create of" + data._id + "!!!");
+            creatTennis(data);
+  //          id = data._id;
+    //        console.log(id);
         });
     });
 //---------------------stage2-javascriptj-----------------------------------
@@ -145,7 +146,11 @@ jQuery(function($){
           };
           socket.emit('create',tennisData);
       });
-        $(".leftbt,.rightbt").click(function(){ 
+      //start big change
+      var creatTennis = function(tennisData){
+        var id = tennisData._id;
+        $(".leftbt,.rightbt").click(function(){
+            console.log("pointupdate");
             var uppoint = {
               point1:p1f.point,
               point2:p1f.win,
@@ -267,6 +272,15 @@ jQuery(function($){
           socket.emit('point-update',{_id:id,point:uppoint});
           socket.emit('pointext-update',{_id:id,pointext:uptext});
       });
+      $('input[name="gametype"]').click(function(){
+          var upplayer = {
+              player1:$("#usn1").val(),
+              player2:$("#usn2").val(),
+              player3:$("#usn3").val(),
+              player4:$("#usn4").val()
+          };
+          socket.emit('player-update',{_id:id,player:upplayer});
+      })
       var $player = $(".player");
       $player.keyup(function(){
           var upplayer = {
@@ -277,6 +291,7 @@ jQuery(function($){
           };
           socket.emit('player-update',{_id:id,player:upplayer});
       });
+    };
   // };
 //-----viewer-javascript----------------------------------------------------- 
 });
