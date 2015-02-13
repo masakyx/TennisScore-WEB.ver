@@ -149,6 +149,10 @@ jQuery(function($){
       //start big change
       var creatTennis = function(tennisData){
         var id = tennisData._id;
+		    var old = $('#'+id);
+		    if(old.length !== 0){
+			    return;
+		    }
         $(".leftbt,.rightbt").click(function(){
             console.log("pointupdate");
             var uppoint = {

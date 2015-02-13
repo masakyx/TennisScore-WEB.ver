@@ -9,6 +9,7 @@ jQuery(function($){
   });
 	//update-textイベントを受信した時、メモのテキストを更新する。
   socket.on('pointext-update',function(data){
+      console.log("update of " + data._id);
 		$('#'+data._id).find('.score1').text(data.pointext.pointtext1);
 		$('#'+data._id).find('.score2').text(data.pointext.pointtext2);
 		$('#'+data._id).find('.game1').text(data.pointext.pointtext3);
@@ -18,7 +19,7 @@ jQuery(function($){
 	});
 	//playernameが変更されたら変更する
   socket.on('player-update',function(data){
-      console.log(data._id);
+    console.log(data._id);
 		$('#'+data._id).find('.player1').text(data.player.player1 + '/' + data.player.player2);
 		$('#'+data._id).find('.player2').text(data.player.player3 + '/' + data.player.player4);
 	});
