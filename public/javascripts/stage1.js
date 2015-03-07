@@ -5,10 +5,18 @@ jQuery(function($){
     var cname = $("#cname");
     var create = $("#create");
     create.click(function(){
+      
       if(cname.val() == "" || cname.val() == "作成者の名前を入力してください"){
         window.alert("作者名を入力してください");
       }else{
+        var time = new Date();
 
+        var year = time.getFullYear();
+        var month = time.getMonth() + 1;
+        var day = time.getDate();
+        var ji = time.getHours();
+        var hun = time.getMinutes();
+        var byo = time.getSeconds();
         var tennisData ={
            player:{
               player1:"player1",
@@ -133,10 +141,21 @@ jQuery(function($){
                 pointtext4:"gamest2",
                 pointtext5:"setst1",
                 pointtext6:"setst2"
-            }                 
+            },
+            room:{
+              creater:$('#cname').val()
+            },
+            time:{
+              year:year,
+              month:month,
+              day:day,
+              ji:ji,
+              hun:hun,
+              byo:byo
+            }
           };
           socket.emit('create',tennisData);
+          location.href = "/stage2";
       };
-        location.href = "/stage2";
     });
 });

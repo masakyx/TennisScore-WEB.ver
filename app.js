@@ -170,6 +170,17 @@ var TennisSchema = new mongoose.Schema({
       pointtext4:String,
       pointtext5:String,
       pointtext6:String
+    },
+    room:{
+      creater:String
+    },
+    time:{
+      year:String,
+      month:String,
+      day:String,
+      ji:String,
+      hun:String,
+      byo:String
     }
 });
 
