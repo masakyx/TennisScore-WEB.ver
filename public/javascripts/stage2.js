@@ -154,6 +154,12 @@ jQuery(function ($){
       strclosebutton();
       chanco(2);
     }); 
+  $("#serviceace,#rm,#win1,#win2,#side1,#side2,#back1,#back2,#returnace,#net1,#net2").click(function(){
+      i=0;k=0;
+      $("#change1").css("background-image","url(../images/stroke.jpg)");
+      $("#change2").css("background-image","url(../images/stroke.jpg)");
+      strbo1=0;strbo2=0;  
+  });
   
 });
 //----------------------------------------------------------------------
@@ -233,3 +239,4 @@ function reposition(){
   }
   return 0;
 }
+//--------------------------------------------------------------------------

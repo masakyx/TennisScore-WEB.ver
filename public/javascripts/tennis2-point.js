@@ -163,8 +163,8 @@ function GamePoint(gamest,gamepoint){
 }
 
 //セットカウントメソッド-------------------------------------------------
-function SetPoint(setst,setpoint){
 //セットカウントの取得
+$('input[name="set"]').click(function(){
   if(set1.is(":checked")){
     setcount = 1;
   }else if(set3.is(":checked")){
@@ -172,6 +172,9 @@ function SetPoint(setst,setpoint){
   }else if(set5.is(":checked")){
     setcount = 5;
   }
+  console.log("setcount = " + setcount);
+});
+function SetPoint(setst,setpoint){
 //セットポイントのカウント
   ClearPoint();
   gamepoint1=0;
@@ -180,11 +183,20 @@ function SetPoint(setst,setpoint){
   gamest2.text("0");
   setst.text(setpoint);
   if(setcount == 1){
-
+    if(setpoint1 == 1 || setpoint2 == 1){
+      window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+      location.href = "/";
+    }
   }else if(setcount = 3){
-
-  }else if(setcount = 3){
-
+    if(setpoint1 == 3 || setpoint2 == 3){
+      window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+      location.href = "/";
+      }
+    }else if(setcount = 3){
+      if(setpoint1 == 5 || setpoint2 == 5){
+       window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+        location.href = "/";
+    }
   }
 
 }
