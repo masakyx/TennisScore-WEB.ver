@@ -3,14 +3,28 @@ jQuery(function($){
     var socket = io.connect('http://' + location.host + '/');
 //    var id;
     //creat NewScore add html
-    socket.on('create',function(tennisData){
+  socket.on('create',function(tennisData){
         tennisData.forEach(function(data){
+         // socket.join(data.room.creater);
             console.log("create of" + data._id + "!!!");
             creatTennis(data);
-  //          id = data._id;
     //        console.log(id);
         });
     });
+    var user;
+    //ユーザーの識別（時間をつかう）
+    $(document).ready(function(){
+        var time = new Date();
+        var year = time.getFullYear();
+        var month = time.getMonth() + 1;
+        var day = time.getDate();
+        var ji = time.getHours();
+        var hun = time.getMinutes();
+        var byo = time.getSeconds();
+
+        user ="a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo;
+        console.log("ユーザーは：" + user);
+    })
 //---------------------stage2-javascriptj-----------------------------------
     //when User pushed create button ,Server send creat event
       //make html from tennisData
@@ -19,10 +33,10 @@ jQuery(function($){
       //start big change
       var creatTennis = function(tennisData){
         var id = tennisData._id;
-		    var old = $('#'+id);
-		    if(old.length !== 0){
-			    return;
-		    }
+		    //var old = $('#'+id);
+		    //if(old.length !== 0){
+			   // return;
+		    //}
         $(".leftbt,.rightbt").click(function(){
             console.log("pointupdate");
             var uppoint = {
@@ -142,9 +156,11 @@ jQuery(function($){
              pointtext4:$("#gamest2").text(),
              pointtext5:$("#setst1").text(),
              pointtext6:$("#setst2").text()
-            };
-          socket.emit('point-update',{_id:id,point:uppoint});
-          socket.emit('pointext-update',{_id:id,pointext:uptext});
+           };
+           socket.emit('point-update',{_id:id,username:user,point:uppoint});
+           socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
+          //socket.broadcast.to(tennisData.room.creater).emit('point-update',{_id:id,point:uppoint});
+          //socket.broadcast.to(tennisData.room.creater).emit('pointext-update',{_id:id,pointext:uptext});
       });
       $('input[name="gametype"]').click(function(){
           var upplayer = {
@@ -152,8 +168,9 @@ jQuery(function($){
               player2:$("#usn2").val(),
               player3:$("#usn3").val(),
               player4:$("#usn4").val()
-          };
-          socket.emit('player-update',{_id:id,player:upplayer});
+            };
+            socket.emit('player-update',{_id:id,username:user,player:upplayer});
+          //socket.broadcast.to(tennisData.room.creater).emit('player-update',{_id:id,player:upplayer});
       })
       var $player = $(".player");
       $player.keyup(function(){
@@ -162,8 +179,9 @@ jQuery(function($){
               player2:$("#usn2").val(),
               player3:$("#usn3").val(),
               player4:$("#usn4").val()
-          };
-          socket.emit('player-update',{_id:id,player:upplayer});
+            };
+            socket.emit('player-update',{_id:id,username:user,player:upplayer});
+         // socket.broadcast.to(tennisData.room.creater).emit('player-update',{_id:id,player:upplayer});
       });
     };
   // };

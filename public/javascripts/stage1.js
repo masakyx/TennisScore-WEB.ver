@@ -152,7 +152,8 @@ jQuery(function($){
               ji:ji,
               hun:hun,
               byo:byo
-            }
+            },
+            user:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo
           };
           socket.emit('create',tennisData);
           location.href = "/stage2";

@@ -181,7 +181,8 @@ var TennisSchema = new mongoose.Schema({
       ji:String,
       hun:String,
       byo:String
-    }
+    },
+    user:String
 });
 
 //generate model from schema)
@@ -210,18 +211,20 @@ io.sockets.on('connection',function(socket){
   });
   //テニスのスコアボタンが押された時にpointをアップデートする。
   socket.on('point-update',function(data){
+      console.log("update of  " + data.username);
       //データベースからidが一致するものを探す。
-      Tennis.findOne({_id:data._id},function(err,tennis){
+      Tennis.findOne({user:data.username},function(err,tennis){
           if(err || data === null){return;}
           tennis.point = data.point;
-          tennis.save();
+          tennis.save();         
+          console.log("save of " + data.username);
           //他のクライアントにイベントを伝えるためにbroadcastで送信する。
           socket.broadcast.json.emit('point-update',data);
       });
   });
   //PlayerNameが変更された時に更新する。
   socket.on('player-update',function(data){
-      Tennis.findOne({_id:data._id},function(err,tennis){
+      Tennis.findOne({user:data.username},function(err,tennis){
           if(err || tennis === null){return;}
           tennis.player = data.player;
           tennis.save();
@@ -230,7 +233,7 @@ io.sockets.on('connection',function(socket){
   });
   //changed pointtext
   socket.on('pointext-update',function(data){
-      Tennis.findOne({_id:data._id},function(err,tennis){
+      Tennis.findOne({user:data.username},function(err,tennis){
           if(err || tennis == null){ return};
           tennis.pointext = data.pointext;
           tennis.save();

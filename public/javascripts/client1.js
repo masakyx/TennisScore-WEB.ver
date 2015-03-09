@@ -9,19 +9,19 @@ jQuery(function($){
   });
 	//update-textイベントを受信した時、メモのテキストを更新する。
   socket.on('pointext-update',function(data){
-      console.log("update of " + data._id);
-		$('#'+data._id).find('.score1').text(data.pointext.pointtext1);
-		$('#'+data._id).find('.score2').text(data.pointext.pointtext2);
-		$('#'+data._id).find('.game1').text(data.pointext.pointtext3);
-		$('#'+data._id).find('.game2').text(data.pointext.pointtext4);
-		$('#'+data._id).find('.set1').text(data.pointext.pointtext5);
-		$('#'+data._id).find('.set2').text(data.pointext.pointtext6);
+      console.log("update of " + data.username);
+		$('#'+data.username).find('.score1').text(data.pointext.pointtext1);
+		$('#'+data.username).find('.score2').text(data.pointext.pointtext2);
+		$('#'+data.username).find('.game1').text(data.pointext.pointtext3);
+		$('#'+data.username).find('.game2').text(data.pointext.pointtext4);
+		$('#'+data.username).find('.set1').text(data.pointext.pointtext5);
+		$('#'+data.username).find('.set2').text(data.pointext.pointtext6);
 	});
 	//playernameが変更されたら変更する
   socket.on('player-update',function(data){
-    console.log(data._id);
-		$('#'+data._id).find('.player1').text(data.player.player1 + '/' + data.player.player2);
-		$('#'+data._id).find('.player2').text(data.player.player3 + '/' + data.player.player4);
+    console.log(data.username);
+		$('#'+data.username).find('.player1').text(data.player.player1 + '/' + data.player.player2);
+		$('#'+data.username).find('.player2').text(data.player.player3 + '/' + data.player.player4);
 	});
 	//removeイベントを受信した時、メモを削除する。
 	socket.on('remove',function(data){
@@ -29,7 +29,7 @@ jQuery(function($){
   });
 
   var createData = function(tennisData){
-    var id = tennisData._id;
+    var id = tennisData.user;
     var old = $('#'+id);
     if(old.length !== 0){
       return;
