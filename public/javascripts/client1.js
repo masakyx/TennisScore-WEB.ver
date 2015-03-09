@@ -19,7 +19,8 @@ jQuery(function($){
 	});
 	//playernameが変更されたら変更する
   socket.on('player-update',function(data){
-    console.log(data.username);
+      console.log(data.username);
+      $('#'+data.username).find('#creatername').text("CREATER : " + data.room.creater);
 		$('#'+data.username).find('.player1').text(data.player.player1 + '/' + data.player.player2);
 		$('#'+data.username).find('.player2').text(data.player.player3 + '/' + data.player.player4);
 	});
@@ -41,7 +42,7 @@ jQuery(function($){
      $('<div class = "tennis"/>')
      .attr('id',id)
      .append($('<text>' + "DATE : " + tennisData.time.year + "年"+ tennisData.time.month + "月"+tennisData.time.day+"日"+tennisData.time.ji+"時"+tennisData.time.hun+"分"+tennisData.time.byo+"秒"+ '</text>'+'<br>' ))
-     .append($('<text>' + "CREATER : "+ tennisData.room.creater + '</text>'))
+     .append($('<text id="creatername">' + "CREATER : "+ tennisData.room.creater + '</text>'))
      .append($('<table border=2><tr><th></th><th align="center" class="player1">' + tennisData.player.player1 + '/' + tennisData.player.player2 + '</th><th align="center" class="player2">' + tennisData.player.player3 + '/' + tennisData.player.player4 +  '</th></tr><tr><td align="center">SET COUNT </td><td align="center" class="set1">' + tennisData.pointext.pointtext5 + '</td><td align="center" class="set2">' + tennisData.pointext.pointtext6 + '</td></tr><tr><td align="center">GAME COUNT</td><td align="center" class="game1">' + tennisData.pointext.pointtext3 + '</td><td align="center" class="game2">' + tennisData.pointext.pointtext4 + '</td></tr><tr><td align="center">SCORE</td><td align="center" class="score1">' + tennisData.pointext.pointtext1 + '</td><td align="center" class="score2">' + tennisData.pointext.pointtext2 + '</td></tr></table>'))
     element.hide().fadeIn();
     $('#field').append(element);

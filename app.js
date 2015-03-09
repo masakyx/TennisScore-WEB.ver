@@ -227,6 +227,7 @@ io.sockets.on('connection',function(socket){
       Tennis.findOne({user:data.username},function(err,tennis){
           if(err || tennis === null){return;}
           tennis.player = data.player;
+          tennis.room = data.room;
           tennis.save();
           socket.broadcast.json.emit('player-update',data);
       });
