@@ -38,6 +38,7 @@ var set3 = $("#set3");
 var set5 = $("#set5");
 var sercha = $("#schange");
 //------------------------------------------------------------------------
+var socket = io.connect('http://'+location.host+'/');
 jQuery(function($){
    StrBolay();
    sercha.click(function(){
@@ -185,16 +186,19 @@ function SetPoint(setst,setpoint){
   if(setcount == 1){
     if(setpoint1 == 1 || setpoint2 == 1){
       window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+      socket.emit('remove',{username:user});
       location.href = "/";
     }
   }else if(setcount = 3){
     if(setpoint1 == 3 || setpoint2 == 3){
       window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+      socket.emit('remove',{username:user});
       location.href = "/";
       }
     }else if(setcount = 3){
       if(setpoint1 == 5 || setpoint2 == 5){
        window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+      socket.emit('remove',{username:user});
         location.href = "/";
     }
   }

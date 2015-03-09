@@ -182,7 +182,8 @@ var TennisSchema = new mongoose.Schema({
       hun:String,
       byo:String
     },
-    user:String
+    user:String,
+    real:String
 });
 
 //generate model from schema)
@@ -240,6 +241,16 @@ io.sockets.on('connection',function(socket){
           tennis.save();
           socket.broadcast.json.emit('pointext-update',data);
       });
+  });
+  //remove
+  socket.on('remove',function(data){
+      Tennis.findOne({user:data.username},function(err,tennis){
+          if(err || tennis == null){return};
+          tennis.real = "unreal";
+          tennis.save();
+          socket.broadcast.json.emit('remove',data);
+          console.log(tennis.user + "のゲーム終了 ");
+    })
   });
 });
 

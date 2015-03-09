@@ -1,17 +1,20 @@
+var user = 0;
 jQuery(function($){
     "use strict";
     var socket = io.connect('http://' + location.host + '/');
 //    var id;
     //creat NewScore add html
   socket.on('create',function(tennisData){
-        tennisData.forEach(function(data){
+      tennisData.forEach(function(data){
+          if(data.real == "unreal"){
+          }else if(data.real == "real"){
          // socket.join(data.room.creater);
             console.log("create of" + data._id + "!!!");
             creatTennis(data);
-    //        console.log(id);
+            //        console.log(id);
+            }
         });
     });
-    var user;
     //ユーザーの識別（時間をつかう）
     $(document).ready(function(){
         var time = new Date();
@@ -158,7 +161,8 @@ jQuery(function($){
               hun:hun,
               byo:byo
             },
-            user:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo
+            user:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
+          real:"real"
           };
           socket.emit('create',tennisData);
       user ="a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo;

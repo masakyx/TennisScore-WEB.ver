@@ -2,11 +2,16 @@ jQuery(function($){
   "use strinct";
   var socket = io.connect('http://'+location.host + '/');
 	//createイベントを受信した時、html上にメモを作成する。
-	socket.on('create',function(memoData){
-		memoData.forEach(function(data){
-			createData(data);
+	socket.on('create',function(tennisData){
+      tennisData.forEach(function(data){
+          if(data.real == "real"){
+            createData(data);
+          }else if(data.real == "unreal"){
+            console.log(data.user + "のゲームは既に終了しています");
+          }
 		});
   });
+
 	//update-textイベントを受信した時、メモのテキストを更新する。
   socket.on('pointext-update',function(data){
       console.log("update of " + data.username);
@@ -26,7 +31,8 @@ jQuery(function($){
 	});
 	//removeイベントを受信した時、メモを削除する。
 	socket.on('remove',function(data){
-		removeMemo(data._id);
+      removeTennis(data.username);
+      console.log("ゲーム終了の表を削除します");
   });
 
   var createData = function(tennisData){
@@ -49,4 +55,9 @@ jQuery(function($){
   
   };
 
+	var removeTennis = function(id){
+		$('#'+id).fadeOut('fast').queue(function(){
+			$(this).remove();
+		});
+	};
 });
