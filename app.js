@@ -182,8 +182,17 @@ var TennisSchema = new mongoose.Schema({
       hun:String,
       byo:String
     },
+    time1:{
+      year:String,
+      month:String,
+      day:String,
+      ji:String,
+      hun:String,
+      byo:String
+    },
     user:String,
-    real:String
+    real:String,
+    finishtime:String
 });
 
 //generate model from schema)
@@ -247,6 +256,8 @@ io.sockets.on('connection',function(socket){
       Tennis.findOne({user:data.username},function(err,tennis){
           if(err || tennis == null){return};
           tennis.real = "unreal";
+          tennis.time1 = data.time;
+          tennis.finishtime = data.finish;
           tennis.save();
           socket.broadcast.json.emit('remove',data);
           console.log(tennis.user + "のゲーム終了 ");

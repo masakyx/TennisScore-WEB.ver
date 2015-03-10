@@ -184,21 +184,37 @@ function SetPoint(setst,setpoint){
   gamest2.text("0");
   setst.text(setpoint);
   if(setcount == 1){
+    var time1 = new Date();
+    var year1 = time1.getFullYear();
+    var month1 = time1.getMonth();
+    var day1 = time1.getDate();
+    var ji1 = time1.getHours();
+    var hun1 = time1.getMinutes();
+    var byo1 = time1.getSeconds();
+    var finishtime = year1+"年"+month1+"月"+day1+"日"+ji1+"時"+hun1+"分"+byo1+"秒";
+    var uptime = {
+      year:year1,
+      month:month1,
+      day:day1,
+      ji:ji1,
+      hun:hun1,
+      byo:byo1
+    };
     if(setpoint1 == 1 || setpoint2 == 1){
       window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
-      socket.emit('remove',{username:user});
+      socket.emit('remove',{username:user,time:uptime,finish:finishtime});
       location.href = "/";
     }
   }else if(setcount = 3){
     if(setpoint1 == 3 || setpoint2 == 3){
       window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
-      socket.emit('remove',{username:user});
+      socket.emit('remove',{username:user,time:uptime,finish:finishtime});
       location.href = "/";
       }
     }else if(setcount = 3){
       if(setpoint1 == 5 || setpoint2 == 5){
        window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
-      socket.emit('remove',{username:user});
+      socket.emit('remove',{username:user,time:uptime,finish:finishtime});
         location.href = "/";
     }
   }

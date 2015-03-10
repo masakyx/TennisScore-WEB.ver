@@ -161,8 +161,17 @@ jQuery(function($){
               hun:hun,
               byo:byo
             },
+            time1:{
+              year:"0",
+              month:"0",
+              day:"0",
+              ji:"0",
+              hun:"0",
+              byo:"0"
+            },
             user:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
-          real:"real"
+            real:"real",
+            finishtime:"0"
           };
           socket.emit('create',tennisData);
       user ="a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo;
