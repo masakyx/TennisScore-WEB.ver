@@ -7,3 +7,6 @@ exports.viewer = function(req,res){
 exports.test = function(req,res){
   console.log("view test");
 };
+exports.stage3 = function(req,res){
+  res.render("database");
+};

@@ -17,4 +17,3 @@ var fnet1=$("#fnet1"),bnet1=$("#bnet1"),fnet2=$("fnet2"),bnet2=$("#bnet2");
 fp1.text(p1f.point);
  });
 });
-                                                        
