@@ -11,7 +11,7 @@ var strbo1 = 0;
 var strbo2 = 0;  //0=stroke 1=bolay
 var server = 0; //0=server=player1 1=server=player2
 var foreback = 0; //0=fore 1=back
-
+var is_note = true;
 //ID取得-----------------------------------------------------------------
 var score1 = $("#score1");
 var score2 = $("#score2");
@@ -201,17 +201,20 @@ function SetPoint(setst,setpoint){
       byo:byo1
     };
     if(setpoint1 == 1 || setpoint2 == 1){
+      is_note = false;
       window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
       socket.emit('remove',{username:user,time:uptime,finish:finishtime});
       location.href = "/";
     }
   }else if(setcount = 3){
     if(setpoint1 == 3 || setpoint2 == 3){
+      is_note = false;
       window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
       socket.emit('remove',{username:user,time:uptime,finish:finishtime});
       location.href = "/";
       }
     }else if(setcount = 3){
+      is_note = false;
       if(setpoint1 == 5 || setpoint2 == 5){
        window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
       socket.emit('remove',{username:user,time:uptime,finish:finishtime});
@@ -221,6 +224,28 @@ function SetPoint(setst,setpoint){
 
 }
 
+window.onbeforeunload = function(event){
+if(is_note){
+  event = event || window.event;
+    var time1 = new Date();
+    var year1 = time1.getFullYear();
+    var month1 = time1.getMonth();
+    var day1 = time1.getDate();
+    var ji1 = time1.getHours();
+    var hun1 = time1.getMinutes();
+    var byo1 = time1.getSeconds();
+    var finishtime = year1+"年"+month1+"月"+day1+"日"+ji1+"時"+hun1+"分"+byo1+"秒";
+    var uptime = {
+      year:year1,
+      month:month1,
+      day:day1,
+      ji:ji1,
+      hun:hun1,
+      byo:byo1
+    };
+  socket.emit('remove',{username:user,time:uptime,finish:finishtime});
+  }
+}
 //タイブレイクメソッド --------------------------------------------------
 function TieBreak(score,point){
   if((point1+point2)%2 == 1){

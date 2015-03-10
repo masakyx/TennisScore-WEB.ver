@@ -1,5 +1,5 @@
 jQuery(function($){
-  "use strinct";
+  "use strict";
   var socket = io.connect('http://'+location.host + '/');
 	//createイベントを受信した時、html上にメモを作成する。
 	socket.on('create',function(tennisData){

@@ -1,5 +1,44 @@
 jQuery(function($){
- $(document).ready(function(){
+    "use strict";
+    var socket = io.connect('http://'+location.host + '/');
+    //createイベントでデータを追加する。
+    socket.on('create',function(tennisData){
+        tennisData.forEach(function(data){
+          if(data.real == "real"){
+          }else if(data.real == "unreal"){
+            createData(data);
+            console.log(data.user + "のゲームデータを追加しました。")
+          }
+      });
+  });
+      var createData = function(tennisData){
+        var id = tennisData.user;
+        var old = $('#'+id);
+        if(old.length !==0){
+          return;
+        }
+        var element =
+        $('<div class="tennis" />')
+        .attr('id',id)
+        .append($('<li>'+tennisData.player.player1+" : "+tennisData.player.player2+" VS "+tennisData.player.player3+" : "+tennisData.player.player4+"●日付："+tennisData.time.year+"年"+tennisData.time.month+"月"+tennisData.time.day+"日"+tennisData.time.ji+"時"+tennisData.time.hun+"分"+tennisData.time.byo+"秒"+'</li>'))
+        element.hide().fadeIn();
+        $('#field').append(element);
+      };
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* $(document).ready(function(){
 //---変数定義------------------------------------------------------------
 var fp1=$("#fpoint1"),bp1=$("#bpoint1"),fp2=$("#fpoint2"),bp2=$("#bpoint2");
 var ffs1=$("#ffs1"),bfs1=$("#bfs1"),ffs2=$("#ffs2"),bfs2=$("#bfs2");
@@ -15,5 +54,4 @@ var fnet1=$("#fnet1"),bnet1=$("#bnet1"),fnet2=$("fnet2"),bnet2=$("#bnet2");
 
 //--代入-------------------------------------------------------------------
 fp1.text(p1f.point);
- });
-});
+ });  */
