@@ -19,8 +19,8 @@ jQuery(function($){
         }
         var element =
         $('<div class="tennis" />')
-        .attr('id',id)
-        .append($('<li>'+tennisData.player.player1+" : "+tennisData.player.player2+" VS "+tennisData.player.player3+" : "+tennisData.player.player4+"[日付："+tennisData.time.year+"年"+tennisData.time.month+"月"+tennisData.time.day+"日"+tennisData.time.ji+"時"+tennisData.time.hun+"分"+tennisData.time.byo+"秒]"+'</li>'))
+        .attr('id',id)                             
+        .append($('<li><a href=/dataview?'+id+' >'+tennisData.player.player1+" : "+tennisData.player.player2+" VS "+tennisData.player.player3+" : "+tennisData.player.player4+"[日付："+tennisData.time.year+"年"+tennisData.time.month+"月"+tennisData.time.day+"日"+tennisData.time.ji+"時"+tennisData.time.hun+"分"+tennisData.time.byo+"秒]"+'</a></li>'))
         element.hide().fadeIn();
         $('#field').append(element);
       };
