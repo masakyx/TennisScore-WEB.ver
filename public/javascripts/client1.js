@@ -42,7 +42,7 @@ jQuery(function($){
       return;
     }
     
-    console.log("viewr" + id);
+    console.log(id);
 
     var element =
      $('<div class = "tennis"/>')

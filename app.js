@@ -225,7 +225,9 @@ io.sockets.on('connection',function(socket){
       console.log("update of  " + data.username);
       //データベースからidが一致するものを探す。
       Tennis.findOne({user:data.username},function(err,tennis){
-          if(err || data === null){return;}
+          if(err || data === null){
+            console.log("データが見つかりません");
+            return;}
           tennis.point = data.point;
           tennis.save();         
           console.log("save of " + data.username);

@@ -17,6 +17,7 @@ jQuery(function($){
     });
     //ユーザーの識別（時間をつかう）
     $(document).ready(function(){
+        var runsu = Math.random();
         var time = new Date();
         var year = time.getFullYear();
         var month = time.getMonth() + 1;
@@ -174,7 +175,7 @@ jQuery(function($){
             finishtime:"0"
           };
           socket.emit('create',tennisData);
-      user ="a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo;
+      user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
       console.log("ユーザーは：" + user);
     });
 //---------------------stage2-javascriptj-----------------------------------
