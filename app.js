@@ -194,7 +194,8 @@ var TennisSchema = new mongoose.Schema({
     },
     user:String,
     real:String,
-    finishtime:String
+    finishtime:String,
+    count:Number
 });
 
 //generate model from schema)
@@ -265,7 +266,17 @@ io.sockets.on('connection',function(socket){
           tennis.save();
           socket.broadcast.json.emit('remove',data);
           console.log(tennis.user + "のゲーム終了 ");
-    })
+    });
+  });
+  //databaseに詳細を表示させる
+  socket.on('dataview-create',function(data){
+      socket.join(data.dataname);
+        Tennis.findOne({user:data.dataname},function(err,tennis){
+            tennis.count = tennis.count + 1;
+            tennis.save();
+            console.log(tennis.user+"のデータが閲覧されました。");
+            socket.emit("dataview-create",tennis);
+        });
   });
 });
 

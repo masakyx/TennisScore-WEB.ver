@@ -172,7 +172,8 @@ jQuery(function($){
             },
             user:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
             real:"real",
-            finishtime:"0"
+            finishtime:"0",
+            count:0
           };
           socket.emit('create',tennisData);
       user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
