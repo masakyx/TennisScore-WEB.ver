@@ -37,16 +37,16 @@ jQuery(function($){
   $(serviceace,win1,side2,back2,net2).click(function(){
     //p1f.move(p1f.point);
     if(foreback == 0){
-      p1f.point++;
+      p1f.point++; //フォアサイドでのプレイヤー１の獲得ポイント
     }else{
-      p1b.point++;
+      p1b.point++; //バックサイドでのプレイヤー１の獲得ポイント
     }
   });
   $(returnace,win2,side1,back1,net1).click(function(){
     if(foreback == 0){
-      p2f.point++;
+      p2f.point++; //フォアサイドでのプレイヤー２の獲得ポイント
     }else{
-      p2b.point++;
+      p2b.point++;//バックサイドでのプレイヤー２の獲得ポイント
     }
   });
 
@@ -55,28 +55,28 @@ jQuery(function($){
     if(server == 0){
       if(foreback == 0){
         if(j==0){
-          p1f.fservein++;
-          p1f.fserve++;
+          p1f.fservein++;//プレイヤー１のフォアサイドのファーストサーブの入った数
+          p1f.fserve++; //プレイヤー１がフォアサイドでファーストサーブをうった数
         }else{
-          p1f.bservein++;
-          p1f.bserve++;
+          p1f.bservein++;//プレイヤー１のフォアサイドのセカンドサーブの入った数
+          p1f.bserve++; //プレイヤー１の フォアサイドのセカンドサーブをうった数
         }
       }else{
         if(j==0){
-          p1b.fservein++;
-          p1b.fserve++;
+          p1b.fservein++;//プレイヤー１のバックサイドのファーストサーブの入った数
+          p1b.fserve++; //プレイヤー１のバックサイドのファーストサーブをうった数
         }else{
-          p1b.bservein++;
-          p1b.bserve++;
+          p1b.bservein++;//プレイヤー１のバックサイドのセカンドサーブの入った数
+          p1b.bserve++;  //プレイヤー１のバックサイドのセカンドサーブのうった数
         }
       }
     }else{
       if(foreback == 0){
-        p1f.allreturn++;
-        p1f.returnin++;
+        p1f.allreturn++;//プレイヤー１のフォアサイドのリターンをうった数
+        p1f.returnin++;//プレイヤー１のフォアサイドのリターンが入った数
       }else{
-        p1b.returnin++;
-        p2b.allreturn++;
+        p1b.returnin++;//プレイヤー１のバックサイドのリターンの入った数
+        p2b.allreturn++;//プレイヤー１のバックサイドのリターンのうった数
       }
     }
   });            
@@ -85,95 +85,95 @@ jQuery(function($){
     if(server == 1){
       if(foreback == 0){
         if(j==0){
-          p2f.fservein++;
-          p2f.fserve++;
+          p2f.fservein++;//プレイヤー２のフォアサイドのファーストサーブの入った数
+          p2f.fserve++; //プレイヤー２のフォアサイドのファーストサーブのうった数
         }else{
-          p2f.bservein++;
-          p2f.bserve++;
+          p2f.bservein++;//プレイヤー２のフォアサイドのセカンドサーブの入った数
+          p2f.bserve++; //プレイヤー２のフォアサイドのセカンドサーブのうった数
         }
       }else{
         if(j==0){
-          p2b.fservein++;
-          p2b.fserve++;
+          p2b.fservein++;//プレイヤー２のバックサイドのファーストサーブの入った数
+          p2b.fserve++; //プレイヤー２のバックサイドのファーストサーブのうった数
         }else{
-          p2b.bservein++;
-          p2b.bserve++;
+          p2b.bservein++;//プレイヤー２のバックサイドのセカンドサーブのはいった数
+          p2b.bserve++; //プレイヤ−２のバックサイドのセカンドサーブのうった数
         }
       }
     }else{
       if(foreback == 0){
-        p2f.returnin++;
-        p2f.allreturn++;
+        p2f.returnin++; //プレイヤー２のフォアサイドのリターンの入った数
+        p2f.allreturn++;//プレイヤー２のフォアサイドのリターンのうった数
       }else{
-        p2b.returnin++;
-        p2b.allreturn++;
+        p2b.returnin++; //プレイヤー２のバックサイドのリターンの入ったか数
+        p2b.allreturn++; //プレイヤー２のバックサイドのリターンのうった数
       }
     }
   });
 //-----MISS POINT-----------------------------------------------------------
   $(net1).click(function(){
-    p1.net++;
+    p1.net++; //プレイヤー１がネットをした数
     if(strbo1 == 0){
-      p1.snet++;
+      p1.snet++; //プレイヤー１がストロークでネットをした数
     }else{
-      p1.bnet++;
+      p1.bnet++;//プレイヤー１がボレーでネットをした数
     }
   });
   $(net2).click(function(){
-    p2.net++;
+    p2.net++;  //プレイヤー２がネットをした数
     if(strbo2 == 0){
-      p2.snet++;
+      p2.snet++;//プレイヤー２がストロークでネットをした数
     }else{
-      p2.bnet++;
+      p2.bnet++; //プレイヤー２がボレーでネットをした数
     }
   });
   $(side1).click(function(){
-    p1.side++;
+    p1.side++; //プレイヤー１がサイドアウトをした数
     if(strbo1 == 0){
-      p1.sside++;
+      p1.sside++; //プレイヤー１がストロークでサイドアウトした数
     }else{
-      p1.bside++;
+      p1.bside++; //プレイヤー１がボレーでサイドアウトした数
     }
   });
   $(side2).click(function(){
-    p2.side++;
+    p2.side++; //プレイヤー２がサイドアウトをした数
     if(strbo2 == 0){
-      p2.sside++;
+      p2.sside++;//プレイヤー２がストロークでサイドアウトをした数
     }else{
-      p2.bside++;
+      p2.bside++; //プレイヤー２がボレーでサイドアウトした数
     }
   });
   $(back1).click(function(){
-    p1.back++;
+    p1.back++;  //プレイヤー１がバックアウトした数
     if(strbo1 == 0){
-      p1.sback++;                                                              
+      p1.sback++;//プレイヤー１がストロークでバックアウトした数                                                              
     }else{
-      p1.bback++;
+      p1.bback++; //プレイヤー１がボレーでバックあうとした数
     }
   });
   $(back2).click(function(){
-    p2.back++;
+    p2.back++;  //プレイヤー２がバックアウトをした数
     if(strbo2 == 0){
-      p2.sback++;
+      p2.sback++; //プレイヤー２がストロークでバックアウトした数
     }else{
-      p2.bback++;
+      p2.bback++; //プレイヤー２がボレーでバックあうとした数
     }
   });
   //-----------Winshot------------------------------------------------------
   $(win1).click(function(){
-    p1.win++;
+    p1.win++; //プレイヤー１がウイニングショットをうった数
     if(strbo1 == 0){
-      p1.swin++;
+      p1.swin++; //プレイヤー１がストロークでウイニングショットをうった数
     }else{
-      p1.bwin++;
+      p1.bwin++;//プレイヤー１がボレーでウイニングショットをうった数
     }
   });
   $(win2).click(function(){
-    p2.win++;
+    p2.win++; //プレイヤー２がウイニングショットをうった数
     if(strbo2 == 0){
-      p2.swin++;
+      p2.swin++; //プレイヤー２がストロークでウイニングショットをうった数
     }else{
-      p2.bwin++;
+      p2.bwin++; //プレイヤー２がボレーでウインングショットをうった数
     }
   });
   //---serve--and--return---------------------------------------------------
@@ -181,37 +181,39 @@ jQuery(function($){
     if(server == 0){
       if(j==0){
         if(foreback == 0){ 
-          p1f.fserve++;
-          p1f.fservein++;
+          p1f.fserve++; //プレイヤー１がフォアサイドでファーストサーブをうった数
+          p1f.fservein++; //プレイヤ−１がフォアサイドでファーストサーブを入った数
         }else{
-          p1b.fservein++;
-          p1b.fserve++;
+          p1b.fservein++; //プレイヤー１がバックサイドでファーストサーブを入った数
+          p1b.fserve++; //プレイヤー１がバックサイドでファーストサーブがうった数
         }
       }else{
         if(foreback == 0){
-          p1f.sservein++;
-          p1f.sserve++;
+          p1f.sservein++; //プレイヤー１がフォアサイドでセカンドサーブを入った数
+          p1f.sserve++;  //プレイヤー１がフォアサイドセカンドサーブをうった数
         }else{
-          p1b.sservein++;
-          p1b.sserve++;
+          p1b.sservein++; //プレイヤー１がバックサイドでセカンドサーブが入った数
+          p1b.sserve++;  //プレイヤー１がバックサイドでセカンドサーブをうった数
         }
       }
       if(foreback == 0){
-        p1f.serviceace++;
-        p1f.serve++;
+        p1f.serviceace++; //プレイヤー１がフォアサイドでサービスエースをとった数
+        p1f.point++;//プレイヤー１がフォアサイドでの獲得ポイント数
       }else{
-        p1b.serviceace++;
-        p1b.serve++;
+        p1b.serviceace++;//プレイヤー１がバックサイドでサービスエースをとった数
+        p1b.point++;//プレイヤー１がバックサイドでの獲得ポイント数
       }
     }else{
       if(foreback == 0){
-        p1f.returnace++;
-        p1f.returnin++;
-        p1f.allreturn++;
+        p1f.returnace++; //プレイヤー１がフォアサイドでリターンエースをとった数
+        p1f.returnin++;  //プレイヤー１がフォアサイドでリターンが入った数
+        p1f.allreturn++; //プレイヤー１がフォアサイドでリターンをうった数
+        p1f.point++;//プレイヤー１がフォアサイドでの獲得ポイント数
       }else{
-        p1b.returnace++;
-        p1b.returnin++;
-        p1b.allreturn++;
+        p1b.returnace++;//プレイヤー１がバックサイドでリターンエースをとった数
+        p1b.returnin++; //プレイヤー１がバックサイドでリターンが入った数
+        p1b.allreturn++; //プレイヤー１がバックサイドでリターンをうった数
+        p1b.point++;//プレイヤー１がバックサイドでの獲得ポイント数
       }
     }
   });
@@ -219,37 +221,39 @@ jQuery(function($){
     if(server == 1){
       if(j==0){
         if(foreback == 0){
-          p2f.fservein++;
-          p2f.fserve++;
+          p2f.fservein++;//プレイヤー２がフォアサイドでファーストサーブが入った数
+          p2f.fserve++;  //プレイヤー２がフォアサイドでファーストサーブをうった数
         }else{
-          p2b.fservein++;
-          p2b.fserve++;
+          p2b.fservein++; //プレイヤー２がバックサイドでファーストサーブが入った数
+          p2b.fserve++;   //プレイヤー２がバックサイドでファーストサーブがうった数
         }
       }else{
         if(foreback == 0){
-          p2f.sservein++;
-          p2f.sserve++;
+          p2f.sservein++;//プレイヤー２がフォアサイドでセカンドサーブが入った数
+          p2f.sserve++;  //プレイヤー２がフォアサイドでセカンドサーブをうった数
         }else{
-          p2b.sservein++;
-          p2b.sserve++;
+          p2b.sservein++;//プレイヤー２がバックサイドでセカンドサーブが入った数
+          p2b.sserve++;  //プレイヤー２がバックサイドでセカンドサーブをうった数
         }
       } 
       if(foreback == 0){
-        p2f.serviceace++;
-        p2f.serve++;
+        p2f.serviceace++;//プレイヤー２がフォアサイドでサービスエースをとった数
+        p2f.point++;//プレイヤー２がフォアサイドでの獲得ポイント数
       }else{
-        p2b.serviceace++;
-        p2b.serve++;
+        p2b.serviceace++;//プレイヤー２がバックサイドでサービスエースをとった数
+        p2b.point++;//プレイヤー２がバックサイドでの獲得ポイント数
       }
     }else{
       if(foreback == 0){
-        p2f.returnace++;
-        p2f.returnin++;
-        p2f.allreturn++;
+        p2f.returnace++; //プレイヤー２がフォアサイドでリターンエースをとった数
+        p2f.returnin++;  //プレイヤー２がフォアサイドでリターンが入った数
+        p2f.allreturn++; //プレイヤー２がフォアサイドでリターンをうった数
+        p2f.point++;//プレイヤー２がフォアサイドでの獲得ポイント数
       }else{
-        p2b.returnace++;
-        p2b.returnin++;
-        p2b.allreturn++;
+        p2b.returnace++; //プレイヤー２がバックサイドでリターンエースをとった数
+        p2b.returnin++;  //プレイヤー２がバックサイドでリターンが入った数
+        p2b.allreturn++; //プレイヤー２がバックサイドでリターンをうった数
+        p2b.point++;//プレイヤー２がバックサイドでの獲得ポイント数
       }
     }
   });
@@ -258,32 +262,32 @@ jQuery(function($){
     if(server == 0){
       if(j == 0){
         if(foreback == 0){
-          p1f.fault++;
-          p1f.fserve++;
+          p1f.fault++; //プレイヤー１がフォアサイドでファーストサーブをフォルトした数
+          p1f.fserve++; //プレイヤー１がフォアサイドでファーストサーブをうった数
         }else{
-          p1b.fault++;
-          p2b.fserve++;
+          p1b.fault++; //プレイヤー１がバックサイドでファーストサーブをフォルトした数
+          p1b.fserve++; //プレイヤー１がバックサイドでファーストサーブをうった数
         }
       }else{
         if(foreback == 0){
-          p1f.doublefault++;
-          p1f.sserve++;
-          p2f.point++;
+          p1f.doublefault++; //プレイヤー１がフォアサイドでセカンドサーブをフォルトした数
+          p1f.sserve++;      //プレイヤー１がフォアサイドでセカンドサーブをうった数
+          p2f.point++;       //プレイヤー2がフォアサイドでの獲得ポイント
         }else{
-          p1b.doublefault++;
-          p2b.sserve++;
-          p2b.point++;
+          p1b.doublefault++;//プレイヤー１がバックサイドでセカンドサーブをフォルトした数
+          p2b.sserve++;   //プレイヤー１がバックサイドでセカンドサーブをうった数
+          p2b.point++;    //プレイヤー2がバックサイドでの獲得ポイント
         }
       }
     }else{
       if(foreback == 0){
-        p1f.returnmiss++;
-        p1f.allreturn++;
-        p2f.point++;
+        p1f.returnmiss++;//プレイヤー１がフォアサイドでリターンをみすった数
+        p1f.allreturn++; //プレイヤー１がフォアサイドでリターンをうった数
+        p2f.point++;    //プレイヤー2がフォアサイドで獲得ポイント
       }else{
-        p1b.returnmiss++;
-        p1b.allreturn++;
-        p2b.point++;
+        p1b.returnmiss++;//プレイヤー１がバックサイドでリターンをミスった数
+        p1b.allreturn++; //プレイヤー１がバックサイドでリターンをうった数
+        p2b.point++;     //プレイヤー2がバックサイドでの獲得ポイント
       }
     }
   });
@@ -291,36 +295,32 @@ jQuery(function($){
     if(server == 1){
       if(j == 0){
         if(foreback == 0){
-          p2f.fault++;
-          p2f.fserve++;
-          p2f.serve++;
+          p2f.fault++;  //プレイヤー２がフォアサイドでファーストサーブをフォルトした数
+          p2f.fserve++; //プレイヤー２がフォアサイドでファーストサーブをうった数
         }else{
-          p2b.fault++;
-          p2b.fserve++;
-          p2b.serve++;
+          p2b.fault++;//プレイヤー２がバックサイドでファーストサーブをフォルトした数
+          p2b.fserve++; //プレイヤー２がバックサイドでファーストサーブをうった数
         }
       }else{
         if(foreback == 0){
-          p2f.doublefault++;
-          p2f.serve++;
-          p2f.sserve++;
-          p1f.point++;
+          p2f.doublefault++;//プレイヤー２がフォアサイドでセカンドサーブをフォルトした数
+          p2f.sserve++;    //プレイヤー２がフォアサイドでセカンドサーブをうった数
+          p1f.point++;     //プレイヤー１がフォアサイドでポイント獲得数
         }else{
-          p2b.doublefault++;
-          p2b.serve++;
-          p2b.sserve++;
-          p1b.point++;
+          p2b.doublefault++;//プレイヤー２がバックサイドでセカンドサーブをフォルトした数
+          p2b.sserve++;    //プレイヤー２がバックサイドでセカンドサーブをうった数
+          p1b.point++;     //プレイヤー１がバックサイドでポイント獲得数
         }
       }
     }else{
       if(foreback == 0){
-        p2f.returnmiss++;
-        p2f.allreturn++;
-        p1f.point++;
+        p2f.returnmiss++;  //プレイヤー２がフォアサイドでリターンミスをした数
+        p2f.allreturn++;   //プレイヤー２がフォアサイドでリターンをうった数
+        p1f.point++;       //プレイヤー１がフォアサイドでの獲得ポイント数
       }else{
-        p2b.returnmiss++;
-        p2b.allreturn++;
-        p1b.point++;
+        p2b.returnmiss++; //プレイヤー２がバックサイドでリターンミスをした数
+        p2b.allreturn++;  //プレイヤー２がバックサイドでリターンをうった数
+        p1b.point++;      //プレイヤー２がバックサイドでのポイント獲得数
       }
     }
   });
