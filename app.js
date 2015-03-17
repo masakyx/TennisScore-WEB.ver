@@ -284,7 +284,6 @@ io.sockets.on('connection',function(socket){
     });
     //応援コメントの表示
     socket.on('viewer-chat',function(data){
-      
     });
 });
 
