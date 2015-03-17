@@ -182,7 +182,8 @@ var TennisSchema = new mongoose.Schema({
       day:String,
       ji:String,
       hun:String,
-      byo:String
+      byo:String,
+      alltime:String
     },
     time1:{
       year:String,
@@ -190,12 +191,14 @@ var TennisSchema = new mongoose.Schema({
       day:String,
       ji:String,
       hun:String,
-      byo:String
+      byo:String,
+      alltime:String
     },
     user:String,
     real:String,
     finishtime:String,
-    count:Number
+    count:Number,
+    winner:String
 });
 
 //generate model from schema)
@@ -263,8 +266,9 @@ io.sockets.on('connection',function(socket){
           tennis.real = "unreal";
           tennis.time1 = data.time;
           tennis.finishtime = data.finish;
+          tennis.winner = data.winplayer;
           tennis.save();
-          socket.broadcast.json.emit('remove',data);
+          socket.broadcast.json.emit('remove',tennis);
           console.log(tennis.user + "のゲーム終了 ");
     });
   });
@@ -277,7 +281,11 @@ io.sockets.on('connection',function(socket){
             console.log(tennis.user+"のデータが閲覧されました。");
             socket.emit("dataview-create",tennis);
         });
-  });
+    });
+    //応援コメントの表示
+    socket.on('viewer-chat',function(data){
+      
+    });
 });
 
 

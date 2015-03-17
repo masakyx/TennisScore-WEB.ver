@@ -22,6 +22,8 @@ jQuery(function($){
     var username1=$("#username1");
     var username2=$("#username2");
     var show=$("#show");
+    var showtime=$("#showtime");
+    var showwinner=$("#showwinner");
 
     socket.emit("dataview-create",{dataname:parameter});
     socket.on("dataview-create",function(data){
@@ -29,6 +31,8 @@ jQuery(function($){
         username1.text(data.player.player1+" / "+data.player.player2);
         username2.text(data.player.player3+" / "+data.player.player4);
         show.text("閲覧数："+data.count+"回");
+        showtime.text("試合時間："+data.time.alltime+"〜"+data.time1.alltime);
+        showwinner.text("勝者 : "+data.winner);
    //------------------------------------------------------------------------     
        fp1.text(data.point.point1+"/"+(data.point.point1+data.point.spoint1));
        bp1.text(data.point.spoint1+"/"+(data.point.point1+data.point.spoint1));

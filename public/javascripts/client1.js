@@ -30,9 +30,10 @@ jQuery(function($){
 		$('#'+data.username).find('.player2').text(data.player.player3 + '/' + data.player.player4);
 	});
 	//removeイベントを受信した時、メモを削除する。
-	socket.on('remove',function(data){
-      removeTennis(data.username);
+  socket.on('remove',function(data){
+      removeTennis(data.user);
       console.log("ゲーム終了の表を削除します");
+      window.alert(data.player.player1+' / '+data.player.player2+' VS '+data.player.player3+' / '+data.player.player4+"の試合は終了しました。勝者は＜"+data.winner+"＞です。");
   });
 
   var createData = function(tennisData){
@@ -47,7 +48,7 @@ jQuery(function($){
     var element =
      $('<div class = "tennis"/>')
      .attr('id',id)
-     .append($('<text>' + "DATE : " + tennisData.time.year + "年"+ tennisData.time.month + "月"+tennisData.time.day+"日"+tennisData.time.ji+"時"+tennisData.time.hun+"分"+tennisData.time.byo+"秒"+ '</text>'+'<br>' ))
+     .append($('<text>' + "開始時間 : " + tennisData.time.alltime+'</text>'+'<br>' ))
      .append($('<text id="creatername">' + "CREATER : "+ tennisData.room.creater + '</text>'))
      .append($('<table border=2><tr><th></th><th align="center" class="player1">' + tennisData.player.player1 + '/' + tennisData.player.player2 + '</th><th align="center" class="player2">' + tennisData.player.player3 + '/' + tennisData.player.player4 +  '</th></tr><tr><td align="center">SET COUNT </td><td align="center" class="set1">' + tennisData.pointext.pointtext5 + '</td><td align="center" class="set2">' + tennisData.pointext.pointtext6 + '</td></tr><tr><td align="center">GAME COUNT</td><td align="center" class="game1">' + tennisData.pointext.pointtext3 + '</td><td align="center" class="game2">' + tennisData.pointext.pointtext4 + '</td></tr><tr><td align="center">SCORE</td><td align="center" class="score1">' + tennisData.pointext.pointtext1 + '</td><td align="center" class="score2">' + tennisData.pointext.pointtext2 + '</td></tr></table>'))
     element.hide().fadeIn();

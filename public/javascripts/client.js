@@ -160,7 +160,8 @@ jQuery(function($){
               day:day,
               ji:ji,
               hun:hun,
-              byo:byo
+              byo:byo,
+              alltime:year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒"
             },
             time1:{
               year:"0",
@@ -168,12 +169,14 @@ jQuery(function($){
               day:"0",
               ji:"0",
               hun:"0",
-              byo:"0"
+              byo:"0",
+              alltime:"0"
             },
             user:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
             real:"real",
             finishtime:"0",
-            count:0
+            count:0,
+            winner:"winner"
           };
           socket.emit('create',tennisData);
       user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
