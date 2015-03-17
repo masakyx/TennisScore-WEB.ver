@@ -47,6 +47,14 @@ app.use(function(req, res, next) {
 var mongoose = require('mongoose');
 var db = mongoose.connect('mongodb://localhost/Tennis_Data');
 
+//make chat Schema
+var ChatSchema = new mongoose.Schema({
+    name:String,
+    message:String,
+    time:String
+});
+
+
 //make Tennis_Data Schema
 var TennisSchema = new mongoose.Schema({
     player:{
@@ -203,6 +211,7 @@ var TennisSchema = new mongoose.Schema({
 
 //generate model from schema)
 var Tennis = db.model('tennis',TennisSchema);
+var Chat = db.model('chat',ChatSchema);
 
 //use soket.io
 var io = require('socket.io').listen(server);
@@ -211,6 +220,10 @@ io.sockets.on('connection',function(socket){
         if(err){cosole.log(err);}
         //接続したユーザーにテニスのデータをおくる
         socket.emit('create',items);
+    });
+    Chat.find(function(err,items){
+      if(err){console.log(err);}
+      socket.emit('create-chat',items);
     });
 
   //createイベントを受信した時、データベースにTennisを追加する。
@@ -224,6 +237,13 @@ io.sockets.on('connection',function(socket){
           socket.broadcast.json.emit('create',[tennis]);
           socket.emit('create',[tennis]);
       });
+  });
+  socket.on('create-chat',function(chatdata){
+    var chat = new Chat(chatdata);
+    chat.save(function(err){
+        if(err){return;}
+        socket.emit('create-chat',[chatdata]);
+    })
   });
   //テニスのスコアボタンが押された時にpointをアップデートする。
   socket.on('point-update',function(data){
@@ -284,6 +304,16 @@ io.sockets.on('connection',function(socket){
     });
     //応援コメントの表示
     socket.on('viewer-chat',function(data){
+        //Chat.findOne(function(err,chatdata){
+           // if(err || chatdata == null){return;};
+        var chatdata = new Chat();
+            chatdata.name = data.name;
+            chatdata.message = data.message;
+            chatdata.time = data.time;
+            chatdata.save();
+            console.log("メッセージが追加されました");
+            socket.emit('viewer-chat',chatdata);
+            socket.broadcast.json.emit('viewer-chat',chatdata);
     });
 });
 

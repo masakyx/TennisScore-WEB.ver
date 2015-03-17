@@ -1,0 +1,16 @@
+#chat-name{
+  width:150px;
+  height:20px;
+  font-size:100%;
+}
+#comment{
+  width:300px;
+  height:20px;
+  font-size:100%;
+}
+.divv{
+  float:left;
+}
+#chat-field{
+  margin-left:100px;
+}

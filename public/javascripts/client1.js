@@ -9,8 +9,15 @@ jQuery(function($){
           }else if(data.real == "unreal"){
             console.log(data.user + "のゲームは既に終了しています");
           }
-		});
+		  });
+    });
+  socket.on('create-chat',function(chatdata){
+    chatdata.forEach(function(data){
+      createchat(data);
+      console.log("メッセージを更新したよ");
+    });
   });
+
 
 	//update-textイベントを受信した時、メモのテキストを更新する。
   socket.on('pointext-update',function(data){
@@ -60,5 +67,45 @@ jQuery(function($){
 		$('#'+id).fadeOut('fast').queue(function(){
 			$(this).remove();
 		});
-	};
+  };
+  $("#send").click(function(){
+      if($("#comment").val() == ""){
+        window.alert("コメントを入力してください");
+       } else{
+     var time = new Date();
+     var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+     var day = time.getDate();
+    var ji = time.getHours();
+    var hun = time.getMinutes();
+    var byo = time.getSeconds();
+    var metime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
+        var name;
+        var message;
+        name = $("#chat-name").val();
+        message = $("#comment").val();
+        $("#comment").val("");
+        socket.emit("viewer-chat",{name:name,message:message,time:metime});
+      }
+  });
+  socket.on('viewer-chat',function(data){
+      console.log("新しいメッセージきました");
+      createchat(data);
+  });
+  var createchat = function(data){
+    
+    var id = data._id;
+    var old = $('#'+id);
+    if(old.length !== 0){
+      return;
+    }
+    var element = 
+    $('<div class="tennis" />')
+    .attr('id',id)                  
+    .append('<li>'+data.time+'<br>'+data.name+"さん："+data.message+'</li>')
+    element.hide().fadeIn();
+    $("#chat-field").append(element);
+    console.log("メッセージが追加されました。");
+  };
+
 });
