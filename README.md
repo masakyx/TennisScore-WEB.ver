@@ -5,7 +5,9 @@ What this wants to do is to share Tennisdata with the member of My tennis team i
 
 If one of the member is playing tennis game and the other member is counting this score,
 
-the people who is watching TennisScore-WEB.ver can see the tournament status in real time.
+the people who is watching TennisScore-WEB.ver can see the tournament status in real time
+
+and we can also send some messages in real time.
 
 
 ## Start App
