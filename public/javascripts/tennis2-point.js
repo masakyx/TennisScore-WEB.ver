@@ -248,7 +248,7 @@ function SetPoint(setst,setpoint){
 }
 
 window.onbeforeunload = function(event){
-if(is_note){
+//if(is_note){
   event = event || window.event;
     var time1 = new Date();
     var year1 = time1.getFullYear();
@@ -264,10 +264,12 @@ if(is_note){
       day:day1,
       ji:ji1,
       hun:hun1,
-      byo:byo1
+      byo:byo1,
+      alltime:finishtime
     };
-  socket.emit('remove',{username:user,time:uptime,finish:finishtime});
-  }
+  
+  socket.emit('remove',{username:user,time:uptime});
+  //}
 }
 //タイブレイクメソッド --------------------------------------------------
 function TieBreak(score,point){
