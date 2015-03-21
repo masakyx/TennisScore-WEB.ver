@@ -12,9 +12,17 @@ jQuery(function($){
 		  });
     });
   socket.on('create-chat',function(chatdata){
-    chatdata.forEach(function(data){
-      createchat(data);
-      console.log("メッセージを更新したよ");
+      chatdata.forEach(function(data){
+          var dayid = new Date();
+          var yearid = dayid.getFullYear();
+          var monthid = dayid.getMonth() + 1;
+          var dateid = dayid.getDate();
+          if(data.year == yearid && data.month == monthid && data.day == dateid){
+          createchat(data);
+          console.log("メッセージを更新したよ");
+        }else{
+
+        }
     });
   });
 
@@ -72,20 +80,20 @@ jQuery(function($){
       if($("#comment").val() == ""){
         window.alert("コメントを入力してください");
        } else{
-     var time = new Date();
-     var year = time.getFullYear();
-    var month = time.getMonth() + 1;
-     var day = time.getDate();
-    var ji = time.getHours();
-    var hun = time.getMinutes();
-    var byo = time.getSeconds();
-    var metime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
+        var time = new Date();
+        var year = time.getFullYear();
+        var month = time.getMonth() + 1;
+        var day = time.getDate();
+        var ji = time.getHours();
+        var hun = time.getMinutes();
+        var byo = time.getSeconds();
+        var metime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
         var name;
         var message;
         name = $("#chat-name").val();
         message = $("#comment").val();
         $("#comment").val("");
-        socket.emit("viewer-chat",{name:name,message:message,time:metime});
+        socket.emit("viewer-chat",{name:name,message:message,time:metime,year:year,month:month,day:day});
       }
   });
   socket.on('viewer-chat',function(data){

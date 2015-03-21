@@ -51,7 +51,10 @@ var db = mongoose.connect('mongodb://localhost/Tennis_Data');
 var ChatSchema = new mongoose.Schema({
     name:String,
     message:String,
-    time:String
+    time:String,
+    year:Number,
+    month:Number,
+    day:Number
 });
 
 
@@ -310,6 +313,9 @@ io.sockets.on('connection',function(socket){
             chatdata.name = data.name;
             chatdata.message = data.message;
             chatdata.time = data.time;
+            chatdata.year = data.year;
+            chatdata.month = data.month;
+            chatdata.day = data.day;
             chatdata.save();
             console.log("メッセージが追加されました");
             socket.emit('viewer-chat',chatdata);
