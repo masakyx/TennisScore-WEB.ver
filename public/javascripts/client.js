@@ -1,7 +1,8 @@
 var user = 0;
 jQuery(function($){
     "use strict";
-    var socket = io.connect('http://' + location.host + '/');
+    //var socket = io.connect('http://' + location.host + '/');
+    var socket = io.connect(location.host + '/');
 //    var id;
     //creat NewScore add html
   socket.on('create',function(tennisData){

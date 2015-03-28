@@ -1,6 +1,7 @@
 jQuery(function($){
     "use strict";
-    var socket = io.connect('http://'+location.host + '/');
+    //var socket = io.connect('http://'+location.host + '/');
+    var socket = io.connect(location.host + '/');
   $(document).ready(function(){
       var parameter;
       parameter = location.search;

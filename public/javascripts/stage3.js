@@ -1,6 +1,7 @@
 jQuery(function($){
     "use strict";
-    var socket = io.connect('http://'+location.host + '/');
+    //var socket = io.connect('http://'+location.host + '/');
+    var socket = io.connect(location.host + '/');
     //createイベントでデータを追加する。
     socket.on('create',function(tennisData){
         tennisData.forEach(function(data){
