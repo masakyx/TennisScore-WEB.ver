@@ -43,7 +43,7 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-//connect tennis_data of localhost
+//connect tennis_data of localhost 3000
 var mongoose = require('mongoose');
 var db = mongoose.connect('mongodb://localhost/Tennis_Data');
 
