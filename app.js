@@ -45,7 +45,8 @@ app.use(function(req, res, next) {
 
 //connect tennis_data of localhost 3000
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://localhost/Tennis_Data');
+//var db = mongoose.connect('mongodb://localhost/Tennis_Data');
+var db = mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/Tennis_Data');
 
 //make chat Schema
 var ChatSchema = new mongoose.Schema({
