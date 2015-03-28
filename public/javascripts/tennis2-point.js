@@ -13,6 +13,7 @@ var server = 0; //0=server=player1 1=server=player2
 var foreback = 0; //0=fore 1=back
 var is_note = true;
 var winner = "no";
+var timer = 0;
 //ID取得-----------------------------------------------------------------
 var score1 = $("#score1");
 var score2 = $("#score2");
@@ -49,7 +50,17 @@ jQuery(function($){
        server = 0;
      }
      ServeChange(server);
-   });
+  });
+  //--------------------timer処理----------------------------------------
+   setInterval(function(){
+      timer++;
+      console.log(timer);
+      if(timer == 700){
+          location.href = "/";
+          console.log("制限時間を超えました");
+      } 
+  },5000);
+   
    //-------------------------------------------------------------------
    $("#serviceace,#win1,#side2,#back2,#net2").click(function(){
      point1++;
@@ -72,7 +83,7 @@ jQuery(function($){
        ClickPoint(score2,point2);
      }
    });
-   //------------------------------------------------------------------
+   //---;--------------------------------------------------------------
    rm.click(function(){
      if(server == 1){
        if(rm.val() == "Fault"){
@@ -92,6 +103,7 @@ jQuery(function($){
       }else{
         foreback = 1;
       }
+      timer = 0;
    });
 
 });
@@ -273,8 +285,7 @@ event = event || window.event;
     }
   
     socket.emit('remove',{username:user,time:uptime,winplayer:winner});
-  //}
-}
+  }
 //タイブレイクメソッド --------------------------------------------------
 function TieBreak(score,point){
   if((point1+point2)%2 == 1){
