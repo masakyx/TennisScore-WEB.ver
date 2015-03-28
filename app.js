@@ -288,8 +288,8 @@ io.sockets.on('connection',function(socket){
       Tennis.findOne({user:data.username},function(err,tennis){
           if(err || tennis == null){return};
           tennis.real = "unreal";
+          console.log(data.winplayer);
           tennis.time1 = data.time;
-          tennis.finishtime = data.finish;
           tennis.winner = data.winplayer;
           tennis.save();
           socket.broadcast.json.emit('remove',tennis);

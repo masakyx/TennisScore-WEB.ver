@@ -12,6 +12,7 @@ var strbo2 = 0;  //0=stroke 1=bolay
 var server = 0; //0=server=player1 1=server=player2
 var foreback = 0; //0=fore 1=back
 var is_note = true;
+var winner = "no";
 //ID取得-----------------------------------------------------------------
 var score1 = $("#score1");
 var score2 = $("#score2");
@@ -185,7 +186,7 @@ function SetPoint(setst,setpoint){
   setst.text(setpoint);
     var time1 = new Date();
     var year1 = time1.getFullYear();
-    var month1 = time1.getMonth();
+    var month1 = time1.getMonth()+1;
     var day1 = time1.getDate();
     var ji1 = time1.getHours();
     var hun1 = time1.getMinutes();
@@ -200,7 +201,6 @@ function SetPoint(setst,setpoint){
       byo:byo1,
       alltime:finishtime
     };
-    var winner;
   if(setcount == 1){
     if(setpoint1 == 1 || setpoint2 == 1){
       if(setpoint1 == 1){
@@ -249,10 +249,10 @@ function SetPoint(setst,setpoint){
 
 window.onbeforeunload = function(event){
 //if(is_note){
-  event = event || window.event;
+event = event || window.event;
     var time1 = new Date();
     var year1 = time1.getFullYear();
-    var month1 = time1.getMonth();
+    var month1 = time1.getMonth()+1;
     var day1 = time1.getDate();
     var ji1 = time1.getHours();
     var hun1 = time1.getMinutes();
@@ -267,8 +267,12 @@ window.onbeforeunload = function(event){
       byo:byo1,
       alltime:finishtime
     };
+    if(winner == "no"){
+      winner = "試合は途中で終了しました";
+    }else{
+    }
   
-  socket.emit('remove',{username:user,time:uptime});
+    socket.emit('remove',{username:user,time:uptime,winplayer:winner});
   //}
 }
 //タイブレイクメソッド --------------------------------------------------
