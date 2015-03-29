@@ -60,7 +60,10 @@ input[name="change1"]{
   border:1px solid black;
   background-image:url("../images/stroke.jpg");
   background-size:100% 150px;
-}  
+} 
+#cname{
+  width:46%;
+}
 input[name="change2"]{
   position:absolute;
   right:32%;

@@ -16,21 +16,23 @@ jQuery(function($){
     var frm1=$("#frm1"),brm1=$("#brm1"),frm2=$("#frm2"),brm2=$("#brm2");
     var fra1=$("#fra1"),bra1=$("#bra1"),fra2=$("#fra2"),bra2=$("#bra2");  
     var fws1=$("#fws1"),bws1=$("#bws1"),fws2=$("#fws2"),bws2=$("#bws2");            
-    var fbo1=$("#fbo1"),bbo1=$("#boo1"),fbo2=$("#fbo2"),bbo2=$("#bbo2");
+    var fbo1=$("#fbo1"),bbo1=$("#bbo1"),fbo2=$("#fbo2"),bbo2=$("#bbo2");
     var fso1=$("#fso1"),bso1=$("#bso1"),fso2=$("#fso2"),bso2=$("#bso2");
-    var fnet1=$("#fnet1"),bnet1=$("#bnet1"),fnet2=$("fnet2"),bnet2=$("#bnet2");
+    var fnet1=$("#fnet1"),bnet1=$("#bnet1"),fnet2=$("#fnet2"),bnet2=$("#bnet2");
 
     var username1=$("#username1");
     var username2=$("#username2");
     var show=$("#show");
     var showtime=$("#showtime");
     var showwinner=$("#showwinner");
+    var creater2 = $("#creater2");
 
     socket.emit("dataview-create",{dataname:parameter});
     socket.on("dataview-create",function(data){
         console.log(data.user+"のデータが"+data.count+"回閲覧されました");
         username1.text(data.player.player1+" / "+data.player.player2);
         username2.text(data.player.player3+" / "+data.player.player4);
+        creater2.text("記録者："+data.room.creater);
         show.text("閲覧数："+data.count+"回");
         showtime.text("試合時間："+data.time.alltime+"〜"+data.time1.alltime);
         showwinner.text("勝者 : "+data.winner);
