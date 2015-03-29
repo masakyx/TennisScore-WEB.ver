@@ -148,6 +148,7 @@ function ScorePoint(score,point){
 
 //ゲームカウントメソッド  ------------------------------------------------
 function GamePoint(gamest,gamepoint){
+  openbutton();
   foreback = 0;//fore
   if(server == 0){
     server = 1;
