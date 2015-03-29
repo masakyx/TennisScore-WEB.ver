@@ -33,6 +33,7 @@ app.use('/viewer',post.viewer);
 app.use('/stage2',post.stage2);
 app.use('/stage3',post.stage3);
 app.use('/dataview',post.dataview);
+app.use('/readme',post.readme);
 
 var server = http.createServer(app);
 

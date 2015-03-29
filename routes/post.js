@@ -13,3 +13,6 @@ exports.stage3 = function(req,res){
 exports.dataview = function(req,res){
   res.render("dataview");
 }
+exports.readme = function(req,res){
+  res.render("readme");
+}
