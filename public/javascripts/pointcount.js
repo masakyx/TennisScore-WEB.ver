@@ -36,7 +36,7 @@ jQuery(function($){
 //-----POINT----------------------------------------------------------------
   $("#serviceace,#win1,#side2,#back2,#net2").click(function(){
     //p1f.move(p1f.point);
-    if(foreback == 1){
+    if(foreback == 0){
       p1f.point++; 
       console.log("フォアサイドでのプレイヤー１の獲得ポイント");
     }else{
@@ -45,7 +45,7 @@ jQuery(function($){
     }
   });
   $("#returnace,#win2,#side1,#back1,#net1").click(function(){
-    if(foreback == 1){
+    if(foreback == 0){
       p2f.point++; 
       console.log("フォアサイドでのプレイヤー２の獲得ポイント");
     }else{
@@ -57,7 +57,7 @@ jQuery(function($){
 //--serve in-----------------------------------------------------------------
   $(service).click(function(){
     if(server == 0){
-      if(foreback == 1){
+      if(foreback == 0){
         if(j==0){
           p1f.fservein++;
           console.log("プレイヤー１のフォアサイドのファーストサーブの入った数");
@@ -83,7 +83,7 @@ jQuery(function($){
         }
       }
     }else{
-      if(foreback == 1){
+      if(foreback == 0){
         p1f.allreturn++;
         console.log("プレイヤー１のフォアサイドのリターンをうった数");
         p1f.returnin++;
@@ -99,7 +99,7 @@ jQuery(function($){
 
   $(returnin).click(function(){
     if(server == 1){
-      if(foreback == 1){
+      if(foreback == 0){
         if(j==0){
           p2f.fservein++;
           console.log("プレイヤー２のフォアサイドのファーストサーブの入った数");
@@ -118,7 +118,7 @@ jQuery(function($){
         }
       }
     }else{
-      if(foreback == 1){
+      if(foreback == 0){
         p2f.returnin++; console.log("プレイヤー２のフォアサイドのリターンの入った数");
         p2f.allreturn++;console.log("プレイヤー２のフォアサイドのリターンのうった数");
       }else{
@@ -197,7 +197,7 @@ jQuery(function($){
   $(serviceace).click(function(){
     if(server == 0){
       if(j==0){
-        if(foreback == 1){ 
+        if(foreback == 0){ 
           p1f.fserve++; console.log("プレイヤー１がフォアサイドでファーストサーブをうった数");
           p1f.fservein++; console.log("プレイヤ−１がフォアサイドでファーストサーブを入った数");
         }else{
@@ -205,7 +205,7 @@ jQuery(function($){
           p1b.fserve++; console.log("プレイヤー１がバックサイドでファーストサーブがうった数");
         }
       }else{
-        if(foreback == 1){
+        if(foreback == 0){
           p1f.sservein++; console.log("プレイヤー１がフォアサイドでセカンドサーブを入った数");
           p1f.sserve++;  console.log("プレイヤー１がフォアサイドセカンドサーブをうった数");
         }else{
@@ -213,7 +213,7 @@ jQuery(function($){
           p1b.sserve++;  console.log("プレイヤー１がバックサイドでセカンドサーブをうった数");
         }
       }
-      if(foreback == 1){
+      if(foreback == 0){
         p1f.serviceace++; console.log("プレイヤー１がフォアサイドでサービスエースをとった数");
         //p1f.point++;console.log("プレイヤー１がフォアサイドでの獲得ポイント数");
       }else{
@@ -221,7 +221,7 @@ jQuery(function($){
         //p1b.point++;console.log("プレイヤー１がバックサイドでの獲得ポイント数");
       }
     }else{
-      if(foreback == 1){
+      if(foreback == 0){
         p1f.returnace++; console.log("プレイヤー１がフォアサイドでリターンエースをとった数");
         p1f.returnin++;  console.log("プレイヤー１がフォアサイドでリターンが入った数");
         p1f.allreturn++; console.log("プレイヤー１がフォアサイドでリターンをうった数");
@@ -237,7 +237,7 @@ jQuery(function($){
   $(returnace).click(function(){
     if(server == 1){
       if(j==0){
-        if(foreback == 1){
+        if(foreback == 0){
           p2f.fservein++;console.log("プレイヤー２がフォアサイドでファーストサーブが入った数");
           p2f.fserve++;  console.log("プレイヤー２がフォアサイドでファーストサーブをうった数");
         }else{
@@ -245,7 +245,7 @@ jQuery(function($){
           p2b.fserve++;   console.log("プレイヤー２がバックサイドでファーストサーブがうった数");
         }
       }else{
-        if(foreback == 1){
+        if(foreback == 0){
           p2f.sservein++;console.log("プレイヤー２がフォアサイドでセカンドサーブが入った数");
           p2f.sserve++;  console.log("プレイヤー２がフォアサイドでセカンドサーブをうった数");
         }else{
@@ -253,7 +253,7 @@ jQuery(function($){
           p2b.sserve++;  console.log("プレイヤー２がバックサイドでセカンドサーブをうった数");
         }
       } 
-      if(foreback == 1){
+      if(foreback == 0){
         p2f.serviceace++;console.log("プレイヤー２がフォアサイドでサービスエースをとった数");
         //p2f.point++;console.log("プレイヤー２がフォアサイドでの獲得ポイント数");
       }else{
@@ -261,7 +261,7 @@ jQuery(function($){
         //p2b.point++;console.log("プレイヤー２がバックサイドでの獲得ポイント数");
       }
     }else{
-      if(foreback == 1){
+      if(foreback == 0){
         p2f.returnace++; console.log("プレイヤー２がフォアサイドでリターンエースをとった数");
         p2f.returnin++;  console.log("プレイヤー２がフォアサイドでリターンが入った数");
         p2f.allreturn++; console.log("プレイヤー２がフォアサイドでリターンをうった数");
@@ -278,7 +278,7 @@ jQuery(function($){
   $(fault).click(function(){
     if(server == 0){
       if(j == 0){
-        if(foreback == 1){
+        if(foreback == 0){
           p1f.fault++; console.log("プレイヤー１がフォアサイドでファーストサーブをフォルトした数");
           p1f.fserve++; console.log("プレイヤー１がフォアサイドでファーストサーブをうった数");
         }else{
@@ -286,7 +286,7 @@ jQuery(function($){
           p1b.fserve++; console.log("プレイヤー１がバックサイドでファーストサーブをうった数");
         }
       }else{
-        if(foreback == 1){
+        if(foreback == 0){
           p1f.doublefault++; console.log("プレイヤー１がフォアサイドでセカンドサーブをフォルトした数");
           p1f.sserve++;      console.log("プレイヤー１がフォアサイドでセカンドサーブをうった数");
           p2f.point++;       console.log("プレイヤー2がフォアサイドでの獲得ポイント");
@@ -297,7 +297,7 @@ jQuery(function($){
         }
       }
     }else{
-      if(foreback == 1){
+      if(foreback == 0){
         p1f.returnmiss++;console.log("プレイヤー１がフォアサイドでリターンをみすった数");
         p1f.allreturn++; console.log("プレイヤー１がフォアサイドでリターンをうった数");
         p2f.point++;    console.log("プレイヤー2がフォアサイドで獲得ポイント");
@@ -311,7 +311,7 @@ jQuery(function($){
   $(rm).click(function(){
     if(server == 1){
       if(j == 0){
-        if(foreback == 1){
+        if(foreback == 0){
           p2f.fault++;  console.log("プレイヤー２がフォアサイドでファーストサーブをフォルトした数");
           p2f.fserve++; console.log("プレイヤー２がフォアサイドでファーストサーブをうった数");
         }else{
@@ -319,7 +319,7 @@ jQuery(function($){
           p2b.fserve++; console.log("プレイヤー２がバックサイドでファーストサーブをうった数");
         }
       }else{
-        if(foreback == 1){
+        if(foreback == 0){
           p2f.doublefault++;console.log("プレイヤー２がフォアサイドでセカンドサーブをフォルトした数");
           p2f.sserve++;    console.log("プレイヤー２がフォアサイドでセカンドサーブをうった数");
           p1f.point++;     console.log("プレイヤー１がフォアサイドでポイント獲得数");
@@ -330,7 +330,7 @@ jQuery(function($){
         }
       }
     }else{
-      if(foreback == 1){
+      if(foreback == 0){
         p2f.returnmiss++;  console.log("プレイヤー２がフォアサイドでリターンミスをした数");
         p2f.allreturn++;   console.log("プレイヤー２がフォアサイドでリターンをうった数");
         p1f.point++;       console.log("プレイヤー１がフォアサイドでの獲得ポイント数");
