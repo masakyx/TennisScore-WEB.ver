@@ -102,7 +102,7 @@ input[name="changecort"]{
   height:50px;
   background-image:url("../images/tenniscort.jpg");
   background-size:100% 50px;
-  font-size:1.5em;
+  font-size:100%;
 }
 input[name="serverchange"]{
   position:absolute;
@@ -110,7 +110,6 @@ input[name="serverchange"]{
   width:36%;
   left:32%;
   height:50px;
-  font-size:1.5em;
 }
 .leftbt,.rightbt{
   font-size:100%;
