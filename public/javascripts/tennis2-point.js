@@ -74,7 +74,7 @@ jQuery(function($){
    //------------------------------------------------------------------
    fault.click(function(){
      if(server == 0){
-       if(fault.val() == "Fault"){
+       if(fault.val() == "Double Fault"){
          point2++;
          ClickPoint(score2,point2);
        }
@@ -86,7 +86,7 @@ jQuery(function($){
    //---;--------------------------------------------------------------
    rm.click(function(){
      if(server == 1){
-       if(rm.val() == "Fault"){
+       if(rm.val() == "Double Fault"){
          point1++;
          ClickPoint(score1,point1);
        }else{
