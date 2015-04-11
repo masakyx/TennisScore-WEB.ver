@@ -2,13 +2,19 @@ input[name="usn1"],input[name="usn2"]{
   position:absolute;
   width:45%;
   left:10px;
-  border-color:#b3b3b3;
+  border-color:#00aaff;
+}
+.rightbt{
+  background-color:#ffaa00;
+}
+.leftbt{
+  background-color:#00aaff;
 }
 input[name="usn3"],input[name="usn4"]{
   position:absolute;                           
   width:45%;
   right:10px;
-  border-color:#7fff00;
+  border-color:#ffaa00;
 }
 input[name="usn2"],input[name="usn4"]{
   margin-top:10px;
@@ -77,13 +83,13 @@ input[name="change2"]{
   position:absolute;
   width:45%;
   left:10px;
-  background-color:#b3b3b3;
+  background-color:#00aaff;
 }
 #score2,#gamest2,#setst2{
   position:absolute;
   width:45%;
   right:10px;
-  background-color:#7fff00;
+  background-color:#ffaa00;
 }
 #setst1,#setst2{
   margin-top:5px;
@@ -100,6 +106,8 @@ input[name="changecort"]{
   width:36%;
   left:32%;
   height:50px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
   background-image:url("../images/tenniscort.jpg");
   background-size:100% 50px;
   font-size:100%;
@@ -107,12 +115,18 @@ input[name="changecort"]{
 input[name="serverchange"]{
   position:absolute;
   margin-top:220px;
+  background-image:url("../images/tennisball.jpg");
   width:36%;
   left:32%;
   height:50px;
+  background-size:100% 50px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
 }
 .leftbt,.rightbt{
   font-size:100%;
   height:50px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
 }
 

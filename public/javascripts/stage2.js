@@ -11,8 +11,6 @@ jQuery(function ($){
     $('input[name="usn4"]').val("");
     $('input[name="usn2"],input[name="usn4"]').fadeOut();
     strclosebutton();   
-    $(".leftbt").css("background-color","#b3b3b3");
-    $(".rightbt").css("background-color","#7fff00");  
   });
 
  
