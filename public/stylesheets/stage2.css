@@ -21,13 +21,13 @@ input[name="usn2"],input[name="usn4"]{
 }
 input[name="service"],input[name="fault"],input[name="winning1"],input[name="side out1"],input[name="back out1"],input[name="net1"],input[name="Serviceace"]{       
   position:absolute;                        
-  width:30%;
-  left:10px;
+  width:29%;
+  left:5px;
 }  
 input[name="return in"],input[name="return miss"],input[name="winning2"],input[name="side out2"],input[name="back out2"],input[name="net2"],input[name="Returnace"]{
   position:absolute;
-  width:30%;
-  right:10px;
+  width:29%;
+  right:5px;
 }  
 input[name="Serviceace"],input[name="Returnace"]{
   margin-top:35px;
