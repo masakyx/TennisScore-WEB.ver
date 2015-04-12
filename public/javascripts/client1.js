@@ -26,6 +26,21 @@ jQuery(function($){
         }
     });
   });
+  var r1=0;//name click
+  var r2=0;//coment click
+  $("#chat-name").click(function(){
+    r1++;
+    if(r1==1){
+      $("#chat-name").val("");
+    }
+  });
+  $("#comment").click(function(){
+    r2++;
+    if(r2 == 1){
+      $("#comment").val("");
+    }
+  });
+
 
 
 	//update-textイベントを受信した時、メモのテキストを更新する。

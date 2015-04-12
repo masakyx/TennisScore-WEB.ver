@@ -2,6 +2,12 @@
   var k=0;//change2 number
   var j=0;//fault button 
   var c=0;//change cort button
+  var e1=0;//player1 click
+  var e2=0;//player2 click
+  var e3=0;//player3 click
+  var e4=0;//player4 click
+  var e5=0;//creater name
+
 
 
 jQuery(function ($){
@@ -13,6 +19,36 @@ jQuery(function ($){
     strclosebutton();   
   });
 
+  $("#cname").click(function(){
+    e5++;
+    if(e5 == 1){
+      $("#cname").val("");
+    }
+  });
+  $("#usn1").click(function(){
+    e1++;
+    if(e1 == 1){
+      $("#usn1").val("");
+    }
+  });
+  $("#usn2").click(function(){
+    e2++;
+    if(e2 == 1){
+      $("#usn2").val("");
+    }
+  });
+  $("#usn3").click(function(){
+    e3++;
+    if(e3 == 1){
+      $("#usn3").val("");
+    }
+  });
+  $("#usn4").click(function(){
+    e4++;
+    if(e4 == 1){
+      $("#usn4").val("");
+    }
+  });
  
 
   $('input[name="gametype"]').click(function (){
