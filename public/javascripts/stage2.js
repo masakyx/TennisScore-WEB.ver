@@ -18,7 +18,6 @@ jQuery(function ($){
     $('input[name="usn2"],input[name="usn4"]').fadeOut();
     strclosebutton();   
   });
-
   $("#cname").click(function(){
     e5++;
     if(e5 == 1){

@@ -142,7 +142,8 @@ function ScorePoint(score,point){
      }else if(point2 == 4 && point1 < 3){
        gamepoint2++;
        GamePoint(gamest2,gamepoint2);
-     }                        
+     }     
+     audio();
      return 0;
 }
 
@@ -373,3 +374,82 @@ function ClickPoint(score,point,gamest,gampoint){
     TieBreak(score,point);
   }
 }
+//-----------sound function-------------------------------
+
+  function sound(aa){
+    if(aa == 1){
+      document.getElementById("sound15").play();
+    }else if(aa == 2){
+      document.getElementById("sound30").play();
+    }else if(aa == 3){
+      document.getElementById("sound40").play();
+    }else if(aa == 4){
+      document.getElementById("soundlove").play();
+    }else if(aa == 5){
+      document.getElementById("soundduese").play();
+    }else if(aa == 6){
+      document.getElementById("soundadre").play();
+    }else if(aa == 7){
+      document.getElementById("soundadserver").play();
+    }
+  }
+
+  function audio(){
+    if(server == 0){
+        if($("#score1").text() == "SCORE" || $("#score1").text()=="0"){
+          var promise = $.when(sound(4));
+        }else if($("#score1").text() == "15"){
+          var promise = $.when(sound(1));
+        }else if($("#score1").text() == "30"){
+          var promise = $.when(sound(2));
+        }else if($("#score1").text() == "40"){
+          var promise = $.when(sound(3));
+        }else if($("#score1").text() == "DEUCE" && $("#score2").text() == "DEUCE"){
+          var promise = $.when(sound(5));
+        }else if($("#score1") == "Ad"){
+          var promise = $.when(sound(7));
+        }
+      promise.done(function(){
+        if($("#score2").text() == "SCORE" || $("#score2").text()=="0"){
+          sound(4);
+        }else if($("#score2").text() == "15"){
+          sound(1);
+        }else if($("#score2").text() == "30"){
+          sound(2);
+      } else if($("#score2").text() == "40"){
+          sound(3);
+        }else if($("#score2") == "Ad"){
+          sound(6);
+        }
+      });
+    }else if(server == 1){
+        if($("#score2").text() == "SCORE" || $("#score2").text()=="0"){
+          var promise1 = $.when(sound(4));
+        }else if($("#score2").text() == "15"){
+          var promise1 = $.when(sound(1));
+        }else if($("#score2").text() == "30"){
+          var promise1 = $.when(sound(2));
+        }else if($("#score2").text() == "40"){
+          var promise1 = $.when(sound(3));
+      } else if($("#score2").text() == "DEUCE" && $("#score1").text() == "DEUCE"){
+        var promise1 = $.when(sound(5));
+        }else if($("#score2") == "Ad"){
+          var promise1 = $.when(sound(7));
+        }
+        promise1.done(function(){
+        if($("#score1").text() == "SCORE" || $("#score1").text() == "0"){
+          sound(4);
+        }else if($("#score1").text() == "15"){
+          sound(1);
+        }else if($("#score1").text() == "30"){
+          sound(2);
+        }else if($("#score1").text() == "40"){
+          sound(3);
+        }else if($("#score1") == "Ad"){
+          sound(6);
+        }
+        console.log("server="+server);
+      });
+    }
+
+  }
