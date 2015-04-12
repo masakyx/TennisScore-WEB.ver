@@ -110,9 +110,11 @@ jQuery(function ($){
     //----------------------------------------------------------
     $("#serviceace").click(function (){
       if(server == 0){
+        $("#schange").fadeIn();
         $("#fault").val("Fault");
         j=0;
       }else if(server == 1){
+        $("#schange").fadeIn();
         $("#rm").val("Fault");
         openbutton();
         j=0;
@@ -131,6 +133,7 @@ jQuery(function ($){
           j=0;
         }
       }else if(server == 1){
+          $("#schange").fadeIn();
           $("#rm").val("Fault");
           j=0;
           openbutton(); 
@@ -157,8 +160,10 @@ jQuery(function ($){
     //-----------------------------------------------------------------
     $("#returnace").click(function (){
       if(server == 0){
+        $("#schange").fadeIn();
         openbutton();
       }else if(server == 1){
+        $("#schange").fadeIn();
         $("#rm").val("Fault");
         j=0; 
       }
@@ -166,6 +171,7 @@ jQuery(function ($){
     //-------------------------------------------------------------------
     $("#rm").click(function(){
       if(server == 0){ 
+        $("#schange").fadeIn();
         $("#fault").val("Fault");
         j=0;
         openbutton();
