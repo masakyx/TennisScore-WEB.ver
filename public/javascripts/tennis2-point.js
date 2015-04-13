@@ -406,8 +406,10 @@ function ClickPoint(score,point,gamest,gampoint){
           var promise = $.when(sound(3));
         }else if($("#score1").text() == "DEUCE" && $("#score2").text() == "DEUCE"){
           var promise = $.when(sound(5));
-        }else if($("#score1") == "Ad"){
+        }else if($("#score1").text() == "Ad"){
           var promise = $.when(sound(7));
+        }else if($("#score2").text()=="Ad"){
+          var promise = $.when(sound(6));
         }
       promise.done(function(){
         if($("#score2").text() == "SCORE" || $("#score2").text()=="0"){
@@ -416,10 +418,8 @@ function ClickPoint(score,point,gamest,gampoint){
           sound(1);
         }else if($("#score2").text() == "30"){
           sound(2);
-      } else if($("#score2").text() == "40"){
+        }else if($("#score2").text() == "40"){
           sound(3);
-        }else if($("#score2") == "Ad"){
-          sound(6);
         }
       });
     }else if(server == 1){
@@ -433,8 +433,10 @@ function ClickPoint(score,point,gamest,gampoint){
           var promise1 = $.when(sound(3));
       } else if($("#score2").text() == "DEUCE" && $("#score1").text() == "DEUCE"){
         var promise1 = $.when(sound(5));
-        }else if($("#score2") == "Ad"){
+        }else if($("#score2").text() == "Ad"){
           var promise1 = $.when(sound(7));
+        }else if($("#score1").text() == "Ad"){
+          var promise1 = $.when(sound(6));
         }
         promise1.done(function(){
         if($("#score1").text() == "SCORE" || $("#score1").text() == "0"){
@@ -445,10 +447,7 @@ function ClickPoint(score,point,gamest,gampoint){
           sound(2);
         }else if($("#score1").text() == "40"){
           sound(3);
-        }else if($("#score1") == "Ad"){
-          sound(6);
         }
-        console.log("server="+server);
       });
     }
 
