@@ -397,21 +397,32 @@ function ClickPoint(score,point,gamest,gampoint){
   function audio(){
     if(server == 0){
         if($("#score1").text() == "SCORE" || $("#score1").text()=="0"){
-          var promise = $.when(sound(4));
+          sound(4);
         }else if($("#score1").text() == "15"){
-          var promise = $.when(sound(1));
+          sound(1);
         }else if($("#score1").text() == "30"){
-          var promise = $.when(sound(2));
+          sound(2);
         }else if($("#score1").text() == "40"){
-          var promise = $.when(sound(3));
+          sound(3);
         }else if($("#score1").text() == "DEUCE" && $("#score2").text() == "DEUCE"){
-          var promise = $.when(sound(5));
+          sound(5);
         }else if($("#score1").text() == "Ad"){
-          var promise = $.when(sound(7));
+          sound(7);
         }else if($("#score2").text()=="Ad"){
-          var promise = $.when(sound(6));
+          sound(6);
         }
-      promise.done(function(){
+        setTimeout(function(){
+          if($("#score2").text() == "SCORE" || $("#score2").text()=="0"){
+            sound(4);
+          }else if($("#score2").text() == "15"){
+            sound(1);
+          }else if($("#score2").text() == "30"){
+            sound(2);
+          }else if($("#score2").text() == "40"){
+            sound(3);
+          }
+      },2000);
+    }else if(server == 1){
         if($("#score2").text() == "SCORE" || $("#score2").text()=="0"){
           sound(4);
         }else if($("#score2").text() == "15"){
@@ -420,25 +431,14 @@ function ClickPoint(score,point,gamest,gampoint){
           sound(2);
         }else if($("#score2").text() == "40"){
           sound(3);
-        }
-      });
-    }else if(server == 1){
-        if($("#score2").text() == "SCORE" || $("#score2").text()=="0"){
-          var promise1 = $.when(sound(4));
-        }else if($("#score2").text() == "15"){
-          var promise1 = $.when(sound(1));
-        }else if($("#score2").text() == "30"){
-          var promise1 = $.when(sound(2));
-        }else if($("#score2").text() == "40"){
-          var promise1 = $.when(sound(3));
       } else if($("#score2").text() == "DEUCE" && $("#score1").text() == "DEUCE"){
-        var promise1 = $.when(sound(5));
+        sound(5);
         }else if($("#score2").text() == "Ad"){
-          var promise1 = $.when(sound(7));
+          sound(7);
         }else if($("#score1").text() == "Ad"){
-          var promise1 = $.when(sound(6));
+          sound(6);
         }
-        promise1.done(function(){
+      setTimeout(function(){
         if($("#score1").text() == "SCORE" || $("#score1").text() == "0"){
           sound(4);
         }else if($("#score1").text() == "15"){
@@ -448,7 +448,7 @@ function ClickPoint(score,point,gamest,gampoint){
         }else if($("#score1").text() == "40"){
           sound(3);
         }
-      });
+      },2000);
     }
 
   }
