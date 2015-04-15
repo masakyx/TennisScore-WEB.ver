@@ -391,64 +391,169 @@ function ClickPoint(score,point,gamest,gampoint){
       document.getElementById("soundadre").play();
     }else if(aa == 7){
       document.getElementById("soundadserver").play();
+    }else if(aa == 8){
+      document.getElementById("pointall").play();
     }
-  }
+  }                                       
 
   function audio(){
+    var s1 = $("#score1").text();
+    var s2 = $("#score2").text();
     if(server == 0){
-        if($("#score1").text() == "SCORE" || $("#score1").text()=="0"){
-          sound(4);
-        }else if($("#score1").text() == "15"){
-          sound(1);
-        }else if($("#score1").text() == "30"){
-          sound(2);
-        }else if($("#score1").text() == "40"){
-          sound(3);
-        }else if($("#score1").text() == "DEUCE" && $("#score2").text() == "DEUCE"){
-          sound(5);
-        }else if($("#score1").text() == "Ad"){
-          sound(7);
-        }else if($("#score2").text()=="Ad"){
-          sound(6);
-        }
+      if(s1=="0" && s2=="15" || s1=="SCORE" && s2=="15"){
+        sound(4);
         setTimeout(function(){
-          if($("#score2").text() == "SCORE" || $("#score2").text()=="0"){
-            sound(4);
-          }else if($("#score2").text() == "15"){
-            sound(1);
-          }else if($("#score2").text() == "30"){
-            sound(2);
-          }else if($("#score2").text() == "40"){
-            sound(3);
-          }
-      },2000);
-    }else if(server == 1){
-        if($("#score2").text() == "SCORE" || $("#score2").text()=="0"){
-          sound(4);
-        }else if($("#score2").text() == "15"){
           sound(1);
-        }else if($("#score2").text() == "30"){
+        },2000);
+      }else if(s1=="0" && s2=="30" || s1=="SCORE" && s2=="30"){
+        sound(4);
+        setTimeout(function(){
           sound(2);
-        }else if($("#score2").text() == "40"){
+        },2000);
+      }else if(s1=="0" && s2=="40" || s1=="SCORE" && s2=="40"){
+        sound(4);
+        setTimeout(function(){
           sound(3);
-      } else if($("#score2").text() == "DEUCE" && $("#score1").text() == "DEUCE"){
+        },2000);
+      }else if(s1=="15" && s2=="0" || s1=="15" && s2=="SCORE"){
+        sound(1);
+        setTimeout(function(){
+          sound(4);
+        },2000);
+      }else if(s1=="15" && s2=="15"){
+        sound(1);
+        setTimeout(function(){
+          sound(8);
+        },2000);
+      }else if(s1=="15" && s2=="30"){
+        sound(1);
+        setTimeout(function(){
+          sound(2);
+        },2000);
+      }else if(s1=="15" && s2=="40"){
+        sound(1);
+        setTimeout(function(){
+          sound(3);
+        },2000);
+      }else if(s1=="30" && s2=="0" || s1=="30" && s2=="SCORE"){
+        sound(2);
+        setTimeout(function(){
+          sound(4);
+        },2000);
+      }else if(s1=="30" && s2=="15"){
+        sound(2);
+        setTimeout(function(){
+          sound(1);
+        },2000);
+      }else if(s1=="30" && s2=="30"){
+        sound(2);
+        setTimeout(function(){
+          sound(8);
+        },2000);
+      }else if(s1=="30" && s2=="40"){
+        sound(2);
+        setTimeout(function(){
+          sound(3);
+        },2000);
+      }else if(s1=="40" && s2=="0" || s1=="40" && s2=="SCORE"){
+        sound(3);
+        setTimeout(function(){
+          sound(4);
+        },2000);
+      }else if(s1=="40" && s2=="15"){
+        sound(3);
+        setTimeout(function(){
+          sound(1);
+        },2000);
+      }else if(s1=="40" && s2=="30"){
+        sound(3);
+        setTimeout(function(){
+          sound(2);
+        },2000);
+      }else if(s1=="DEUCE" && s2=="DEUCE"){
         sound(5);
-        }else if($("#score2").text() == "Ad"){
-          sound(7);
-        }else if($("#score1").text() == "Ad"){
-          sound(6);
-        }
-      setTimeout(function(){
-        if($("#score1").text() == "SCORE" || $("#score1").text() == "0"){
-          sound(4);
-        }else if($("#score1").text() == "15"){
+      }else if(s1=="Ad"){
+        sound(7);
+      }else if(s2=="Ad"){
+        sound(6);
+      }
+    }else if(server == 1){
+      if(s2=="0" && s1=="15" || s2=="SCORE" && s1=="15"){
+        sound(4);
+        setTimeout(function(){
           sound(1);
-        }else if($("#score1").text() == "30"){
+        },2000);
+      }else if(s2=="0" && s1=="30" || s2=="SCORE" && s1=="30"){
+        sound(4);
+        setTimeout(function(){
           sound(2);
-        }else if($("#score1").text() == "40"){
+        },2000);
+      }else if(s2=="0" && s1=="40" ||s2=="SCORE" && s1=="40"){
+        sound(4);
+        setTimeout(function(){
           sound(3);
-        }
-      },2000);
+        },2000);
+      }else if(s2=="15" && s1=="0" || s2=="15" && s1=="SCORE"){
+        sound(1);
+        setTimeout(function(){
+          sound(4);
+        },2000);
+      }else if(s2=="15" && s1=="15"){
+        sound(1);
+        setTimeout(function(){
+          sound(8);
+        },2000);
+      }else if(s2=="15" && s1=="30"){
+        sound(1);
+        setTimeout(function(){
+          sound(2);
+        },2000);
+      }else if(s2=="15" && s1=="40"){
+        sound(1);
+        setTimeout(function(){
+          sound(3);
+        },2000);
+      }else if(s2=="30" && s1=="0" || s2=="30" && s1=="SCORE"){
+        sound(2);
+        setTimeout(function(){
+          sound(4);
+        },2000);
+      }else if(s2=="30" && s1=="15"){
+        sound(2);
+        setTimeout(function(){
+          sound(1);
+        },2000);
+      }else if(s2=="30" && s1=="30"){
+        sound(2);
+        setTimeout(function(){
+          sound(8);
+        },2000);
+      }else if(s2=="30" && s1=="40"){
+        sound(2);
+        setTimeout(function(){
+          sound(3);
+        },2000);
+      }else if(s2=="40" && s1=="0" ||s2=="40" && s1=="SCORE"){
+        sound(3);
+        setTimeout(function(){
+          sound(4);
+        },2000);
+      }else if(s2=="40" && s1=="15"){
+        sound(3);
+        setTimeout(function(){
+          sound(1);
+        },2000);
+      }else if(s2=="40" && s1=="30"){
+        sound(3);
+        setTimeout(function(){
+          sound(2);
+        },2000);
+      }else if(s2=="DEUCE" && s1=="DEUCE"){
+        sound(5);
+      }else if(s2=="Ad"){
+        sound(7);
+      }else if(s1=="Ad"){
+        sound(6);
+      }
     }
-
   }
