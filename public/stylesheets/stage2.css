@@ -129,4 +129,6 @@ input[name="serverchange"]{
   -moz-border-radius:20px;
   -webkit-border-radius:20px;
 }
-
+.pl1,.pl2{
+  border-style:solid;
+}
