@@ -26,6 +26,8 @@ jQuery(function($){
         }
     });
   });
+  //----select box--------------------------------------------------------
+  //-----------------------------------------------------------------------
   var r1=0;//name click
   var r2=0;//coment click
   $("#chat-name").click(function(){
@@ -83,7 +85,7 @@ jQuery(function($){
      .append($('<text id="creatername">' + "CREATER : "+ tennisData.room.creater + '</text>'))
      .append($('<table border=2><tr><th></th><th align="center" class="player1">' + tennisData.player.player1 + '/' + tennisData.player.player2 + '</th><th align="center" class="player2">' + tennisData.player.player3 + '/' + tennisData.player.player4 +  '</th></tr><tr><td align="center">SET COUNT </td><td align="center" class="set1">' + tennisData.pointext.pointtext5 + '</td><td align="center" class="set2">' + tennisData.pointext.pointtext6 + '</td></tr><tr><td align="center">GAME COUNT</td><td align="center" class="game1">' + tennisData.pointext.pointtext3 + '</td><td align="center" class="game2">' + tennisData.pointext.pointtext4 + '</td></tr><tr><td align="center">SCORE</td><td align="center" class="score1">' + tennisData.pointext.pointtext1 + '</td><td align="center" class="score2">' + tennisData.pointext.pointtext2 + '</td></tr></table>'))
     element.hide().fadeIn();
-    $('#field').append(element);
+    $('#field').prepend(element);
   
   };
 
@@ -95,7 +97,9 @@ jQuery(function($){
   $("#send").click(function(){
       if($("#comment").val() == ""){
         window.alert("コメントを入力してください");
-       } else{
+      }else if($("#chat-name").val() == ""){
+        window.alert("名前を入力してください");
+      }else{
         var time = new Date();
         var year = time.getFullYear();
         var month = time.getMonth() + 1;
@@ -128,7 +132,7 @@ jQuery(function($){
     .attr('id',id)                  
     .append('<li>'+data.time+'<br>'+data.name+"さん："+data.message+'</li>')
     element.hide().fadeIn();
-    $("#chat-field").append(element);
+    $("#chat-field").prepend(element);
     console.log("メッセージが追加されました。");
   };
 
