@@ -16,3 +16,6 @@ exports.dataview = function(req,res){
 exports.readme = function(req,res){
   res.render("readme");
 }
+exports.stage4 = function(req,res){
+  res.render("stage4");
+}

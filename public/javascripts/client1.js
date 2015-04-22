@@ -95,9 +95,9 @@ jQuery(function($){
 		});
   };
   $("#send").click(function(){
-      if($("#comment").val() == ""){
+      if($("#comment").val() == "" || $("#comment").val() == "コメント"){
         window.alert("コメントを入力してください");
-      }else if($("#chat-name").val() == ""){
+      }else if($("#chat-name").val() == "" || $("#chat-name").val()=="名前"){
         window.alert("名前を入力してください");
       }else{
         var time = new Date();

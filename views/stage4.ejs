@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link rel="stylesheet" href="/stylesheets/stage4.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-score1,maximum-score=1,user-scalabele=no">
+    <title>TennisSCore</title>
+  </head>
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <h1> メッセージ</h1>
+    <hr>
+    <div>
+      名前：<input type="text" id="chat-name" value="名前">
+      <br>
+      コメント：<input type="text" id="chat-comment" value="コメント">
+      <input type="button" name="sendmessage" id="send" value="送信" style="width:100px;height:50px">
+    </div>
+    <ul>
+      <div id="mlist"></div>
+    </ul>
+    <script src="/javascripts/stage4.js"></script>
+  </body>
+</html>

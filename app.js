@@ -34,6 +34,7 @@ app.use('/stage2',post.stage2);
 app.use('/stage3',post.stage3);
 app.use('/dataview',post.dataview);
 app.use('/readme',post.readme);
+app.use('/stage4',post.stage4);
 
 var server = http.createServer(app);
 
