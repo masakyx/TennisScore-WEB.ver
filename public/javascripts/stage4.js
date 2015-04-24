@@ -12,6 +12,10 @@ jQuery(function($){
       });
   });
 
+
+  var aa1 = 0;
+  var aa2 = 0;
+
   $("#send").click(function(){
       console.log("メッセージを送信");
       if($("#chat-name").val() == "" || $("#chat-name").val() == "名前"){
@@ -33,6 +37,19 @@ jQuery(function($){
 
         socket.emit("viewer-chat",{name:name,message:message,time:alltime,year:year,month:month,day:day});
       }
+  });
+
+  $("#chat-name").click(function(){
+    aa1++;
+    if(aa1 == 1){
+      $("#chat-name").val("");
+    }
+  });
+  $("#chat-comment").click(function(){
+    aa2++;
+    if(aa2 == 1){
+      $("#chat-comment").val("");
+    }
   });
 
   socket.on('viewer-chat',function(data){
