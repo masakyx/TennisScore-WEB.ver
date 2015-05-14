@@ -14,6 +14,9 @@ var foreback = 0; //0=fore 1=back
 var is_note = true;
 var winner = "no";
 var timer = 0;
+var savegamepoint = new Array(0,0,0,0,0,0,0,0,0,0);
+var savesetpoint = new Array(0,0);
+var savecount = 0;
 //ID取得-----------------------------------------------------------------
 var score1 = $("#score1");
 var score2 = $("#score2");
@@ -191,7 +194,27 @@ $('input[name="set"]').click(function(){
   console.log("setcount = " + setcount);
 });
 function SetPoint(setst,setpoint){
-//セットポイントのカウント
+  //セットポイントのカウント
+  //ゲームカウントの保存
+  if(savecount == 0){
+    savegamepoint[0] = gamepoint1;
+    savegamepoint[1] = gamepoint2;
+  }else if(savecount == 1){
+    savegamepoint[2] = gamepoint1;
+    savegamepoint[3] = gamepoint2;
+  }else if(savecount == 2){
+    savegamepoint[4] = gamepoint1;
+    savegamepoint[5] = gamepoint2;
+  }else if(savecount == 3){
+    savegamepoint[6] = gamepoint1;
+    savegamepoint[7] = gamepoint2;
+  }else if(savecount == 4){
+    savegamepoint[8] = gamepoint1;
+    savegamepoint[9] = gamepoint2;
+  }
+  console.log(savegamepoint[0]+'/'+savegamepoint[1]+savegamepoint[2]+'/'+savegamepoint[3]+savegamepoint[4]+'/'+savegamepoint[5]+savegamepoint[6]+"/"+savegamepoint[7]+savegamepoint[8]+"/"+savegamepoint[9]);
+  savecount++;
+
   ClearPoint();
   gamepoint1=0;
   gamepoint2=0;
@@ -215,6 +238,25 @@ function SetPoint(setst,setpoint){
       byo:byo1,
       alltime:finishtime
     };
+    var result = {
+      place:"place",
+      setcount1:setpoint1,
+      setcount2:setpoint2,
+      match:setcount,
+      gamep1:savegamepoint[0],
+      gamep2:savegamepoint[1],
+      gamep3:savegamepoint[2],
+      gamep4:savegamepoint[3],
+      gamep5:savegamepoint[4],
+      gamep6:savegamepoint[5],
+      gamep7:savegamepoint[6],
+      gamep8:savegamepoint[7],
+      gamep9:savegamepoint[8],
+      gamep10:savegamepoint[9],
+    }
+    var playername1 = $("#usn1").val() + " / "+$("#usn2").val();
+    var playername2 = $("#usn3").val() + " / "+$("#usn4").val();
+    var category = "infodata";
   if(setcount == 1){
     if(setpoint1 == 1 || setpoint2 == 1){
       if(setpoint1 == 1){
@@ -223,14 +265,30 @@ function SetPoint(setst,setpoint){
       }else if(setpoint2 == 1){
         winner = $("#usn3").val() + " / " + $("#usn4").val();
         console.log(winner + "が勝者です");
-      }
-      is_note = false;
-      window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
-      socket.emit('remove',{username:user,time:uptime,winplayer:winner});
+      }                                              
+      is_note = false;                                                    
+      //gamecountの送信
+      socket.emit('finish-gamedata-chat',{time:finishtime,year:year1,month:month1,day:day1,result:result,usn1:playername1,usn2:playername2,winner:winner,category:category});
+      window.alert("ゲーム終了です。ージへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+      socket.emit('remove',{username:user,time:uptime,result:result,winner:winner});
       location.href = "/";
     }
   }else if(setcount == 3){
-    if(setpoint1 == 3 || setpoint2 == 3){
+    if(setpoint1 == 2 || setpoint2 == 2){
+      if(setpoint1 == 2){
+        winner = $("#usn1").val() + " / " + $("#usn2").val();
+        console.log(winner + "が勝者です");
+      }else if(setpoint2 == 2){
+        winner = $("#usn3").val() + " / " + $("#usn4").val();
+        console.log(winner + "が勝者です");
+      }
+      is_note = false;
+      socket.emit('finish-gamedata-chat',{time:finishtime,year:year1,month:month1,day:day1,result:result,usn1:playername1,usn2:playername2,winner:winner,category:category});
+      window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+      socket.emit('remove',{username:user,time:uptime,result:result,winner:winner});
+      location.href = "/";
+      }
+    }else if(setcount == 5){
       if(setpoint1 == 3){
         winner = $("#usn1").val() + " / " + $("#usn2").val();
         console.log(winner + "が勝者です");
@@ -239,22 +297,10 @@ function SetPoint(setst,setpoint){
         console.log(winner + "が勝者です");
       }
       is_note = false;
-      window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
-      socket.emit('remove',{username:user,time:uptime,winplayer:winner});
-      location.href = "/";
-      }
-    }else if(setcount == 5){
-      if(setpoint1 == 5){
-        winner = $("#usn1").val() + " / " + $("#usn2").val();
-        console.log(winner + "が勝者です");
-      }else if(setpoint2 == 5){
-        winner = $("#usn3").val() + " / " + $("#usn4").val();
-        console.log(winner + "が勝者です");
-      }
-      is_note = false;
-      if(setpoint1 == 5 || setpoint2 == 5){
+      if(setpoint1 == 3 || setpoint2 == 3){
+        socket.emit('finish-gamedata-chat',{time:finishtime,year:year1,month:month1,day:day1,result:result,usn1:playername1,usn2:playername2,winner:winner,category:category});
        window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
-       socket.emit('remove',{username:user,time:uptime,winplayer:winner});
+       socket.emit('remove',{username:user,time:uptime,result:result,winner:winner});
         location.href = "/";
     }
   }

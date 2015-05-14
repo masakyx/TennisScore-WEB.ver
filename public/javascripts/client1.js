@@ -19,7 +19,11 @@ jQuery(function($){
           var monthid = dayid.getMonth() + 1;
           var dateid = dayid.getDate();
           if(data.year == yearid && data.month == monthid && data.day == dateid){
-          createchat(data);
+            if(data.category == "mes"){
+              createchat(data);
+            }else{
+              creategamedatachat(data);
+            }
           console.log("メッセージを更新したよ");
         }else{
 
@@ -100,6 +104,7 @@ jQuery(function($){
       }else if($("#chat-name").val() == "" || $("#chat-name").val()=="名前"){
         window.alert("名前を入力してください");
       }else{
+        var category = "mes";
         var time = new Date();
         var year = time.getFullYear();
         var month = time.getMonth() + 1;
@@ -113,12 +118,17 @@ jQuery(function($){
         name = $("#chat-name").val();
         message = $("#comment").val();
         $("#comment").val("");
-        socket.emit("viewer-chat",{name:name,message:message,time:metime,year:year,month:month,day:day});
+        socket.emit("viewer-chat",{name:name,message:message,time:metime,year:year,month:month,day:day,category:category});
       }
   });
   socket.on('viewer-chat',function(data){
       console.log("新しいメッセージきました");
       createchat(data);
+
+  });
+  socket.on('finish-gamedata-chat',function(data){
+      console.log("試合報告がきました");
+      creategamedatachat(data);
   });
   var createchat = function(data){
     
@@ -134,6 +144,59 @@ jQuery(function($){
     element.hide().fadeIn();
     $("#chat-field").prepend(element);
     console.log("メッセージが追加されました。");
+  };
+
+  var creategamedatachat = function(data){
+     var id = data._id;
+     var old = $('#'+id);
+     if(old.length !== 0){
+       return;
+     }
+     var element;
+     if(data.gamedata.gamep3==0 && data.gamedata.gamep4==0){
+        console.log("ゲーム数は1ですよ");
+        element = 
+        $('<div class="tennis" />')
+        .attr('id',id)
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+'</li>')
+        element.hide().fadeIn();
+        $("#chat-field").prepend(element);
+      }else if(data.gamedata.gamep5 ==0 && data.gamedata.gamep6 == 0){
+        console.log("ゲーム数は２ですよ");
+        element = 
+        $('<div class="tennis" />')
+        .attr('id',id)
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+'</li>')
+        element.hide().fadeIn();
+        $("#chat-field").prepend(element);
+      
+      }else if(data.gamedata.gamep7==0 && data.gamedata.gamep8==0){
+        console.log("ゲーム数は３ですよ");
+        element = 
+        $('<div class="tennis" />')
+        .attr('id',id)
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+'</li>')
+        element.hide().fadeIn();
+        $("#chat-field").prepend(element);
+      }else if(data.gamedata.gamep9==0 && data.gamedata.gamep10==0){
+        console.log("ゲーム数は４です");
+        element = 
+        $('<div class="tennis" />')
+        .attr('id',id)
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep7+"---"+data.gamedata.gamep8+"***"+'</li>')
+        element.hide().fadeIn();
+        $("#chat-field").prepend(element);
+      }else{
+        console.log("ゲーム数は５ですよ");
+        element = 
+        $('<div class="tennis" />')
+        .attr('id',id)
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep7+"---"+data.gamedata.gamep8+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep9+"---"+data.gamedata.gamep10+"***"+'</li>')
+        element.hide().fadeIn();
+        $("#chat-field").prepend(element);
+      }
+
+
   };
 
 });

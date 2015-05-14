@@ -177,7 +177,23 @@ jQuery(function($){
             real:"real",
             finishtime:"0",
             count:0,
-            winner:"winner"
+            winner:"途中で終わりました",
+            gamedata:{
+              place:"場所",
+              setcount1:0,
+              setcount2:0,
+              match:0,
+              gamep1:0,
+              gamep2:0,
+              gamep3:0,
+              gamep4:0,
+              gamep5:0,
+              gamep6:0,
+              gamep7:0,
+              gamep8:0,
+              gamep9:0,
+              gamep10:0
+            }
           };
           socket.emit('create',tennisData);
       user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,

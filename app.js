@@ -54,10 +54,30 @@ var db = mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGOHQ_URL ||
 var ChatSchema = new mongoose.Schema({
     name:String,
     message:String,
+    category:String,
     time:String,
     year:Number,
     month:Number,
-    day:Number
+    day:Number,
+    username1:String,
+    username2:String,
+    winner:String,
+    gamedata:{
+      place:String,
+      setcount1:Number,
+      setcount2:Number,
+      match:Number,
+      gamep1:Number,
+      gamep2:Number,
+      gamep3:Number,
+      gamep4:Number,
+      gamep5:Number,
+      gamep6:Number,
+      gamep7:Number,
+      gamep8:Number,
+      gamep9:Number,
+      gamep10:Number
+    }
 });
 
 
@@ -68,7 +88,7 @@ var TennisSchema = new mongoose.Schema({
       player2:String,
       player3:String,
       player4:String
-    },
+    },              
     point:{
       point1:Number,
       point2:Number,
@@ -212,7 +232,23 @@ var TennisSchema = new mongoose.Schema({
     real:String,
     finishtime:String,
     count:Number,
-    winner:String
+    winner:String,
+    gamedata:{
+      place:String,
+      setcount1:Number,
+      setcount2:Number,
+      match:Number,
+      gamep1:Number,
+      gamep2:Number,
+      gamep3:Number,
+      gamep4:Number,
+      gamep5:Number,
+      gamep6:Number,
+      gamep7:Number,
+      gamep8:Number,
+      gamep9:Number,
+      gamep10:Number
+    }
 });
 
 //generate model from schema)
@@ -290,9 +326,9 @@ io.sockets.on('connection',function(socket){
       Tennis.findOne({user:data.username},function(err,tennis){
           if(err || tennis == null){return};
           tennis.real = "unreal";
-          console.log(data.winplayer);
           tennis.time1 = data.time;
-          tennis.winner = data.winplayer;
+          tennis.winner = data.winner;
+          tennis.gamedata = data.result;
           tennis.save();
           socket.broadcast.json.emit('remove',tennis);
           console.log(tennis.user + "のゲーム終了 ");
@@ -300,7 +336,7 @@ io.sockets.on('connection',function(socket){
   });
   //databaseに詳細を表示させる
   socket.on('dataview-create',function(data){
-      socket.join(data.dataname);
+      socket.join(data.dataname);           
         Tennis.findOne({user:data.dataname},function(err,tennis){
             tennis.count = tennis.count + 1;
             tennis.save();
@@ -319,11 +355,30 @@ io.sockets.on('connection',function(socket){
             chatdata.year = data.year;
             chatdata.month = data.month;
             chatdata.day = data.day;
+            chatdata.category = data.category;
             chatdata.save();
             console.log("メッセージが追加されました");
             socket.emit('viewer-chat',chatdata);
             socket.broadcast.json.emit('viewer-chat',chatdata);
-    });
+        });
+        socket.on('finish-gamedata-chat',function(data){
+            console.log("試合報告がきましたよー");
+            var chatdata = new Chat();
+            chatdata.category = data.category;
+            chatdata.name = "*試合結果報告*";
+            chatdata.time = data.time;
+            chatdata.year = data.year;
+            chatdata.month = data.month;
+            chatdata.day = data.day;
+            chatdata.winner = data.winner;
+            chatdata.gamedata = data.result;
+            chatdata.username1 = data.usn1;
+            chatdata.username2 = data.usn2;
+            chatdata.save();
+            socket.emit('finish-gamedata-chat',chatdata);
+            socket.broadcast.json.emit('finish-gamedata-chat',chatdata);
+            
+        });
 });
 
 
