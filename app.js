@@ -347,7 +347,8 @@ io.sockets.on('connection',function(socket){
     //応援コメントの表示
     socket.on('viewer-chat',function(data){
         //Chat.findOne(function(err,chatdata){
-           // if(err || chatdata == null){return;};
+        // if(err || chatdata == null){return;};
+        console.log("試合がはじまった報告がきましたよ");
         var chatdata = new Chat();
             chatdata.name = data.name;
             chatdata.message = data.message;
