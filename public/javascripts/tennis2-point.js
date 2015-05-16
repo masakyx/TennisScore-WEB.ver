@@ -327,12 +327,33 @@ event = event || window.event;
       byo:byo1,
       alltime:finishtime
     };
-    if(winner == "no"){
-      winner = "試合は途中で終了しました";
-    }else{
+    var result = {
+      place:"place",
+      setcount1:setpoint1,
+      setcount2:setpoint2,
+      match:setcount,
+      gamep1:savegamepoint[0],
+      gamep2:savegamepoint[1],
+      gamep3:savegamepoint[2],
+      gamep4:savegamepoint[3],
+      gamep5:savegamepoint[4],
+      gamep6:savegamepoint[5],
+      gamep7:savegamepoint[6],
+      gamep8:savegamepoint[7],
+      gamep9:savegamepoint[8],
+      gamep10:savegamepoint[9],
     }
+    var playername1 = $("#usn1").val() + " / "+$("#usn2").val();
+    var playername2 = $("#usn3").val() + " / "+$("#usn4").val();
+    var category = "infodata";
+    //if(winner == "no"){
+      winner = "試合は途中で終了しました";
+    //}else{
+    //}
   
-    socket.emit('remove',{username:user,time:uptime,winplayer:winner});
+    socket.emit('finish-gamedata-chat',{time:finishtime,year:year1,month:month1,day:day1,result:result,usn1:playername1,usn2:playername2,winner:winner,category:category});
+
+    socket.emit('remove',{username:user,time:uptime,result:result,winner:winner});
   }
 //タイブレイクメソッド --------------------------------------------------
 function TieBreak(score,point){
