@@ -346,10 +346,10 @@ event = event || window.event;
     var playername1 = $("#usn1").val() + " / "+$("#usn2").val();
     var playername2 = $("#usn3").val() + " / "+$("#usn4").val();
     var category = "infodata";
-    //if(winner == "no"){
+    if(winner == "no"){
       winner = "試合は途中で終了しました";
-    //}else{
-    //}
+    }else{
+    }
   
     socket.emit('finish-gamedata-chat',{time:finishtime,year:year1,month:month1,day:day1,result:result,usn1:playername1,usn2:playername2,winner:winner,category:category});
 
