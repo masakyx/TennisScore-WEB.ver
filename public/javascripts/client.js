@@ -192,7 +192,17 @@ jQuery(function($){
               gamep7:0,
               gamep8:0,
               gamep9:0,
-              gamep10:0
+              gamep10:0,
+              tiep1:0,
+              tiep2:0,
+              tiep3:0,
+              tiep4:0,
+              tiep5:0,
+              tiep6:0,
+              tiep7:0,
+              tiep8:0,
+              tiep9:0,
+              tiep10:0
             }
           };
           var infotime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";

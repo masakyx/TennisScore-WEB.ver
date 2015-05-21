@@ -76,7 +76,17 @@ var ChatSchema = new mongoose.Schema({
       gamep7:Number,
       gamep8:Number,
       gamep9:Number,
-      gamep10:Number
+      gamep10:Number,
+      tiep1:Number,
+      tiep2:Number,
+      tiep3:Number,
+      tiep4:Number,
+      tiep5:Number,
+      tiep6:Number,
+      tiep7:Number,
+      tiep8:Number,
+      tiep9:Number,
+      tiep10:Number
     }
 });
 
@@ -247,7 +257,17 @@ var TennisSchema = new mongoose.Schema({
       gamep7:Number,
       gamep8:Number,
       gamep9:Number,
-      gamep10:Number
+      gamep10:Number,
+      tiep1:Number,
+      tiep2:Number,
+      tiep3:Number,
+      tiep4:Number,
+      tiep5:Number,
+      tiep6:Number,
+      tiep7:Number,
+      tiep8:Number,
+      tiep9:Number,
+      tiep10:Number
     }
 });
 

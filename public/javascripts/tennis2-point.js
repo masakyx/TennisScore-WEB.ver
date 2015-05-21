@@ -7,6 +7,7 @@ var setpoint1 = 0;
 var setpoint2 = 0;
 var setcount = 1;
 var isTiebreak = 0;
+var isTiebreakpoint = 0;
 var strbo1 = 0;
 var strbo2 = 0;  //0=stroke 1=bolay
 var server = 0; //0=server=player1 1=server=player2
@@ -15,6 +16,8 @@ var is_note = true;
 var winner = "no";
 var timer = 0;
 var savegamepoint = new Array(0,0,0,0,0,0,0,0,0,0);
+var savetiebreak = new Array(0,0,0,0,0,0,0,0,0,0);
+var savetiepoint = new Array(0,0);
 var savesetpoint = new Array(0,0);
 var savecount = 0;
 //ID取得-----------------------------------------------------------------
@@ -199,18 +202,38 @@ function SetPoint(setst,setpoint){
   if(savecount == 0){
     savegamepoint[0] = gamepoint1;
     savegamepoint[1] = gamepoint2;
+    if(isTiebreakpoint == 1){
+      savetiebreak[0] = savetiepoint[0];
+      savetiebreak[1] = savetiepoint[1];
+    }
   }else if(savecount == 1){
     savegamepoint[2] = gamepoint1;
     savegamepoint[3] = gamepoint2;
+    if(isTiebreakpoint == 1){
+      savetiebreak[2] = savetiepoint[0];
+      savetiebreak[3] = savetiepoint[1];
+    }
   }else if(savecount == 2){
     savegamepoint[4] = gamepoint1;
     savegamepoint[5] = gamepoint2;
+    if(isTiebreakpoint == 1){
+      savetiebreak[4] = savetiepoint[0];
+      savetiebreak[5] = savetiepoint[1];
+    }
   }else if(savecount == 3){
     savegamepoint[6] = gamepoint1;
     savegamepoint[7] = gamepoint2;
+    if(isTiebreakpoint == 1){
+      savetiebreak[6] = savetiepoint[0];
+      savetiebreak[7] = savetiepoint[1];
+    }
   }else if(savecount == 4){
     savegamepoint[8] = gamepoint1;
     savegamepoint[9] = gamepoint2;
+    if(isTiebreakpoint == 1){
+      savetiebreak[8] = savetiepoint[0];
+      savetiebreak[9] = savetiepoint[1];
+    }
   }
   console.log(savegamepoint[0]+'/'+savegamepoint[1]+savegamepoint[2]+'/'+savegamepoint[3]+savegamepoint[4]+'/'+savegamepoint[5]+savegamepoint[6]+"/"+savegamepoint[7]+savegamepoint[8]+"/"+savegamepoint[9]);
   savecount++;
@@ -218,6 +241,9 @@ function SetPoint(setst,setpoint){
   ClearPoint();
   gamepoint1=0;
   gamepoint2=0;
+  savetiebreak[0] = 0;
+  savetiebreak[1] = 0;
+  isTiebreakpoint = 0;
   gamest1.text("0");
   gamest2.text("0");
   setst.text(setpoint);
@@ -253,6 +279,16 @@ function SetPoint(setst,setpoint){
       gamep8:savegamepoint[7],
       gamep9:savegamepoint[8],
       gamep10:savegamepoint[9],
+      tiep1:savetiebreak[0],
+      tiep2:savetiebreak[1],
+      tiep3:savetiebreak[2],
+      tiep4:savetiebreak[3],
+      tiep5:savetiebreak[4],
+      tiep6:savetiebreak[5],
+      tiep7:savetiebreak[6],
+      tiep8:savetiebreak[7],
+      tiep9:savetiebreak[8],
+      tiep10:savetiebreak[9]
     }
     var playername1 = $("#usn1").val() + " / "+$("#usn2").val();
     var playername2 = $("#usn3").val() + " / "+$("#usn4").val();
@@ -308,8 +344,8 @@ function SetPoint(setst,setpoint){
 }
 
 window.onbeforeunload = function(event){
-//if(is_note){
-event = event || window.event;
+if(is_note){
+  event = event || window.event;
     var time1 = new Date();
     var year1 = time1.getFullYear();
     var month1 = time1.getMonth()+1;
@@ -342,6 +378,16 @@ event = event || window.event;
       gamep8:savegamepoint[7],
       gamep9:savegamepoint[8],
       gamep10:savegamepoint[9],
+      tiep1:savetiebreak[0],
+      tiep2:savetiebreak[1],
+      tiep3:savetiebreak[2],
+      tiep4:savetiebreak[3],
+      tiep5:savetiebreak[4],
+      tiep6:savetiebreak[5],
+      tiep7:savetiebreak[6],
+      tiep8:savetiebreak[7],
+      tiep9:savetiebreak[8],
+      tiep10:savetiebreak[9]
     }
     var playername1 = $("#usn1").val() + " / "+$("#usn2").val();
     var playername2 = $("#usn3").val() + " / "+$("#usn4").val();
@@ -355,8 +401,10 @@ event = event || window.event;
 
     socket.emit('remove',{username:user,time:uptime,result:result,winner:winner});
   }
+}
 //タイブレイクメソッド --------------------------------------------------
 function TieBreak(score,point){
+  isTiebreakpoint = 1;
   if((point1+point2)%2 == 1){
     if(server == 0){
       server = 1;
@@ -368,15 +416,19 @@ function TieBreak(score,point){
   if(point < 7 || point1 > 5 && point2 > 5 && (point1-point2) == 1 || point1 > 5 && point2 > 5 && (point2-point1)==1 || point1 == point2){
     score.text(point)
   }else if(point1 > 5 && point2 > 5 && (point1-point2)==2 || point1 > 5 && point2 > 5 && (point2-point1)==2 || point1 == 7 && point2 < 6 || point1 < 6 && point2 == 7){
-    gamepoint1=0;
-    gamepoint2=0;
+   // gamepoint1=0;
+   //gamepoint2=0;
+    savetiepoint[0] = point1;
+    savetiepoint[1] = point2;
     gamest1.text("0");
     gamest2.text("0");
     isTiebreak=0; //タイブレイク終了
     if(point1 > point2){
+      gamepoint1++;
       setpoint1++;
       SetPoint(setst1,setpoint1);
     }else if(point2 > point1){
+      gamepoint2++;
       setpoint2++;
       SetPoint(setst2,setpoint2);
     }
