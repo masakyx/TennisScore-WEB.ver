@@ -150,7 +150,7 @@ function ScorePoint(score,point){
        gamepoint2++;
        GamePoint(gamest2,gamepoint2);
      }     
-     audio();
+    //audio();
      return 0;
 }
 
@@ -411,10 +411,12 @@ function TieBreak(score,point){
   if((point1+point2)%2 == 1){
     if(server == 0){
       server = 1;
-      //finserve = 1;
+      finserve = 1;
     }else if(server == 1){
       server = 0;
-      //finserve = 1;
+      finserve = 1;
+    }else{
+      finserve = 1;
     }
     ServeChange(server);
   }
