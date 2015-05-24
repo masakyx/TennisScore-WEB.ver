@@ -124,7 +124,7 @@ jQuery(function ($){
     $("#fault").click(function (){
       if(server == 0){
         j++;
-        if(j%2 == 1){
+        if(j%2 == 1 && finserve == 0){
           $("#fault").val("Double Fault");
           $("#schange").fadeOut();
         }else{
@@ -137,7 +137,8 @@ jQuery(function ($){
           $("#rm").val("Fault");
           j=0;
           openbutton(); 
-      }
+        }
+        finserve = 0;
     }); 
   
     //----------------------------------------------------------
@@ -177,7 +178,7 @@ jQuery(function ($){
         openbutton();
       }else if(server == 1){
         j++;
-        if(j%2 == 1){
+        if(j%2 == 1 && finserve == 0){
           $("#rm").val("Double Fault");
           $("#schange").fadeOut();
         }else{
@@ -186,6 +187,7 @@ jQuery(function ($){
           j=0;
         } 
       }
+      finserve = 0;
     });
       //-----------------------------------------------------------------
     $("#win1,#side1,#back1,#net1,#win2,#side2,#back2,#net2").click(function (){

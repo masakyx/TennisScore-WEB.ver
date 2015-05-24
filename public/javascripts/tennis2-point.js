@@ -20,6 +20,7 @@ var savetiebreak = new Array(0,0,0,0,0,0,0,0,0,0);
 var savetiepoint = new Array(0,0);
 var savesetpoint = new Array(0,0);
 var savecount = 0;
+var finserve = 0;
 //ID取得-----------------------------------------------------------------
 var score1 = $("#score1");
 var score2 = $("#score2");
@@ -159,8 +160,10 @@ function GamePoint(gamest,gamepoint){
   foreback = 0;//fore
   if(server == 0){
     server = 1;
+    finserve = 1;
   }else if(server == 1){
     server = 0;
+    finserve = 1;
   }
   ServeChange(server);
 
@@ -408,8 +411,10 @@ function TieBreak(score,point){
   if((point1+point2)%2 == 1){
     if(server == 0){
       server = 1;
+      //finserve = 1;
     }else if(server == 1){
       server = 0;
+      //finserve = 1;
     }
     ServeChange(server);
   }

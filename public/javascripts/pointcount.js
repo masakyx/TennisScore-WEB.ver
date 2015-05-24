@@ -292,7 +292,7 @@ jQuery(function($){
           p2f.point++;       console.log("プレイヤー2がフォアサイドでの獲得ポイント");
         }else{
           p1b.doublefault++;console.log("プレイヤー１がバックサイドでセカンドサーブをフォルトした数");
-          p2b.sserve++;   console.log("プレイヤー１がバックサイドでセカンドサーブをうった数");
+          p1b.sserve++;   console.log("プレイヤー１がバックサイドでセカンドサーブをうった数");
           p2b.point++;    console.log("プレイヤー2がバックサイドでの獲得ポイント");
         }
       }
