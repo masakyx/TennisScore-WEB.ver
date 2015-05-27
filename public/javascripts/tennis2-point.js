@@ -80,7 +80,7 @@ jQuery(function($){
    });
    //------------------------------------------------------------------
    fault.click(function(){
-     if(server == 0){
+      if(server == 0 && fault.val() != "Return Miss"){
        if(fault.val() == "Double Fault"){
          point2++;
          ClickPoint(score2,point2);
@@ -92,7 +92,7 @@ jQuery(function($){
    });
    //---;--------------------------------------------------------------
    rm.click(function(){
-     if(server == 1){
+      if(server == 1 && rm.val() != "Return Miss"){
        if(rm.val() == "Double Fault"){
          point1++;
          ClickPoint(score1,point1);
@@ -160,10 +160,10 @@ function GamePoint(gamest,gamepoint){
   foreback = 0;//fore
   if(server == 0){
     server = 1;
-    finserve = 1;
+    //finserve = 1;
   }else if(server == 1){
     server = 0;
-    finserve = 1;
+    //finserve = 1;
   }
   ServeChange(server);
 
@@ -411,12 +411,12 @@ function TieBreak(score,point){
   if((point1+point2)%2 == 1){
     if(server == 0){
       server = 1;
-      finserve = 1;
+      //finserve = 1;
     }else if(server == 1){
       server = 0;
-      finserve = 1;
+      //finserve = 1;
     }else{
-      finserve = 1;
+      //finserve = 1;
     }
     ServeChange(server);
   }
@@ -491,6 +491,7 @@ function ServeChange(ser){
     returnace.val("Returnn ACE");
     rm.val("Return Miss");
   }
+  //finserve = 0;
 }
 //-----------------------------------------------------------------------
 function ClickPoint(score,point,gamest,gampoint){
