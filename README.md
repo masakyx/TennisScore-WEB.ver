@@ -13,6 +13,9 @@ and we can also send some messages in real time.
 
 You can watch The game data which ends by pushing  the "試合データ" button.
 
+## Demo
+![Demo GIF](https://gyazo.com/fd45df6d7a13b310496b9a8f33f4dd7f.gif)
+
 
 ## Start App
 
