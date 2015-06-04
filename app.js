@@ -268,9 +268,7 @@ var TennisSchema = new mongoose.Schema({
       tiep8:Number,
       tiep9:Number,
       tiep10:Number
-    },
-    renewnumber:Number,
-    finishflag:Boolean
+    }
 });
 
 //generate model from schema)

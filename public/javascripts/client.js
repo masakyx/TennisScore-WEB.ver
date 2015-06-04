@@ -204,9 +204,7 @@ jQuery(function($){
               tiep8:0,
               tiep9:0,
               tiep10:0
-            },
-            renewnumber:0,
-            finishflag:false
+            }
           };
           var infotime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
           socket.emit('create',firsttennisData);
