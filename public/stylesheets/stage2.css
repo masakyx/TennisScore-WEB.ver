@@ -81,23 +81,29 @@ input[name="change2"]{
 }
 #score1,#gamest1,#setst1{
   position:absolute;
-  width:45%;
+  width:30%;
   left:10px;
   background-color:#00aaff;
 }
 #score2,#gamest2,#setst2{
   position:absolute;
-  width:45%;
+  width:30%;
   right:10px;
   background-color:#ffaa00;
 }
-#setst1,#setst2{
+#score3,#gamest3,#setst3{
+  position:absolute;
+  width:30%;
+  right:35%;
+  background-color:#33FF99;
+}
+#setst1,#setst2,#setst3{
   margin-top:5px;
 }
-#gamest1,#gamest2{
+#gamest1,#gamest2,#gamest3{
   margin-top:20px;
 }
-#score1,#score2{
+#score1,#score2,#score3{
   margin-top:35px;
 }
 input[name="changecort"]{
@@ -129,6 +135,6 @@ input[name="serverchange"]{
   -moz-border-radius:20px;
   -webkit-border-radius:20px;
 }
-.pl1,.pl2{
+.pl1,.pl2,.pl3{
   border-style:solid;
 }

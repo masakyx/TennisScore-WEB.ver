@@ -16,6 +16,7 @@ jQuery(function($){
             }
         });
     });
+   // var firsttennisData;
     //ユーザーの識別（時間をつかう）
     $(document).ready(function(){
         var runsu = Math.random();
@@ -27,7 +28,7 @@ jQuery(function($){
         var hun = time.getMinutes();
         var byo = time.getSeconds();
 
-        var tennisData ={
+        var firsttennisData ={
            player:{
               player1:"player1",
               player2:"player2",
@@ -145,12 +146,12 @@ jQuery(function($){
               apoint27:0
             },
             pointext:{
-                pointtext1:"score1",
-                pointtext2:"score2",
-                pointtext3:"gamest1",
-                pointtext4:"gamest2",
-                pointtext5:"setst1",
-                pointtext6:"setst2"
+                pointtext1:"0",
+                pointtext2:"0",
+                pointtext3:"0",
+                pointtext4:"0",
+                pointtext5:"0",
+                pointtext6:"0"
             },
             room:{
               creater:"NO Name"
@@ -203,10 +204,12 @@ jQuery(function($){
               tiep8:0,
               tiep9:0,
               tiep10:0
-            }
+            },
+            renewnumber:0,
+            finishflag:false
           };
           var infotime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
-          socket.emit('create',tennisData);
+          socket.emit('create',firsttennisData);
           socket.emit('viewer-chat',{name:"＊＊＊＊試合連絡＊＊＊＊",message:"試合が始まりました。",time:infotime,year:year,month:month,day:day,category:"mes"});
       user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
       console.log("ユーザーは：" + user);
@@ -343,8 +346,15 @@ jQuery(function($){
              pointtext5:$("#setst1").text(),
              pointtext6:$("#setst2").text()
            };
-           socket.emit('point-update',{_id:id,username:user,point:uppoint});
-           socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
+           /*socket.emit("change-old-id",{username:user});
+           socket.on("finish-change-old-id",function(data){
+               socket.emit('point-update',{oldtennis:firsttennisData,_id:id,username:user,point:uppoint});
+             socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
+            console.log("ボタンが押されてポイントが更新されるよ");
+         });*/
+          socket.emit('point-update',{_id:id,username:user,point:uppoint});
+          socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
+           
           //socket.broadcast.to(tennisData.room.creater).emit('point-update',{_id:id,point:uppoint});
           //socket.broadcast.to(tennisData.room.creater).emit('pointext-update',{_id:id,pointext:uptext});
       });

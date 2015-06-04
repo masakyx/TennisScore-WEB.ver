@@ -268,7 +268,9 @@ var TennisSchema = new mongoose.Schema({
       tiep8:Number,
       tiep9:Number,
       tiep10:Number
-    }
+    },
+    renewnumber:Number,
+    finishflag:Boolean
 });
 
 //generate model from schema)
@@ -321,7 +323,28 @@ io.sockets.on('connection',function(socket){
           //他のクライアントにイベントを伝えるためにbroadcastで送信する。
           socket.broadcast.json.emit('point-update',data);
       });
+   });
+  /*socket.on('point-update',function(data){
+      console.log("update of  " + data.username);
+      //データベースからidが一致するものを探す。
+      var tennisData = new Tennis(data.oldtennis);
+      tennisData.point = data.point;
+      tennisData.save();
+      socket.broadcast.json.emit('point-update',data);
   });
+  //ボタンが押されるたびに新しいデータをつくるバージョン
+  socket.on('change-old-id',function(data){
+      Tennis.findOne({user:data.username},function(err,tennis){
+          if(err || data === null){
+            return;
+          }
+          tennis.user = "old";
+          tennis.save();
+          console.log("古いデータのidを無効にしました。");
+          socket.emit("finish-change-old-id",data);
+      });
+  });*/
+
   //PlayerNameが変更された時に更新する。
   socket.on('player-update',function(data){
       Tennis.findOne({user:data.username},function(err,tennis){
