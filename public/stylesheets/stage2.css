@@ -81,30 +81,42 @@ input[name="change2"]{
 }
 #score1,#gamest1,#setst1{
   position:absolute;
-  width:30%;
+  width:29%;
   left:10px;
   background-color:#00aaff;
 }
 #score2,#gamest2,#setst2{
   position:absolute;
-  width:30%;
+  width:29%;
   right:10px;
   background-color:#ffaa00;
 }
 #score3,#gamest3,#setst3{
   position:absolute;
-  width:30%;
+  width:29%;
   right:35%;
   background-color:#33FF99;
 }
-#setst1,#setst2,#setst3{
+#setst1,#setst2{
   margin-top:5px;
 }
-#gamest1,#gamest2,#gamest3{
+#gamest1,#gamest2{
   margin-top:20px;
 }
-#score1,#score2,#score3{
+#score1,#score2{
   margin-top:35px;
+}
+#score3,#gamest3,#setst3{
+  font-size:100%;
+}
+#setst3{
+  margin-top:10px;
+}
+#gamest3{
+  margin-top:25px;
+}
+#score3{
+  margin-top:40px;
 }
 input[name="changecort"]{
   position:absolute;

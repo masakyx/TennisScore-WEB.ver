@@ -14,7 +14,6 @@ var post = require("./routes/post");
 
 var app = express();
 //更新番号の変数
-var renewnum = 0;
 
 // view engine setup
 app.set('port',process.env.PORT || 3000);
@@ -278,6 +277,7 @@ var TennisSchema = new mongoose.Schema({
 //generate model from schema)
 var Tennis = db.model('tennis',TennisSchema);
 var Chat = db.model('chat',ChatSchema);
+var actionTennis = db.model('actionTennis',TennisSchema);
 
 //use soket.io
 var io = require('socket.io').listen(server);
@@ -329,14 +329,13 @@ io.sockets.on('connection',function(socket){
   //***********アクションデータを毎回保存する****************************
   
   socket.on('renew-action',function(data){
-      renewnum++;
       console.log("更新データの保存を行いました");
-      var actiondata = new Tennis(data.action);
+      var actiondata = new actionTennis(data.action);
       actiondata.point = data.point;
       actiondata.pointext = data.pointext;
       actiondata.player = data.player;
       actiondata.user = "action-data";
-      actiondata.renewnumber = renewnum;
+      actiondata.renewnumber = data.actionnum;
       actiondata.save();
   });
   //*********************************************************************

@@ -1,4 +1,5 @@
 var user = 0;
+var renewnum = 0;
 jQuery(function($){
     "use strict";
     //var socket = io.connect('http://' + location.host + '/');
@@ -358,7 +359,8 @@ jQuery(function($){
              socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
             console.log("ボタンが押されてポイントが更新されるよ");
             });*/
-          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata});
+          renewnum++;
+          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum});
           socket.emit('point-update',{_id:id,username:user,point:uppoint});
           socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
            
