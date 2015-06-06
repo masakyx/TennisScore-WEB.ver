@@ -16,7 +16,7 @@ jQuery(function($){
             }
         });
     });
-   // var firsttennisData;
+   var firsttennisData;
     //ユーザーの識別（時間をつかう）
     $(document).ready(function(){
         var runsu = Math.random();
@@ -28,7 +28,7 @@ jQuery(function($){
         var hun = time.getMinutes();
         var byo = time.getSeconds();
 
-        var firsttennisData ={
+        firsttennisData ={
            player:{
               player1:"player1",
               player2:"player2",
@@ -204,7 +204,9 @@ jQuery(function($){
               tiep8:0,
               tiep9:0,
               tiep10:0
-            }
+            },
+            renewnumber:0,
+            actiondataID:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo
           };
           var infotime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
           socket.emit('create',firsttennisData);
@@ -344,12 +346,19 @@ jQuery(function($){
              pointtext5:$("#setst1").text(),
              pointtext6:$("#setst2").text()
            };
+           var playerdata = {
+                player1:$("#usn1").val(),
+                player2:$("#usn2").val(),
+                player3:$("#usn3").val(),
+                player4:$("#usn4").val()
+           }
            /*socket.emit("change-old-id",{username:user});
            socket.on("finish-change-old-id",function(data){
                socket.emit('point-update',{oldtennis:firsttennisData,_id:id,username:user,point:uppoint});
              socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
             console.log("ボタンが押されてポイントが更新されるよ");
-         });*/
+            });*/
+          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata});
           socket.emit('point-update',{_id:id,username:user,point:uppoint});
           socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
            

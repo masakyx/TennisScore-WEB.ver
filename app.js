@@ -13,6 +13,8 @@ var users = require('./routes/users');
 var post = require("./routes/post");
 
 var app = express();
+//更新番号の変数
+var renewnum = 0;
 
 // view engine setup
 app.set('port',process.env.PORT || 3000);
@@ -268,7 +270,9 @@ var TennisSchema = new mongoose.Schema({
       tiep8:Number,
       tiep9:Number,
       tiep10:Number
-    }
+    },
+    renewnumber:Number,
+    actiondataID:String
 });
 
 //generate model from schema)
@@ -309,7 +313,7 @@ io.sockets.on('connection',function(socket){
   });
   //テニスのスコアボタンが押された時にpointをアップデートする。
   socket.on('point-update',function(data){
-      console.log("update of  " + data.username);
+      //console.log("update of  " + data.username);
       //データベースからidが一致するものを探す。
       Tennis.findOne({user:data.username},function(err,tennis){
           if(err || data === null){
@@ -317,11 +321,27 @@ io.sockets.on('connection',function(socket){
             return;}
           tennis.point = data.point;
           tennis.save();         
-          console.log("save of " + data.username);
+          //console.log("save of " + data.username);
           //他のクライアントにイベントを伝えるためにbroadcastで送信する。
           socket.broadcast.json.emit('point-update',data);
       });
-   });
+  });
+  //***********アクションデータを毎回保存する****************************
+  
+  socket.on('renew-action',function(data){
+      renewnum++;
+      console.log("更新データの保存を行いました");
+      var actiondata = new Tennis(data.action);
+      actiondata.point = data.point;
+      actiondata.pointext = data.pointext;
+      actiondata.player = data.player;
+      actiondata.user = "action-data";
+      actiondata.renewnumber = renewnum;
+      actiondata.save();
+  });
+  //*********************************************************************
+
+
   /*socket.on('point-update',function(data){
       console.log("update of  " + data.username);
       //データベースからidが一致するものを探す。
@@ -399,7 +419,7 @@ io.sockets.on('connection',function(socket){
             chatdata.day = data.day;
             chatdata.category = data.category;
             chatdata.save();
-            console.log("メッセージが追加されました");
+            //console.log("メッセージが追加されました");
             socket.emit('viewer-chat',chatdata);
             socket.broadcast.json.emit('viewer-chat',chatdata);
         });
