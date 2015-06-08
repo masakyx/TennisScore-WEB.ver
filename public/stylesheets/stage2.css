@@ -10,6 +10,14 @@ input[name="usn1"],input[name="usn2"]{
 .leftbt{
   background-color:#00aaff;
 }
+.text{
+  float:left;
+}
+#backhome{
+  position:absolute;
+  top:40px;
+  margin-left:10px;
+}
 input[name="usn3"],input[name="usn4"]{
   position:absolute;                           
   width:45%;
@@ -68,7 +76,7 @@ input[name="change1"]{
   background-size:100% 150px;
 } 
 #cname{
-  width:46%;
+  width:98%;
 }
 input[name="change2"]{
   position:absolute;
@@ -140,6 +148,19 @@ input[name="serverchange"]{
   background-size:100% 50px;
   -moz-border-radius:20px;
   -webkit-border-radius:20px;
+  font-size:100%;
+}
+input[name="backdata"]{
+  position:absolute;
+  margin-top:280px;
+  background-image:url("../images/backimage.png");
+  width:36%;
+  left:32%;
+  height:50px;
+  background-size:100% 50px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+  font-size:100%;
 }
 .leftbt,.rightbt{
   font-size:100%;

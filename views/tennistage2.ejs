@@ -16,12 +16,12 @@
 
               </script>
 </head>
-<body background="/images/b123.jpg">
+<body>
     <script src="/socket.io/socket.io.js"></script> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <div>
-      <h1>Tennisスコアラー</h1>
-      <p><a href="/" id="backhome">戻る</a></p>
+      <h1 class="text">Tennisスコアラー</h1>
+      <p class="text"><a href="/" id="backhome">前のページに戻る</a></p>
     </div>
       <input type="text" value="作成者の名前を入力してください" class="player" id="cname" style="font-size:100%;height:30px;"name="creatername">
     <hr class="hhr">
@@ -29,11 +29,10 @@
         <input type="radio" name="gametype" value="1" checked id="single">シングルス
         <input type="radio" name="gametype" value="2" id="double">ダブルス
       </p>
-      <p>セット数</p>
       <p>
-        <input type="radio" name="set" value="1" checked id="set1">1
-        <input type="radio" name="set" value="3" id="set3">3
-        <input type="radio" name="set" value="5" id="set5">5
+        <input type="radio" name="set" value="1" checked id="set1">1set
+        <input type="radio" name="set" value="3" id="set3">3set
+        <input type="radio" name="set" value="5" id="set5">5set
       </p>
       <div id="player">
         <input type="text" name="usn1" value="Player1" id="usn1" class="player">
@@ -61,6 +60,7 @@
       <input type="button"name="change2" id="change2">
       <input type="button" name="changecort" id="chanco" value="CHANGE CORT">
       <input type="button" name="serverchange" id="schange" value="Server CHANGE"> 
+      <input type="button" name="backdata" id="backdataid" value="1ポイント前に戻る"> 
       <div id="score">
         <input type="button" name="service" value="Service In" class="leftbt" id="service">
         <input type="button" name="return in" value="Return In" class="rightbt" id="returnin">

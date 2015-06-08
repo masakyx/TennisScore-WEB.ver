@@ -218,6 +218,14 @@ var TennisSchema = new mongoose.Schema({
       pointtext5:String,
       pointtext6:String
     },
+    pointdata:{
+      point1:Number,
+      point2:Number,
+      gamepoint1:Number,
+      gamepoint2:Number,
+      setpoint1:Number,
+      setpoint2:Number
+    },
     room:{
       creater:String
     },
@@ -297,6 +305,8 @@ io.sockets.on('connection',function(socket){
   socket.on('create',function(tennisData){
       //create instance from model
       var tennis = new Tennis(tennisData);
+      var actiontennisdata = new actionTennis(tennisData);
+      actiontennisdata.save();
       //save to database
       tennis.save(function(err){
           if(err){return;}
@@ -336,10 +346,32 @@ io.sockets.on('connection',function(socket){
       actiondata.player = data.player;
       actiondata.user = "action-data";
       actiondata.renewnumber = data.actionnum;
+      actiondata.room = data.creater;
+      actiondata.pointdata = data.pointdata;
       actiondata.save();
   });
   //*********************************************************************
+  //****************戻るボタン********************************************
+  socket.on('tennis-back-data',function(data){
+      Tennis.findOne({user:data.user},function(err,tennis){
+          if(data.renew != 0 ){
+            actionTennis.findOne({$and:[{actiondataID:data.user},{renewnumber:data.renew}]},function(err,actiontennis){
+                console.log("前のrennwwww=="+actiontennis.renewnumber);  
+                actiontennis.remove();
+            });
+            actionTennis.findOne({$and:[{actiondataID:data.user},{renewnumber:data.renew-1}]},function(err,actiontennis){
+                tennis.point = actiontennis.point;
+                tennis.pointext = actiontennis.pointext;
+                tennis.gamedata = actiontennis.gamedata;
+                tennis.save();
+                console.log("reneww=="+actiontennis.renewnumber);
+                socket.emit("tennisData-update",actiontennis);
+            });
+          }
+      });
+  });
 
+  //*********************************************************************
 
   /*socket.on('point-update',function(data){
       console.log("update of  " + data.username);

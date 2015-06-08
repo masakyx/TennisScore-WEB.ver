@@ -203,8 +203,81 @@ jQuery(function ($){
       $("#change2").css("background-image","url(../images/stroke.jpg)");
       strbo1=0;strbo2=0;  
   });
+  //----back buttonーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  $("#backdataid").click(function(){
+      if(renewnum != 0){
+        socket.emit("tennis-back-data",{user:user,renew:renewnum});
+        renewnum--;
+        console.log("id="+user+"///renew="+renewnum);
+      }  
+  });
+  //---back buttonを押された後の情報更新----------------------------------
+  socket.on("tennisData-update",function(data){
+      console.log("今のポイントテキストは"+data.pointext.pointtext1);
+      $("#score1").text(data.pointext.pointtext1);
+      $("#score2").text(data.pointext.pointtext2);
+      $("#gamest1").text(data.pointext.pointtext3);
+      $("#gamest2").text(data.pointext.pointtext4);
+      $("#setst1").text(data.pointext.pointtext5);
+      $("#setst2").text(data.pointext.pointtext6);
+      //----point data の更新--------------------------------------------
+      /*ChangeNumber(1,$("#score1").text(),point1);
+      ChangeNumber(1,$("#score2").text(),point2);
+      ChangeNumber(2,$("#gamest1").text(),gamepoint1);
+      ChangeNumber(2,$("#gamest2").text(),gamepoint2);
+      ChangeNumber(3,$("#setst1").text(),setpoint1);   
+      ChangeNumber(3,$("#setst2").text(),setpoint2);*/
+      var uptext = {
+        pointtext1:$("#score1").text(),
+        pointtext2:$("#score2").text(),
+        pointtext3:$("#gamest1").text(),
+        pointtext4:$("#gamest2").text(),
+        pointtext5:$("#setst1").text(),
+        pointtext6:$("#setst2").text()
+      };
+      point1 = data.pointdata.point1;
+      point2 = data.pointdata.point2;
+      gamepoint1 = data.pointdata.gamepoint1;
+      gamepoint2 = data.pointdata.gamepoint2;
+      setpoint1 = data.pointdata.setpoint1;
+      setpoint2 = data.pointdata.setpoint2;
+      console.log(point1+"/"+point2+"/"+gamepoint1+"/"+gamepoint2+"/"+setpoint1+"/"+setpoint2);
+      socket.emit('pointext-update',{username:user,pointext:uptext});
+  });
   
 });
+function ChangeNumber(a,textdata,countdata){
+  console.log("Change of Number を実行したよーん");
+  if(a == 1){
+    switch (textdata){
+      case '0':countdata=0;break;
+      case '15':countdata=1;break;
+      case '30':countdata=2;break;
+      case '40':countdata=3;break;
+      case 'Ad':countdata=4;break;
+      case 'DEUCE':coundata=3;break;
+      console.log("countdata==="+countdata);
+    }
+  }else if(a == 2){
+    switch (textdata){
+      case '0':coundata=0;break;
+      case '1':countdata=1;break;
+      case '2':countdata=2;break;
+      case '3':countdata=3;break;
+      case '4':countdata=4;break;
+      case '5':countdata=5;break;
+      case '6':countdata=6;break;
+      case '7':countdata=7;break;
+    }
+  }else if(a == 3){
+    switch (textdata){
+      case '0':countdata=0;break;
+      case '1':countdata=1;break;
+      case '2':countdata=2;break;
+      case '3':countdata=3;break;
+    }
+  }
+}
 //----------------------------------------------------------------------
 function openbutton(){
   $("#service").fadeIn();

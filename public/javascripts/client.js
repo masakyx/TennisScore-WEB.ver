@@ -7,7 +7,7 @@ jQuery(function($){
 //    var id;
     //creat NewScore add html
   socket.on('create',function(tennisData){
-      tennisData.forEach(function(data){
+      /*tennisData.forEach(function(data){
           if(data.real == "unreal"){
           }else if(data.real == "real"){
          // socket.join(data.room.creater);
@@ -15,7 +15,12 @@ jQuery(function($){
             creatTennis(data);
             //        console.log(id);
             }
-        });
+      });*/
+      tennisData.forEach(function(data){
+          if(data.user == user){
+            creatTennis(data);
+          }
+      });
     });
    var firsttennisData;
     //ユーザーの識別（時間をつかう）
@@ -153,6 +158,14 @@ jQuery(function($){
                 pointtext4:"0",
                 pointtext5:"0",
                 pointtext6:"0"
+            },
+            pointdata:{
+              point1:0,
+              point2:0,
+              gamepoint1:0,
+              gamepoint2:0,
+              setpoint1:0,
+              setpoint2:0
             },
             room:{
               creater:"NO Name"
@@ -352,7 +365,18 @@ jQuery(function($){
                 player2:$("#usn2").val(),
                 player3:$("#usn3").val(),
                 player4:$("#usn4").val()
-           }
+            };
+            var room = {
+              creater:$("#cname").val()
+            };
+            var pointdata = {
+                point1:point1,
+                point2:point2,
+                gamepoint1:gamepoint1,
+                gamepoint2:gamepoint2,
+                setpoint1:setpoint1,
+                setpoint2:setpoint2
+            };
            /*socket.emit("change-old-id",{username:user});
            socket.on("finish-change-old-id",function(data){
                socket.emit('point-update',{oldtennis:firsttennisData,_id:id,username:user,point:uppoint});
@@ -360,7 +384,7 @@ jQuery(function($){
             console.log("ボタンが押されてポイントが更新されるよ");
             });*/
           renewnum++;
-          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum});
+          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum,creater:room,pointdata:pointdata});
           socket.emit('point-update',{_id:id,username:user,point:uppoint});
           socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
            
