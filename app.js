@@ -90,7 +90,20 @@ var ChatSchema = new mongoose.Schema({
       tiep10:Number
     }
 });
-
+var PointCountSchema = new mongoose.Schema({
+    countID:String,
+    pointext:{
+      pointtext1:String,
+      pointtext2:String,
+      pointtext3:String,
+      pointtext4:String,
+      pointtext5:String,
+      pointtext6:String
+    },
+    countnumber:Number,
+    server:Number,
+    isTiebreak:Number
+});
 
 //make Tennis_Data Schema
 var TennisSchema = new mongoose.Schema({
