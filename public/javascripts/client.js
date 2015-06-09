@@ -220,7 +220,9 @@ jQuery(function($){
               tiep10:0
             },
             renewnumber:0,
-            actiondataID:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo
+            actiondataID:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
+            serveplayer:0,
+            isTiebreak:0
           };
           var infotime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
           socket.emit('create',firsttennisData);
@@ -242,6 +244,7 @@ jQuery(function($){
 		    //}
         $(".leftbt,.rightbt").click(function(){
             console.log("pointupdate");
+            console.log("server==="+server);
             var uppoint = {
               point1:p1f.point,
               point2:p1.win,
@@ -384,9 +387,9 @@ jQuery(function($){
             console.log("ボタンが押されてポイントが更新されるよ");
             });*/
           renewnum++;
-          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum,creater:room,pointdata:pointdata});
-          socket.emit('point-update',{_id:id,username:user,point:uppoint});
-          socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
+          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum,creater:room,pointdata:pointdata,serveplayer:server,tiebreak:isTiebreak});
+          socket.emit('point-update',{_id:id,username:user,point:uppoint,serveplayer:server,tiebreak:isTiebreak});
+          socket.emit('pointext-update',{_id:id,username:user,pointext:uptext,serveplayer:server});
            
           //socket.broadcast.to(tennisData.room.creater).emit('point-update',{_id:id,point:uppoint});
           //socket.broadcast.to(tennisData.room.creater).emit('pointext-update',{_id:id,pointext:uptext});

@@ -279,7 +279,9 @@ var TennisSchema = new mongoose.Schema({
       tiep10:Number
     },
     renewnumber:Number,
-    actiondataID:String
+    actiondataID:String,
+    serveplayer:Number, //0=左 1=右
+    isTiebreak:Number
 });
 
 //generate model from schema)
@@ -330,6 +332,8 @@ io.sockets.on('connection',function(socket){
             console.log("データが見つかりません");
             return;}
           tennis.point = data.point;
+          tennis.serveplayer = data.serveplayer;
+          tennis.isTiebreak = data.tiebreak;
           tennis.save();         
           //console.log("save of " + data.username);
           //他のクライアントにイベントを伝えるためにbroadcastで送信する。
@@ -348,6 +352,8 @@ io.sockets.on('connection',function(socket){
       actiondata.renewnumber = data.actionnum;
       actiondata.room = data.creater;
       actiondata.pointdata = data.pointdata;
+      actiondata.serveplayer = data.serveplayer;
+      actiondata.isTiebreak = data.tiebreak;
       actiondata.save();
   });
   //*********************************************************************
@@ -360,9 +366,12 @@ io.sockets.on('connection',function(socket){
                 actiontennis.remove();
             });
             actionTennis.findOne({$and:[{actiondataID:data.user},{renewnumber:data.renew-1}]},function(err,actiontennis){
+                console.log("serve====="+actiontennis.serveplayer+":tie===="+actiontennis.isTiebreak);
                 tennis.point = actiontennis.point;
                 tennis.pointext = actiontennis.pointext;
                 tennis.gamedata = actiontennis.gamedata;
+                tennis.serveplayer = actiontennis.serveplayer;
+                tennis.isTiebreak = actiontennis.isTiebreak;
                 tennis.save();
                 console.log("reneww=="+actiontennis.renewnumber);
                 socket.emit("tennisData-update",actiontennis);
@@ -409,6 +418,7 @@ io.sockets.on('connection',function(socket){
       Tennis.findOne({user:data.username},function(err,tennis){
           if(err || tennis == null){ return};
           tennis.pointext = data.pointext;
+          tennis.serveplayer = data.serveplayer;
           tennis.save();
           socket.broadcast.json.emit('pointext-update',data);
       });
