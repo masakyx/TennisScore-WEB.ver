@@ -100,6 +100,14 @@ var PointCountSchema = new mongoose.Schema({
       pointtext5:String,
       pointtext6:String
     },
+    pointdata:{
+      point1:Number,
+      point2:Number,
+      gamepoint1:Number,
+      gamepoint2:Number,
+      setpoint1:Number,
+      setpoint2:Number
+    },
     countnumber:Number,
     server:Number,
     isTiebreak:Number
@@ -301,6 +309,7 @@ var TennisSchema = new mongoose.Schema({
 var Tennis = db.model('tennis',TennisSchema);
 var Chat = db.model('chat',ChatSchema);
 var actionTennis = db.model('actionTennis',TennisSchema);
+var PointCount = db.model('pointcount',PointCountSchema);
 
 //use soket.io
 var io = require('socket.io').listen(server);
@@ -394,7 +403,8 @@ io.sockets.on('connection',function(socket){
   });
 
   //*********************************************************************
-
+  socket.on('action-pointtext-data',function(data){
+  });  
   /*socket.on('point-update',function(data){
       console.log("update of  " + data.username);
       //データベースからidが一致するものを探す。
