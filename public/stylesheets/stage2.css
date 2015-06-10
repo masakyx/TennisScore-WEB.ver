@@ -12,7 +12,8 @@ input[name="usn1"],input[name="usn2"]{
 }
 #backhome{
   position:absolute;
-  top:67px;
+  right:10px;
+  top:20px;
   margin-left:10px;
 }
 input[name="usn3"],input[name="usn4"]{
@@ -168,3 +169,34 @@ input[name="backdata"]{
 .pl1,.pl2,.pl3{
   border-style:solid;
 }
+.button {
+   border-top: 1px solid #082436;
+    background: #bdc9bd;
+     background: -webkit-gradient(linear, left top, left bottom, from(#f0eece), to(#bdc9bd));
+      background: -webkit-linear-gradient(top, #f0eece, #bdc9bd);
+       background: -moz-linear-gradient(top, #f0eece, #bdc9bd);
+        background: -ms-linear-gradient(top, #f0eece, #bdc9bd);
+         background: -o-linear-gradient(top, #f0eece, #bdc9bd);
+          padding: 10px 20px;
+           -webkit-border-radius: 38px;
+            -moz-border-radius: 38px;
+             border-radius: 38px;
+              -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+               -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+                box-shadow: rgba(0,0,0,1) 0 1px 0;
+                 text-shadow: rgba(0,0,0,.4) 0 1px 0;
+                  color: #2d2e21;
+                   font-size: 13px;
+                    font-family: Georgia, serif;
+                     text-decoration: none;
+                      vertical-align: middle;
+                       }
+                       .button:hover {
+                          border-top-color: #e8e8e8;
+                           background: #e8e8e8;
+                            color: #141413;
+                             }
+                             .button:active {
+                                border-top-color: #264457;
+                                 background: #264457;
+                                  }
