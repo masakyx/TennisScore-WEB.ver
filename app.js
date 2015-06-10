@@ -90,7 +90,7 @@ var ChatSchema = new mongoose.Schema({
       tiep10:Number
     }
 });
-var PointCountSchema = new mongoose.Schema({
+/*var PointCountSchema = new mongoose.Schema({
     countID:String,
     pointext:{
       pointtext1:String,
@@ -111,7 +111,7 @@ var PointCountSchema = new mongoose.Schema({
     countnumber:Number,
     server:Number,
     isTiebreak:Number
-});
+});*/
 
 //make Tennis_Data Schema
 var TennisSchema = new mongoose.Schema({
@@ -309,7 +309,7 @@ var TennisSchema = new mongoose.Schema({
 var Tennis = db.model('tennis',TennisSchema);
 var Chat = db.model('chat',ChatSchema);
 var actionTennis = db.model('actionTennis',TennisSchema);
-var PointCount = db.model('pointcount',PointCountSchema);
+//var PointCount = db.model('pointcount',PointCountSchema);
 
 //use soket.io
 var io = require('socket.io').listen(server);
@@ -338,6 +338,10 @@ io.sockets.on('connection',function(socket){
           socket.emit('create',[tennis]);
       });
   });
+  /*socket.on('create-pointtextdata',function(pointtextdata){
+      var pointtextdata = new PointCount(pointtextdata);
+      pointtextdata.save();
+  });*/
   socket.on('create-chat',function(chatdata){
     var chat = new Chat(chatdata);
     chat.save(function(err){
@@ -403,7 +407,15 @@ io.sockets.on('connection',function(socket){
   });
 
   //*********************************************************************
-  socket.on('action-pointtext-data',function(data){
+  /*socket.on('action-pointtext-data',function(data){
+      var countData = new PointCount(data.countnumdata);
+      countData.countID = data.actionID;
+      countData.pointext = data.pointtext;
+      countData.pointdata = pointdata;
+      countData.countnumber = data.count;
+      countData.server = data.server;
+      countData.isTiebreak = data.tiebreak;
+      countData.save();
   });  
   /*socket.on('point-update',function(data){
       console.log("update of  " + data.username);

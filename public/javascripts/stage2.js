@@ -85,10 +85,8 @@ jQuery(function ($){
       var posi8 = $("#setst1").offset();
      //--------------------------------------------------------------
       if(c%2 == 1){
-       //changecort(posi1.left - 10,posi3.left - 10,posi5.left - posi6.left,posi7.left - 10);
         changecort(posi1.left - 10,posi3.left - 10,posi5.left - posi6.left,posi7.left - 10);
       }else{
-        //changecort(posi2.left - 10,posi4.left - 10,posi6.left - posi5.left,posi8.left - 10);
         changecort(posi2.left - 10,posi4.left - 10,posi6.left - posi5.left,posi8.left - 10);
       }
     });                                
@@ -98,15 +96,17 @@ jQuery(function ($){
         $(this).fadeOut();
         $("#serviceace").fadeOut();
         $("#fault").fadeOut();
-        chanco(1);
+        $("#backdataid").fadeOut();
+        $("#chanco").fadeOut();
       }else if(server == 1){
         $(this).fadeOut();
         $("#serviceace").fadeOut();
         $("#fault").fadeOut();
         $("#rm").val("Fault");
+        $("#backdataid").fadeOut();
+        $("#chanco").fadeOut();
         j=0;
         stropenbutton();
-        chanco(1);
       }  
     });
     //----------------------------------------------------------
@@ -129,9 +129,13 @@ jQuery(function ($){
         if(j%2 == 1){
           $("#fault").val("Double Fault");
           $("#schange").fadeOut();
+          $("#backdataid").fadeOut();
+          $("#chanco").fadeOut();
         }else{
           $("#fault").val("Fault");
           $("#schange").fadeIn();
+          $("#backdataid").fadeIn();
+          $("#chanco").fadeIn();
           j=0;
         }
       }else if(server == 1){
@@ -140,7 +144,6 @@ jQuery(function ($){
           j=0;
           openbutton(); 
         }
-        //finserve = 0;
     }); 
   
     //----------------------------------------------------------
@@ -150,14 +153,16 @@ jQuery(function ($){
         $("#returnace").fadeOut();
         $("#rm").fadeOut();
         $("#fault").val("Fault");
+        $("#backdataid").fadeOut();
+        $("#chanco").fadeOut();
         j=0;
         stropenbutton();
-        chanco(1);
       }else if(server == 1){
         $(this).fadeOut();
         $("#returnace").fadeOut();
         $("#rm").fadeOut();
-        chanco(1);  
+        $("#backdataid").fadeOut();
+        $("#chanco").fadeOut();
       }
     });
     //-----------------------------------------------------------------
@@ -183,9 +188,13 @@ jQuery(function ($){
         if(j%2 == 1 ){
           $("#rm").val("Double Fault");
           $("#schange").fadeOut();
+          $("#backdataid").fadeOut();
+          $("#chanco").fadeOut();
         }else{
           $("#rm").val("Fault");
           $("#schange").fadeIn();
+          $("#backdataid").fadeIn();
+          $("#chanco").fadeIn();
           j=0;
         } 
       }
@@ -195,7 +204,6 @@ jQuery(function ($){
     $("#win1,#side1,#back1,#net1,#win2,#side2,#back2,#net2").click(function (){
       openbutton();
       strclosebutton();
-      chanco(2);
     }); 
   $("#serviceace,#rm,#win1,#win2,#side1,#side2,#back1,#back2,#returnace,#net1,#net2").click(function(){
       i=0;k=0;
@@ -364,38 +372,6 @@ jQuery(function ($){
   });
   
 });
-function ChangeNumber(a,textdata,countdata){
-  console.log("Change of Number を実行したよーん");
-  if(a == 1){
-    switch (textdata){
-      case '0':countdata=0;break;
-      case '15':countdata=1;break;
-      case '30':countdata=2;break;
-      case '40':countdata=3;break;
-      case 'Ad':countdata=4;break;
-      case 'DEUCE':coundata=3;break;
-      console.log("countdata==="+countdata);
-    }
-  }else if(a == 2){
-    switch (textdata){
-      case '0':coundata=0;break;
-      case '1':countdata=1;break;
-      case '2':countdata=2;break;
-      case '3':countdata=3;break;
-      case '4':countdata=4;break;
-      case '5':countdata=5;break;
-      case '6':countdata=6;break;
-      case '7':countdata=7;break;
-    }
-  }else if(a == 3){
-    switch (textdata){
-      case '0':countdata=0;break;
-      case '1':countdata=1;break;
-      case '2':countdata=2;break;
-      case '3':countdata=3;break;
-    }
-  }
-}
 //----------------------------------------------------------------------
 function openbutton(){
   $("#service").fadeIn();
@@ -404,10 +380,12 @@ function openbutton(){
   $("#returnin").fadeIn();
   $("#returnace").fadeIn();
   $("#rm").fadeIn();
+  $("#backdataid").fadeIn();
+  $("#chanco").fadeIn();
+  $("#schange").fadeIn();
   if(server == 0){
     $("#fault").val("Fault");
     j=0;
-    return 0;
   }else if(server == 1){
     $("#rm").val("Fault");       
     j=0;
@@ -416,21 +394,12 @@ function openbutton(){
 //----------------------------------------------------------------------
 function strclosebutton(){
   $("#win1,#win2,#side1,#side2,#back1,#back2,#net1,#net2").fadeOut();
-  return 0;
 }
 //-----------------------------------------------------------------------
 function stropenbutton(){
   $("#win1,#win2,#side1,#side2,#back1,#back2,#net1,#net2").fadeIn();
-  return 0;
 }
 //------------------------------------------------------------------------
-function chanco(a){
-  if(a == 1){
-    $("#chanco,#schange").fadeOut();
-  }else if(a == 2){
-    $("#chanco,#schange").fadeIn();
-  }
-}
 //-----------------------------------------------------------------------  
 function changecort(po1,po2,po3,po4){
   console.log("cccccc===="+c);
@@ -453,25 +422,6 @@ function changecort(po1,po2,po3,po4){
     $(".pl1").animate({"left":'-=' + po4},'slow');
     $(".pl2").animate({"right":'-=' + po4},'slow');
   } 
-  return 0;
 }
 //------------------------------------------------------------------------
-function reposition(){
-  if(c%2 == 1){
-    $(".leftbt").css({"right":'10px'});
-    $(".rightbt").css({"left":'10px'});
-    $("#usn1,#usn2").css({"right":'10px'});
-    $("#usn3,#usn4").css({"left":'10px'});
-    $("#change1").css({"right":'32%'});
-    $("#change2").css({"left":'32%'}); 
-  }else{
-    $(".leftbt").css({"left":'10px'});
-    $(".rightbt").css({"right":'10px'});
-    $("#usn1,#usn2").css({"left":'10px'});
-    $("#usn3,#usn4").css({"right":'10px'});
-    $("#change1").css({"left":'32%'});
-    $("#change2").css({"right":'32%'});   
-  }
-  return 0;
-}
 //--------------------------------------------------------------------------

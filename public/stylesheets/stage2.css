@@ -10,12 +10,9 @@ input[name="usn1"],input[name="usn2"]{
 .leftbt{
   background-color:#00aaff;
 }
-.text{
-  float:left;
-}
 #backhome{
   position:absolute;
-  top:40px;
+  top:67px;
   margin-left:10px;
 }
 input[name="usn3"],input[name="usn4"]{
@@ -25,7 +22,7 @@ input[name="usn3"],input[name="usn4"]{
   border-color:#ffaa00;
 }
 input[name="usn2"],input[name="usn4"]{
-  margin-top:10px;
+  margin-top:5px;
 }
 input[name="service"],input[name="fault"],input[name="winning1"],input[name="side out1"],input[name="back out1"],input[name="net1"],input[name="Serviceace"]{       
   position:absolute;                        

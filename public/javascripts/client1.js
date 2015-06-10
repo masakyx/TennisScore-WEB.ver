@@ -162,7 +162,7 @@ jQuery(function($){
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
-        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+'</li>')
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+'</li>'+'<hr>')
         element.hide().fadeIn();
         $("#chat-field").prepend(element);
       }else if(data.gamedata.gamep5 ==0 && data.gamedata.gamep6 == 0){
@@ -170,7 +170,7 @@ jQuery(function($){
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
-        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+'</li>')
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+'</li>'+'<hr>')
         element.hide().fadeIn();
         $("#chat-field").prepend(element);
       
@@ -179,7 +179,7 @@ jQuery(function($){
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
-        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+'</li>')
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+'</li>'+'<hr>')
         element.hide().fadeIn();
         $("#chat-field").prepend(element);
       }else if(data.gamedata.gamep9==0 && data.gamedata.gamep10==0){
@@ -187,7 +187,7 @@ jQuery(function($){
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
-        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep7+"---"+data.gamedata.gamep8+"***"+'</li>')
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep7+"---"+data.gamedata.gamep8+"***"+'</li>'+'<hr>')
         element.hide().fadeIn();
         $("#chat-field").prepend(element);
       }else{
@@ -195,7 +195,7 @@ jQuery(function($){
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
-        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep7+"---"+data.gamedata.gamep8+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep9+"---"+data.gamedata.gamep10+"***"+'</li>')
+        .append('<li>'+data.time+'<br>'+data.name+'：勝者は'+data.winner+"です。"+'<br>'+"プレイヤー***"+data.username1+"---"+data.username2+"<br>"+"セットカウント"+"***"+data.gamedata.setcount1+"---"+data.gamedata.setcount2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep1+"---"+data.gamedata.gamep2+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep3+"---"+data.gamedata.gamep4+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep5+"---"+data.gamedata.gamep6+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep7+"---"+data.gamedata.gamep8+"***"+"<br>"+"ゲームカウント"+"***"+data.gamedata.gamep9+"---"+data.gamedata.gamep10+"***"+'</li>'+'<hr>')
         element.hide().fadeIn();
         $("#chat-field").prepend(element);
       }
