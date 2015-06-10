@@ -71,7 +71,7 @@ var createchat = function(data){
   var element = 
   $('<div class="tennis" />')
   .attr('id',id)
-  .append('<li>'+data.time+'<br>'+data.name+"さん："+data.message+'</li>')
+  .append('<li>'+data.time+'<br>'+data.name+"さん："+data.message+'</li>'+'<hr>')
 
   element.hide().fadeIn();
   $("#mlist").prepend(element);
