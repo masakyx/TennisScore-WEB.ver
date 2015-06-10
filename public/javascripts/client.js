@@ -1,5 +1,6 @@
 var user = 0;
 var renewnum = 0;
+var countnum = 0;//試合状況のテキストのアクションデータ
 jQuery(function($){
     "use strict";
     //var socket = io.connect('http://' + location.host + '/');
@@ -22,7 +23,8 @@ jQuery(function($){
           }
       });
     });
-   var firsttennisData;
+    var firsttennisData;
+    var countnumData;
     //ユーザーの識別（時間をつかう）
     $(document).ready(function(){
         var runsu = Math.random();
@@ -224,6 +226,30 @@ jQuery(function($){
             serveplayer:0,
             isTiebreak:0
           };
+          //*****更新用のデータ******************************************
+          countnumData = {
+            countID:user,
+            pointext:{
+              pointtext1:"0",
+              pointtext2:"0",
+              pointtext3:"0",
+              pointtext4:"0",
+              pointtext5:"0",
+              pointtext6:"0"
+            },
+            pointdata:{
+              point1:0,
+              point2:0,
+              gamepoint1:0,
+              gamepoint2:0,
+              setpoint1:0,
+              setpoint2:0
+            },
+            countnumber:Number,
+            server:Number,
+            isTiebreak:Number
+          }
+
           var infotime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
           socket.emit('create',firsttennisData);
           socket.emit('viewer-chat',{name:"＊＊＊＊試合連絡＊＊＊＊",message:"試合が始まりました。",time:infotime,year:year,month:month,day:day,category:"mes"});
@@ -394,6 +420,27 @@ jQuery(function($){
           //socket.broadcast.to(tennisData.room.creater).emit('point-update',{_id:id,point:uppoint});
           //socket.broadcast.to(tennisData.room.creater).emit('pointext-update',{_id:id,pointext:uptext});
       });
+      $("#serviceace","#returnace","#win1","#win2","#side1","#side","#back1","#back2","#net1","#net2").click(function(){
+            var pointdata = {
+              point1:point1,
+              point2:point2,
+              gamepoint1:gamepoint1,
+              gamepoint2:gamepoint2,
+              setpoint1:setpoint1,
+              setpoint2:setpoint2
+            }; 
+          var uptext = {
+             pointtext1:$("#score1").text(),
+             pointtext2:$("#score2").text(),
+             pointtext3:$("#gamest1").text(),   
+             pointtext4:$("#gamest2").text(),
+             pointtext5:$("#setst1").text(),
+             pointtext6:$("#setst2").text()
+           };
+           countnum++;
+           socket.emit('action-pointtext-data',{actionID:user,pointdata:pointdata,pointtext:uptext,count:countnum,server:server,tiebreak:isTiebreak});
+
+      }); 
       $('input[name="gametype"]').click(function(){
           var upplayer = {
               player1:$("#usn1").val(),

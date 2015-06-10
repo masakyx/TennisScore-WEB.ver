@@ -144,7 +144,7 @@ jQuery(function($){
     var element = 
     $('<div class="tennis" />')
     .attr('id',id)                  
-    .append('<li>'+data.time+'<br>'+data.name+"さん："+data.message+'</li>')
+    .append('<li>'+data.time+'<br>'+data.name+"さん："+data.message+'</li>'+'<hr>')
     element.hide().fadeIn();
     $("#chat-field").prepend(element);
     console.log("メッセージが追加されました。");
