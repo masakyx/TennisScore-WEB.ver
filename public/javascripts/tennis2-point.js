@@ -150,7 +150,7 @@ function ScorePoint(score,point){
        gamepoint2++;
        GamePoint(gamest2,gamepoint2);
      }     
-    //audio();
+    audio();
      return 0;
 }
 
