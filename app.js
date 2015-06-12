@@ -302,7 +302,8 @@ var TennisSchema = new mongoose.Schema({
     renewnumber:Number,
     actiondataID:String,
     serveplayer:Number, //0=左 1=右
-    isTiebreak:Number
+    isTiebreak:Number,
+    foreback:Number
 });
 
 //generate model from schema)
@@ -380,6 +381,7 @@ io.sockets.on('connection',function(socket){
       actiondata.pointdata = data.pointdata;
       actiondata.serveplayer = data.serveplayer;
       actiondata.isTiebreak = data.tiebreak;
+      actiondata.foreback = data.foreback;
       actiondata.save();
   });
   //*********************************************************************

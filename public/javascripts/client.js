@@ -224,7 +224,8 @@ jQuery(function($){
             renewnumber:0,
             actiondataID:"a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
             serveplayer:0,
-            isTiebreak:0
+            isTiebreak:0,
+            foreback:0
           };
           var infotime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
           socket.emit('create-pointtextdata',countnumData);
@@ -430,7 +431,7 @@ jQuery(function($){
             console.log("ボタンが押されてポイントが更新されるよ");
             });*/
           renewnum++;
-          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum,creater:room,pointdata:pointdata,serveplayer:server,tiebreak:isTiebreak});
+          socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum,creater:room,pointdata:pointdata,serveplayer:server,tiebreak:isTiebreak,foreback:foreback});
           socket.emit('point-update',{username:user,point:uppoint,serveplayer:server,tiebreak:isTiebreak});
           socket.emit('pointext-update',{username:user,pointext:uptext,serveplayer:server});
            

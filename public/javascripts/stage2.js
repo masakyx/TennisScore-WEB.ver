@@ -252,6 +252,7 @@ jQuery(function ($){
       //*****sever change********************************************
       server = data.serveplayer;
       ServeChange(server);
+      foreback = data.foreback;
       //***tie break change*********************************************
       isTiebreak = data.isTiebreak;
       console.log(point1+"/"+point2+"/"+gamepoint1+"/"+gamepoint2+"/"+setpoint1+"/"+setpoint2);

@@ -150,7 +150,7 @@ function ScorePoint(score,point){
        gamepoint2++;
        GamePoint(gamest2,gamepoint2);
      }     
-    audio();
+    //audio();
      return 0;
 }
 
@@ -308,7 +308,7 @@ function SetPoint(setst,setpoint){
       is_note = false;                                                    
       //gamecountの送信
       socket.emit('finish-gamedata-chat',{time:finishtime,year:year1,month:month1,day:day1,result:result,usn1:playername1,usn2:playername2,winner:winner,category:category});
-      window.alert("ゲーム終了です。ージへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
+      window.alert("ゲーム終了です。トップページへ戻ります！！試合結果の詳細は”試合データ”をみてください！！");
       socket.emit('remove',{username:user,time:uptime,result:result,winner:winner});
       location.href = "/";
     }
@@ -349,6 +349,15 @@ function SetPoint(setst,setpoint){
 window.onbeforeunload = function(event){
 if(is_note){
   event = event || window.event;
+  Result();
+ }
+}
+$("#backhome").click(function(){
+  Result();
+});
+
+function Result(){
+  
     var time1 = new Date();
     var year1 = time1.getFullYear();
     var month1 = time1.getMonth()+1;
