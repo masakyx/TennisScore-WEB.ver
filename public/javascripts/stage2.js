@@ -217,7 +217,8 @@ jQuery(function ($){
         socket.emit("tennis-back-data",{user:user,renew:renewnum});
         renewnum--;
         console.log("id="+user+"///renew="+renewnum);
-      }  
+      }
+      console.log("renew番号==="+renewnum);
   });
   //---back buttonを押された後の情報更新----------------------------------
   socket.on("tennisData-update",function(data){

@@ -3,6 +3,12 @@ var renewnum = 0;
 var countnum = 0;//試合状況のテキストのアクションデータ
 jQuery(function($){
     "use strict";
+    window.onload = function(){
+      $(function(){
+        $("#loading").fadeOut();
+        $("#container").fadeIn();
+      });
+    }
     //var socket = io.connect('http://' + location.host + '/');
     var socket = io.connect(location.host + '/');
 //    var id;
@@ -424,18 +430,10 @@ jQuery(function($){
                 setpoint2:setpoint2
             };
 
-           /*socket.emit("change-old-id",{username:user});
-           socket.on("finish-change-old-id",function(data){
-               socket.emit('point-update',{oldtennis:firsttennisData,_id:id,username:user,point:uppoint});
-             socket.emit('pointext-update',{_id:id,username:user,pointext:uptext});
-            console.log("ボタンが押されてポイントが更新されるよ");
-            });*/
-          renewnum++;
+            renewnum++;
+            console.log("今のrenewnumは！"+renewnum);
           socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum,creater:room,pointdata:pointdata,serveplayer:server,tiebreak:isTiebreak,foreback:foreback});
           socket.emit('point-update',{username:user,point:uppoint,serveplayer:server,tiebreak:isTiebreak});
           socket.emit('pointext-update',{username:user,pointext:uptext,serveplayer:server});
-           
-          //socket.broadcast.to(tennisData.room.creater).emit('point-update',{_id:id,point:uppoint});
-          //socket.broadcast.to(tennisData.room.creater).emit('pointext-update',{_id:id,pointext:uptext});
   }
 });

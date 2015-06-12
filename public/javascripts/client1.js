@@ -1,5 +1,11 @@
 jQuery(function($){
   "use strict";
+    window.onload = function(){
+      $(function(){
+        $("#loading").fadeOut();
+        $("#container").fadeIn();
+      });
+    }
   //var socket = io.connect('http://'+location.host + '/');
   var socket = io.connect(location.host + '/');
 	//createイベントを受信した時、html上にメモを作成する。

@@ -14,3 +14,10 @@
 #chat-field{
   margin-left:20px;
 }
+#container{display:none}
+#loading{
+  position:absolute;
+  left:50%;
+  top:40%;
+  margin-left:-40px;
+}

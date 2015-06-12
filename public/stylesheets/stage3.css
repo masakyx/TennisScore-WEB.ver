@@ -14,3 +14,10 @@
 #back1,#back2,#bolay1,#bolay2{
  background-color:#ffcc66;
 }
+#container{display:none}
+#loading{
+  position:absolute;
+  left:50%;
+  top:40%;
+  margin-left:-30px;
+}

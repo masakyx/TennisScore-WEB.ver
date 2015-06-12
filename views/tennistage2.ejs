@@ -19,6 +19,10 @@
 <body>
     <script src="/socket.io/socket.io.js"></script> 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <div id="loading">
+      <img src="images/gif-load.gif">
+    </div>
+  <div id="container">
     <div>
       <h1 class="text">Tennis</h1>
       <input type="button" id="backhome" value="◀︎◀︎◀︎：戻る" name="backhome1" onClick="location.href='/'" class="button">
@@ -107,7 +111,8 @@
       </audio>
       <audio id="pointall" preload="auto">
         <source src="/images/all.wav" type="audio/wav">
-      </audio>
+        </audio>
+      </div>
   <script src="/javascripts/client.js"></script>
   <script src="/javascripts/pointcount.js"></script>
   <script src="/javascripts/tennis2-point.js"></script>
