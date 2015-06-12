@@ -413,7 +413,6 @@ function Result(){
 
     socket.emit('remove',{username:user,time:uptime,result:result,winner:winner});
   }
-}
 //タイブレイクメソッド --------------------------------------------------
 function TieBreak(score,point){
   isTiebreakpoint = 1;
