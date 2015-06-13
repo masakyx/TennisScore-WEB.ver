@@ -18,9 +18,9 @@ jQuery(function($){
           if(data.real == "unreal"){
           }else if(data.real == "real"){
          // socket.join(data.room.creater);
-            console.log("create of" + data._id + "!!!");
+            //console.log("create of" + data._id + "!!!");
             creatTennis(data);
-            //        console.log(id);
+            //        //console.log(id);
             }
       });*/
       tennisData.forEach(function(data){
@@ -238,7 +238,7 @@ jQuery(function($){
           socket.emit('create',firsttennisData);
           socket.emit('viewer-chat',{name:"＊＊＊＊試合連絡＊＊＊＊",message:"試合が始まりました。",time:infotime,year:year,month:month,day:day,category:"mes"});
       user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
-      console.log("ユーザーは：" + user);
+      //console.log("ユーザーは：" + user);
     });
 //---------------------stage2-javascriptj-----------------------------------
     //when User pushed create button ,Server send creat event
@@ -292,8 +292,8 @@ jQuery(function($){
   // };
   //-----viewer-javascript-----------------------------------------------------
   function PointUpdata(){
-            console.log("pointupdate");
-            console.log("server==="+server);
+            //console.log("pointupdate");
+            //console.log("server==="+server);
             var uppoint = {
               point1:p1f.point,
               point2:p1.win,
@@ -431,7 +431,7 @@ jQuery(function($){
             };
 
             renewnum++;
-            console.log("今のrenewnumは！"+renewnum);
+            //console.log("今のrenewnumは！"+renewnum);
           socket.emit('renew-action',{action:firsttennisData,point:uppoint,pointext:uptext,player:playerdata,actionnum:renewnum,creater:room,pointdata:pointdata,serveplayer:server,tiebreak:isTiebreak,foreback:foreback});
           socket.emit('point-update',{username:user,point:uppoint,serveplayer:server,tiebreak:isTiebreak});
           socket.emit('pointext-update',{username:user,pointext:uptext,serveplayer:server});

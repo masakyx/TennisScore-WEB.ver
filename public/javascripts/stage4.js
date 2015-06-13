@@ -18,11 +18,11 @@ jQuery(function($){
         }else if(data.category == "infodata"){
           creategamedatachat(data);
         }
-        console.log("メッセージを更新したよ");
+        ////console.log("メッセージを更新したよ");
       });
   });
   socket.on('finish-gamedata-chat',function(data){
-      console.log("試合報告がきました");
+      ////console.log("試合報告がきました");
       creategamedatachat(data);
   });
 
@@ -31,7 +31,7 @@ jQuery(function($){
   var aa2 = 0;
 
   $("#send").click(function(){
-      console.log("メッセージを送信");
+      ////console.log("メッセージを送信");
       if($("#chat-name").val() == "" || $("#chat-name").val() == "名前"){
         window.alert("名前を入力してください");
       }else if($("#chat-comment").val() == "" || $("#chat-comment").val() == "コメント"){
@@ -81,7 +81,7 @@ var createchat = function(data){
 
   element.hide().fadeIn();
   $("#mlist").prepend(element);
-  console.log("メッセージが追加されました");
+  //console.log("メッセージが追加されました");
  };
 
   var creategamedatachat = function(data){
@@ -92,7 +92,7 @@ var createchat = function(data){
      }
      var element;
      if(data.gamedata.gamep3==0 && data.gamedata.gamep4==0){
-        console.log("ゲーム数は1ですよ");
+        //console.log("ゲーム数は1ですよ");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
@@ -100,7 +100,7 @@ var createchat = function(data){
         element.hide().fadeIn();
         $("#mlist").prepend(element);
       }else if(data.gamedata.gamep5 ==0 && data.gamedata.gamep6 == 0){
-        console.log("ゲーム数は２ですよ");
+        //console.log("ゲーム数は２ですよ");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
@@ -109,7 +109,7 @@ var createchat = function(data){
         $("#mlist").prepend(element);
       
       }else if(data.gamedata.gamep7==0 && data.gamedata.gamep8==0){
-        console.log("ゲーム数は３ですよ");
+        //console.log("ゲーム数は３ですよ");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
@@ -117,7 +117,7 @@ var createchat = function(data){
         element.hide().fadeIn();
         $("#mlist").prepend(element);
       }else if(data.gamedata.gamep9==0 && data.gamedata.gamep10==0){
-        console.log("ゲーム数は４です");
+        //console.log("ゲーム数は４です");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
@@ -125,7 +125,7 @@ var createchat = function(data){
         element.hide().fadeIn();
         $("#mlist").prepend(element);
       }else{
-        console.log("ゲーム数は５ですよ");
+        //console.log("ゲーム数は５ですよ");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)

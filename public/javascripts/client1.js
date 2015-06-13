@@ -1,7 +1,7 @@
 jQuery(function($){
   "use strict";
     window.onload = function(){
-      $(function(){
+     $(function(){
         $("#loading").fadeOut();
         $("#container").fadeIn();
       });
@@ -18,7 +18,7 @@ jQuery(function($){
           if(data.real == "real" && data.time.year==yearid && data.time.month==monthid && data.time.day==dateid){
             createData(data);
           }else if(data.real == "unreal"){
-            console.log(data.user + "のゲームは既に終了しています");
+            //console.log(data.user + "のゲームは既に終了しています");
           }
 		  });
     });
@@ -34,7 +34,7 @@ jQuery(function($){
             }else if(data.category == "infodata"){
               creategamedatachat(data);
             }
-          console.log("メッセージを更新したよ");
+          //console.log("メッセージを更新したよ");
         }else{
 
         }
@@ -61,7 +61,7 @@ jQuery(function($){
 
 	//update-textイベントを受信した時、メモのテキストを更新する。
   socket.on('pointext-update',function(data){
-      console.log("update of " + data.username);
+      //console.log("update of " + data.username);
 		$('#'+data.username).find('.score1').text(data.pointext.pointtext1);
 		$('#'+data.username).find('.score2').text(data.pointext.pointtext2);
 		$('#'+data.username).find('.game1').text(data.pointext.pointtext3);
@@ -71,7 +71,7 @@ jQuery(function($){
 	});
 	//playernameが変更されたら変更する
   socket.on('player-update',function(data){
-      console.log(data.username);
+      //console.log(data.username);
       $('#'+data.username).find('#creatername').text("CREATER : " + data.room.creater);
 		$('#'+data.username).find('.player1').text(data.player.player1 + '/' + data.player.player2);
 		$('#'+data.username).find('.player2').text(data.player.player3 + '/' + data.player.player4);
@@ -79,7 +79,7 @@ jQuery(function($){
 	//removeイベントを受信した時、メモを削除する。
   socket.on('remove',function(data){
       removeTennis(data.user);
-      console.log("ゲーム終了の表を削除します");
+      //console.log("ゲーム終了の表を削除します");
       window.alert(data.player.player1+' / '+data.player.player2+' VS '+data.player.player3+' / '+data.player.player4+"の試合は終了しました。勝者は＜"+data.winner+"＞です。");
   });
 
@@ -90,7 +90,7 @@ jQuery(function($){
       return;
     }
     
-    console.log(id);
+    //console.log(id);
 
     var element =
      $('<div class = "tennis"/>')
@@ -132,12 +132,12 @@ jQuery(function($){
       }
   });
   socket.on('viewer-chat',function(data){
-      console.log("新しいメッセージきました");
+      //console.log("新しいメッセージきました");
       createchat(data);
 
   });
   socket.on('finish-gamedata-chat',function(data){
-      console.log("試合報告がきました");
+      //console.log("試合報告がきました");
       creategamedatachat(data);
   });
   var createchat = function(data){
@@ -153,7 +153,7 @@ jQuery(function($){
     .append('<li>'+data.time+'<br>'+data.name+"さん："+data.message+'</li>'+'<hr>')
     element.hide().fadeIn();
     $("#chat-field").prepend(element);
-    console.log("メッセージが追加されました。");
+    //console.log("メッセージが追加されました。");
   };
 
   var creategamedatachat = function(data){
@@ -164,7 +164,7 @@ jQuery(function($){
      }
      var element;
      if(data.gamedata.gamep3==0 && data.gamedata.gamep4==0){
-        console.log("ゲーム数は1ですよ");
+        //console.log("ゲーム数は1ですよ");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
@@ -172,7 +172,7 @@ jQuery(function($){
         element.hide().fadeIn();
         $("#chat-field").prepend(element);
       }else if(data.gamedata.gamep5 ==0 && data.gamedata.gamep6 == 0){
-        console.log("ゲーム数は２ですよ");
+        //console.log("ゲーム数は２ですよ");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
@@ -181,7 +181,7 @@ jQuery(function($){
         $("#chat-field").prepend(element);
       
       }else if(data.gamedata.gamep7==0 && data.gamedata.gamep8==0){
-        console.log("ゲーム数は３ですよ");
+        //console.log("ゲーム数は３ですよ");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
@@ -189,7 +189,7 @@ jQuery(function($){
         element.hide().fadeIn();
         $("#chat-field").prepend(element);
       }else if(data.gamedata.gamep9==0 && data.gamedata.gamep10==0){
-        console.log("ゲーム数は４です");
+        //console.log("ゲーム数は４です");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)
@@ -197,7 +197,7 @@ jQuery(function($){
         element.hide().fadeIn();
         $("#chat-field").prepend(element);
       }else{
-        console.log("ゲーム数は５ですよ");
+        //console.log("ゲーム数は５ですよ");
         element = 
         $('<div class="tennis" />')
         .attr('id',id)

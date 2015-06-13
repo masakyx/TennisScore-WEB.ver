@@ -216,13 +216,13 @@ jQuery(function ($){
       if(renewnum != 0){
         socket.emit("tennis-back-data",{user:user,renew:renewnum});
         renewnum--;
-        console.log("id="+user+"///renew="+renewnum);
+        //console.log("id="+user+"///renew="+renewnum);
       }
-      console.log("renew番号==="+renewnum);
+      //console.log("renew番号==="+renewnum);
   });
   //---back buttonを押された後の情報更新----------------------------------
   socket.on("tennisData-update",function(data){
-      console.log("今のポイントテキストは"+data.pointext.pointtext1);
+      //console.log("今のポイントテキストは"+data.pointext.pointtext1);
       $("#score1").text(data.pointext.pointtext1);
       $("#score2").text(data.pointext.pointtext2);
       $("#gamest1").text(data.pointext.pointtext3);
@@ -256,7 +256,7 @@ jQuery(function ($){
       foreback = data.foreback;
       //***tie break change*********************************************
       isTiebreak = data.isTiebreak;
-      console.log(point1+"/"+point2+"/"+gamepoint1+"/"+gamepoint2+"/"+setpoint1+"/"+setpoint2);
+      //console.log(point1+"/"+point2+"/"+gamepoint1+"/"+gamepoint2+"/"+setpoint1+"/"+setpoint2);
 //***********************昔の変数にもどしていく**改良の余地あり**********
       p1f.point=data.point.point1;
       p1.win=data.point.point2;
@@ -404,7 +404,7 @@ function stropenbutton(){
 //------------------------------------------------------------------------
 //-----------------------------------------------------------------------  
 function changecort(po1,po2,po3,po4){
-  console.log("cccccc===="+c);
+  //console.log("cccccc===="+c);
   if(c%2 == 1){
     $(".leftbt").animate({"left":'+=' + po1},"slow");
     $(".rightbt").animate({"right":'+=' + po1},"slow");
