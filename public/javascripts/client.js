@@ -237,9 +237,9 @@ jQuery(function($){
           socket.emit('create-pointtextdata',countnumData);
           socket.emit('create',firsttennisData);
           socket.emit('viewer-chat',{name:"＊＊＊＊試合連絡＊＊＊＊",message:"試合が始まりました。",time:infotime,year:year,month:month,day:day,category:"mes"});
-      user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo,
+      user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo;
       //console.log("ユーザーは：" + user);
-    });
+  });
 //---------------------stage2-javascriptj-----------------------------------
     //when User pushed create button ,Server send creat event
       //make html from tennisData
