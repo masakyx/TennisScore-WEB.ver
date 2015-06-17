@@ -67,7 +67,14 @@ jQuery(function($){
 		$('#'+data.username).find('.game1').text(data.pointext.pointtext3);
 		$('#'+data.username).find('.game2').text(data.pointext.pointtext4);
 		$('#'+data.username).find('.set1').text(data.pointext.pointtext5);
-		$('#'+data.username).find('.set2').text(data.pointext.pointtext6);
+    $('#'+data.username).find('.set2').text(data.pointext.pointtext6);
+    if(data.serveplayer == 0){
+      $('#'+data.username).find('.server1').text("●");
+      $('#'+data.username).find('.server2').text("");
+    }else if(data.serveplayer == 1){
+      $('#'+data.username).find('.server1').text("");
+      $('#'+data.username).find('.server2').text("●");
+    }
 	});
 	//playernameが変更されたら変更する
   socket.on('player-update',function(data){
@@ -97,7 +104,7 @@ jQuery(function($){
      .attr('id',id)
      .append($('<text>' + "開始時間 : " + tennisData.time.alltime+'</text>'+'<br>' ))
      .append($('<text id="creatername">' + "CREATER : "+ tennisData.room.creater + '</text>'))
-     .append($('<table border=2><tr><th></th><th align="center" class="player1">' + tennisData.player.player1 + '/' + tennisData.player.player2 + '</th><th align="center" class="player2">' + tennisData.player.player3 + '/' + tennisData.player.player4 +  '</th></tr><tr><td align="center">SET COUNT </td><td align="center" class="set1">' + tennisData.pointext.pointtext5 + '</td><td align="center" class="set2">' + tennisData.pointext.pointtext6 + '</td></tr><tr><td align="center">GAME COUNT</td><td align="center" class="game1">' + tennisData.pointext.pointtext3 + '</td><td align="center" class="game2">' + tennisData.pointext.pointtext4 + '</td></tr><tr><td align="center">SCORE</td><td align="center" class="score1">' + tennisData.pointext.pointtext1 + '</td><td align="center" class="score2">' + tennisData.pointext.pointtext2 + '</td></tr></table>'))
+     .append($('<table border=2><tr><th></th><th align="center" class="player1">' + tennisData.player.player1 + '/' + tennisData.player.player2 + '</th><th align="center" class="player2">' + tennisData.player.player3 + '/' + tennisData.player.player4 +  '</th></tr><tr><td align="center">SERVER </td><td align="center" class="server1">' + "●" + '</td><td align="center" class="server2">' +""+ '</td></tr><tr><td align="center">SET COUNT </td><td align="center" class="set1">' + tennisData.pointext.pointtext5 + '</td><td align="center" class="set2">' + tennisData.pointext.pointtext6 + '</td></tr><tr><td align="center">GAME COUNT</td><td align="center" class="game1">' + tennisData.pointext.pointtext3 + '</td><td align="center" class="game2">' + tennisData.pointext.pointtext4 + '</td></tr><tr><td align="center">SCORE</td><td align="center" class="score1">' + tennisData.pointext.pointtext1 + '</td><td align="center" class="score2">' + tennisData.pointext.pointtext2 + '</td></tr></table>'))
     element.hide().fadeIn();
     $('#field').prepend(element);
   
