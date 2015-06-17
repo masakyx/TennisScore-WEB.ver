@@ -230,12 +230,6 @@ jQuery(function ($){
       $("#setst1").text(data.pointext.pointtext5);
       $("#setst2").text(data.pointext.pointtext6);
       //----point data の更新--------------------------------------------
-      /*ChangeNumber(1,$("#score1").text(),point1);
-      ChangeNumber(1,$("#score2").text(),point2);
-      ChangeNumber(2,$("#gamest1").text(),gamepoint1);
-      ChangeNumber(2,$("#gamest2").text(),gamepoint2);
-      ChangeNumber(3,$("#setst1").text(),setpoint1);   
-      ChangeNumber(3,$("#setst2").text(),setpoint2);*/
       var uptext = {
         pointtext1:$("#score1").text(),
         pointtext2:$("#score2").text(),
@@ -370,7 +364,7 @@ jQuery(function ($){
       p1b.returnin=data.point.apoint26;
       p1b.allreturn=data.point.apoint27;
 //***********************************************************************
-      socket.emit('pointext-update',{username:user,pointext:uptext});
+socket.emit('pointext-update',{username:user,pointext:uptext,serveplayer:server});
   });
   
 });

@@ -499,6 +499,15 @@ function ServeChange(ser){
     returnace.val("Returnn ACE");
     rm.val("Return Miss");
   }
+  var uptext = {
+     pointtext1:$("#score1").text(),
+     pointtext2:$("#score2").text(),
+     pointtext3:$("#gamest1").text(),   
+     pointtext4:$("#gamest2").text(),
+     pointtext5:$("#setst1").text(),
+     pointtext6:$("#setst2").text()
+   };
+   socket.emit("pointext-update",{username:user,serveplayer:server,pointext:uptext});
   //finserve = 0;
 }
 //-----------------------------------------------------------------------
