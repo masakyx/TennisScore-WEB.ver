@@ -122,30 +122,6 @@ jQuery(function ($){
         j=0;
       }
     });
-    //------------------------------------------------------------
-    $("#fault").click(function (){
-      if(server == 0){
-        j++;
-        if(j%2 == 1){
-          $("#fault").val("Double Fault");
-          $("#schange").fadeOut();
-          $("#backdataid").fadeOut();
-          $("#chanco").fadeOut();
-        }else{
-          $("#fault").val("Fault");
-          $("#schange").fadeIn();
-          $("#backdataid").fadeIn();
-          $("#chanco").fadeIn();
-          j=0;
-        }
-      }else if(server == 1){
-          $("#schange").fadeIn();
-          $("#rm").val("Fault");
-          j=0;
-          openbutton(); 
-        }
-    }); 
-  
     //----------------------------------------------------------
     $("#returnin").click(function (){
       if(server == 0){
@@ -177,30 +153,6 @@ jQuery(function ($){
       }
     });
     //-------------------------------------------------------------------
-    $("#rm").click(function(){
-      if(server == 0){ 
-        $("#schange").fadeIn();
-        $("#fault").val("Fault");
-        j=0;
-        openbutton();
-      }else if(server == 1){
-        j++;
-        if(j%2 == 1 ){
-          $("#rm").val("Double Fault");
-          $("#schange").fadeOut();
-          $("#backdataid").fadeOut();
-          $("#chanco").fadeOut();
-        }else{
-          $("#rm").val("Fault");
-          $("#schange").fadeIn();
-          $("#backdataid").fadeIn();
-          $("#chanco").fadeIn();
-          j=0;
-        } 
-      }
-      //finserve = 0;
-    });
-      //-----------------------------------------------------------------
     $("#win1,#side1,#back1,#net1,#win2,#side2,#back2,#net2").click(function (){
       openbutton();
       strclosebutton();

@@ -81,11 +81,30 @@ jQuery(function($){
    //------------------------------------------------------------------
    fault.click(function(){
       if(server == 0 && fault.val() != "Return Miss"){
-       if(fault.val() == "Double Fault"){
-         point2++;
-         ClickPoint(score2,point2);
-       }
+        j++;
+        if(j%2 == 1){
+          $("#fault").val("Double Fault");
+          $("#schange").fadeOut();
+          $("#backdataid").fadeOut();
+          $("#chanco").fadeOut();
+        }else{
+          $("#fault").val("Fault");
+          $("#schange").fadeIn();
+          $("#backdataid").fadeIn();
+          $("#chanco").fadeIn();
+          j=0;
+          point2++;
+          ClickPoint(score2,point2);
+        }
+        /*if(fault.val() == "Double Fault"){   
+          point2++;
+          ClickPoint(score2,point2);
+       }*/
      }else if(server == 1){
+       $("#schange").fadeIn();
+       $("#rm").val("Fault");
+       j=0;
+       openbutton(); 
        point2++;
        ClickPoint(score2,point2);
      }
@@ -93,12 +112,31 @@ jQuery(function($){
    //---;--------------------------------------------------------------
    rm.click(function(){
       if(server == 1 && rm.val() != "Return Miss"){
-       if(rm.val() == "Double Fault"){
+        j++;
+        if(j%2 == 1 ){
+          $("#rm").val("Double Fault");
+          $("#schange").fadeOut();
+          $("#backdataid").fadeOut();
+          $("#chanco").fadeOut();
+        }else{
+          $("#rm").val("Fault");
+          $("#schange").fadeIn();
+          $("#backdataid").fadeIn();
+          $("#chanco").fadeIn();
+          j=0;
+         point1++;
+         ClickPoint(score1,point1);
+        } 
+        /*if(rm.val() == "Double Fault"){
          point1++;
          ClickPoint(score1,point1);
        }else{
-       }
+       }*/
      }else if(server == 0){
+        $("#schange").fadeIn();
+        $("#fault").val("Fault");
+        j=0;
+        openbutton();
        point1++;
        ClickPoint(score1,point1);
      }
