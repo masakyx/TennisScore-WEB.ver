@@ -42,6 +42,21 @@ input[name="fault"],input[name="return miss"]{
   margin-top:70px;
 }
 input[name="winning1"],input[name="winning2"]{
+  margin-top:-71px;
+}
+input[name="side out1"],input[name="side out2"]{
+  margin-top:-36px;
+}                  
+input[name="back out1"],input[name="back out2"]{
+  margin-top:-1px;
+}
+input[name="net1"],input[name="net2"]{
+  margin-top:34px;
+}
+/*input[name="Serviceace"],input[name="Returnace"]{
+  margin-top:70px;
+}
+input[name="winning1"],input[name="winning2"]{
   margin-top:105px;
 }
 input[name="side out1"],input[name="side out2"]{
@@ -52,10 +67,10 @@ input[name="back out1"],input[name="back out2"]{
 }
 input[name="net1"],input[name="net2"]{
   margin-top:210px;
-}
+}*/
 #vhr{
   position:absolute;
-  left:50%;
+}
   top:83px;
   height:100%;
   background-color:green;

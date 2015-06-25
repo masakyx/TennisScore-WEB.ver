@@ -96,10 +96,6 @@ jQuery(function($){
           point2++;
           ClickPoint(score2,point2);
         }
-        /*if(fault.val() == "Double Fault"){   
-          point2++;
-          ClickPoint(score2,point2);
-       }*/
      }else if(server == 1){
        $("#schange").fadeIn();
        $("#rm").val("Fault");
@@ -127,11 +123,6 @@ jQuery(function($){
          point1++;
          ClickPoint(score1,point1);
         } 
-        /*if(rm.val() == "Double Fault"){
-         point1++;
-         ClickPoint(score1,point1);
-       }else{
-       }*/
      }else if(server == 0){
         $("#schange").fadeIn();
         $("#fault").val("Fault");
