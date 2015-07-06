@@ -7,6 +7,9 @@ jQuery(function($){
       });
     }
     $("#create").click(function(){
+        if(confirm("試合データが作成されますがよろしいですか？")){
+        
           location.href = "/stage2";
+        }
       });
 });
