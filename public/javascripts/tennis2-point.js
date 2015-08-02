@@ -6,6 +6,7 @@ var gamepoint2 = 0;
 var setpoint1 = 0;
 var setpoint2 = 0;
 var setcount = 1;
+var gamecount = 6;
 var isTiebreak = 0;
 var isTiebreakpoint = 0;
 var strbo1 = 0;
@@ -45,6 +46,9 @@ var net2 = $("#net2");
 var set1 = $("#set1");
 var set3 = $("#set3");
 var set5 = $("#set5");
+var game1 = $("#game1");
+var game2 = $("#game2");
+var game3 = $("#game3");
 var sercha = $("#schange");
 //------------------------------------------------------------------------
 var socket = io.connect('http://'+location.host+'/');
@@ -196,10 +200,10 @@ function GamePoint(gamest,gamepoint){
   }
   ServeChange(server);
 
-  if(gamepoint < 6 || gamepoint1 == 6 && gamepoint2 == 5 || gamepoint1 == 5 && gamepoint2 == 6 ){
+  if(gamepoint < gamecount || gamepoint1 == gamecount && gamepoint2 == (gamecount-1) || gamepoint1 == (gamecount-1) && gamepoint2 == gamecount ){
     ClearPoint();
     gamest.text(gamepoint);                  
-  }else if(gamepoint == 6 && gamepoint1 < 5 || gamepoint == 6 && gamepoint2 <5 || gamepoint1 == 7 && gamepoint2 == 5 || gamepoint1 == 5 && gamepoint2 == 7){
+  }else if(gamepoint == gamecount && gamepoint1 < (gamecount-1) || gamepoint == gamecount && gamepoint2 <(gamecount-1) || gamepoint1 == (gamecount+1) && gamepoint2 == (gamecount-1) || gamepoint1 == (gamecount-1) && gamepoint2 == (gamecount+1)){
     if(gamepoint1 > gamepoint2){
       setpoint1++;
       SetPoint(setst1,setpoint1);
@@ -207,7 +211,7 @@ function GamePoint(gamest,gamepoint){
       setpoint2++;
       SetPoint(setst2,setpoint2);
     }
-  }else if(gamepoint1 == 6 && gamepoint2 == 6){
+  }else if(gamepoint1 == gamecount && gamepoint2 == gamecount){
     isTiebreak=1;//タイブレイク　スタート
     ClearPoint();
     gamest1.text("TIE BREAK");
@@ -227,6 +231,17 @@ $('input[name="set"]').click(function(){
     setcount = 5;
   }
   console.log("setcount = " + setcount);
+});
+//ゲームカウントの取得
+$('input[name="game"]').click(function(){
+  if(game1.is(":checked")){
+    gamecount = 4; 
+  }else if(game2.is(":checked")){
+    gamecount = 6;
+  }else if(game3.is(":checked")){
+    gamecount = 8; 
+  }
+  console.log("gamecount = " + gamecount);
 });
 function SetPoint(setst,setpoint){
   //セットポイントのカウント
