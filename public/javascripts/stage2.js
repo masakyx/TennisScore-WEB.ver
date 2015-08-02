@@ -72,8 +72,10 @@ jQuery(function ($){
     $("#chanco").click(function (){
       c++;
     //stroke button
-      var posi1 = $("#returnin").offset();
-      var posi2 = $("#service").offset();
+      //var posi1 = $("#returnin").offset();
+      //var posi2 = $("#service").offset();
+      var posi1 = $("#returnace").offset();
+      var posi2 = $("#serviceace").offset();
     //player text button   
       var posi3 = $("#usn3").offset();
       var posi4 = $("#usn1").offset();
