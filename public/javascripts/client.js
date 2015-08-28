@@ -236,7 +236,7 @@ jQuery(function($){
           var infotime = year+"年"+month+"月"+day+"日"+ji+"時"+hun+"分"+byo+"秒";
           socket.emit('create-pointtextdata',countnumData);
           socket.emit('create',firsttennisData);
-          socket.emit('viewer-chat',{name:"＊＊＊＊試合連絡＊＊＊＊",message:"試合が始まりました。",time:infotime,year:year,month:month,day:day,category:"mes"});
+          //socket.emit('viewer-chat',{name:"＊＊＊＊試合連絡＊＊＊＊",message:"試合が始まりました。",time:infotime,year:year,month:month,day:day,category:"mes"});
       user = "a"+year+"_"+month+"_"+day+"_"+ji+"_"+hun+"_"+byo;
       //console.log("ユーザーは：" + user);
   });
